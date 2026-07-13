@@ -1,0 +1,2222 @@
+[
+  {
+    "id": "strava_19287301703",
+    "dateISO": "2026-07-12",
+    "type": "Run",
+    "timeMin": 126,
+    "distanceKm": 21.03,
+    "kcal": 1966,
+    "source": "strava",
+    "meta": {
+      "name": "Evening Run"
+    }
+  },
+  {
+    "id": "strava_19266097807",
+    "dateISO": "2026-07-11",
+    "type": "Ride",
+    "timeMin": 229,
+    "distanceKm": 97.04,
+    "kcal": 2522,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Ride"
+    }
+  },
+  {
+    "id": "strava_19266690331",
+    "dateISO": "2026-07-11",
+    "type": "Run",
+    "timeMin": 28,
+    "distanceKm": 5,
+    "kcal": 486,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_19252749407",
+    "dateISO": "2026-07-10",
+    "type": "VirtualRide",
+    "timeMin": 45,
+    "distanceKm": 22.91,
+    "kcal": 477,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - New Workout"
+    }
+  },
+  {
+    "id": "strava_19258151142",
+    "dateISO": "2026-07-10",
+    "type": "Swim",
+    "timeMin": 84,
+    "distanceKm": 3.8,
+    "kcal": 1172,
+    "source": "strava",
+    "meta": {
+      "name": "Afternoon Swim"
+    }
+  },
+  {
+    "id": "strava_19239326184",
+    "dateISO": "2026-07-09",
+    "type": "VirtualRide",
+    "timeMin": 45,
+    "distanceKm": 23.76,
+    "kcal": 486,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - New Workout"
+    }
+  },
+  {
+    "id": "strava_19246111106",
+    "dateISO": "2026-07-09",
+    "type": "WeightTraining",
+    "timeMin": 45,
+    "distanceKm": null,
+    "kcal": 580,
+    "source": "strava",
+    "meta": {
+      "name": "Evening Weight Training"
+    }
+  },
+  {
+    "id": "strava_19225494226",
+    "dateISO": "2026-07-08",
+    "type": "Run",
+    "timeMin": 74,
+    "distanceKm": 13.2,
+    "kcal": 1288,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_19210675033",
+    "dateISO": "2026-07-07",
+    "type": "VirtualRide",
+    "timeMin": 20,
+    "distanceKm": 10.02,
+    "kcal": 200,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - New Workout"
+    }
+  },
+  {
+    "id": "strava_19211050989",
+    "dateISO": "2026-07-07",
+    "type": "Walk",
+    "timeMin": 36,
+    "distanceKm": 2.84,
+    "kcal": 236,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Walk"
+    }
+  },
+  {
+    "id": "strava_19173457976",
+    "dateISO": "2026-07-04",
+    "type": "Ride",
+    "timeMin": 135,
+    "distanceKm": 59.99,
+    "kcal": 1330,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Ride"
+    }
+  },
+  {
+    "id": "strava_19173810785",
+    "dateISO": "2026-07-04",
+    "type": "Run",
+    "timeMin": 15,
+    "distanceKm": 3.01,
+    "kcal": 267,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_19159898560",
+    "dateISO": "2026-07-03",
+    "type": "VirtualRide",
+    "timeMin": 30,
+    "distanceKm": 17.32,
+    "kcal": 349,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - New Workout"
+    }
+  },
+  {
+    "id": "strava_19165586794",
+    "dateISO": "2026-07-03",
+    "type": "Swim",
+    "timeMin": 56,
+    "distanceKm": 2.5,
+    "kcal": 767,
+    "source": "strava",
+    "meta": {
+      "name": "Afternoon Swim"
+    }
+  },
+  {
+    "id": "strava_19146975134",
+    "dateISO": "2026-07-02",
+    "type": "VirtualRide",
+    "timeMin": 45,
+    "distanceKm": 22.19,
+    "kcal": 501,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - New Workout"
+    }
+  },
+  {
+    "id": "strava_19153743176",
+    "dateISO": "2026-07-02",
+    "type": "WeightTraining",
+    "timeMin": 57,
+    "distanceKm": null,
+    "kcal": 509,
+    "source": "strava",
+    "meta": {
+      "name": "Evening Weight Training"
+    }
+  },
+  {
+    "id": "strava_19134251132",
+    "dateISO": "2026-07-01",
+    "type": "Run",
+    "timeMin": 62,
+    "distanceKm": 10.82,
+    "kcal": 975,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_19126981637",
+    "dateISO": "2026-06-30",
+    "type": "WeightTraining",
+    "timeMin": 46,
+    "distanceKm": null,
+    "kcal": 354,
+    "source": "strava",
+    "meta": {
+      "name": "Evening Weight Training"
+    }
+  },
+  {
+    "id": "strava_19106610978",
+    "dateISO": "2026-06-29",
+    "type": "WeightTraining",
+    "timeMin": 38,
+    "distanceKm": null,
+    "kcal": 230,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Weight Training"
+    }
+  },
+  {
+    "id": "strava_19107058698",
+    "dateISO": "2026-06-29",
+    "type": "Walk",
+    "timeMin": 36,
+    "distanceKm": 2.98,
+    "kcal": 238,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Walk"
+    }
+  },
+  {
+    "id": "strava_19114572226",
+    "dateISO": "2026-06-29",
+    "type": "Ride",
+    "timeMin": 29,
+    "distanceKm": 10.64,
+    "kcal": 234,
+    "source": "strava",
+    "meta": {
+      "name": "Evening Ride"
+    }
+  },
+  {
+    "id": "strava_19115336615",
+    "dateISO": "2026-06-29",
+    "type": "Swim",
+    "timeMin": 23,
+    "distanceKm": 1,
+    "kcal": 421,
+    "source": "strava",
+    "meta": {
+      "name": "Evening Swim"
+    }
+  },
+  {
+    "id": "strava_19115635551",
+    "dateISO": "2026-06-29",
+    "type": "Ride",
+    "timeMin": 28,
+    "distanceKm": 10.81,
+    "kcal": 214,
+    "source": "strava",
+    "meta": {
+      "name": "Night Ride"
+    }
+  },
+  {
+    "id": "strava_19100151537",
+    "dateISO": "2026-06-28",
+    "type": "VirtualRide",
+    "timeMin": 30,
+    "distanceKm": 14.57,
+    "kcal": 349,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - New Workout"
+    }
+  },
+  {
+    "id": "strava_19102214232",
+    "dateISO": "2026-06-28",
+    "type": "Run",
+    "timeMin": 134,
+    "distanceKm": 23.65,
+    "kcal": 2244,
+    "source": "strava",
+    "meta": {
+      "name": "Afternoon Run"
+    }
+  },
+  {
+    "id": "strava_19084126650",
+    "dateISO": "2026-06-27",
+    "type": "Ride",
+    "timeMin": 225,
+    "distanceKm": 79.26,
+    "kcal": 2385,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Ride"
+    }
+  },
+  {
+    "id": "strava_19070925204",
+    "dateISO": "2026-06-26",
+    "type": "VirtualRide",
+    "timeMin": 30,
+    "distanceKm": 14.13,
+    "kcal": 314,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - New Workout"
+    }
+  },
+  {
+    "id": "strava_19075393715",
+    "dateISO": "2026-06-26",
+    "type": "Swim",
+    "timeMin": 62,
+    "distanceKm": 3.03,
+    "kcal": 936,
+    "source": "strava",
+    "meta": {
+      "name": "Afternoon Swim"
+    }
+  },
+  {
+    "id": "strava_19045870688",
+    "dateISO": "2026-06-24",
+    "type": "Run",
+    "timeMin": 57,
+    "distanceKm": 9.36,
+    "kcal": 881,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_19052131411",
+    "dateISO": "2026-06-24",
+    "type": "HighIntensityIntervalTraining",
+    "timeMin": 45,
+    "distanceKm": null,
+    "kcal": 770,
+    "source": "strava",
+    "meta": {
+      "name": "Evening HIIT"
+    }
+  },
+  {
+    "id": "strava_19031607264",
+    "dateISO": "2026-06-23",
+    "type": "WeightTraining",
+    "timeMin": 37,
+    "distanceKm": null,
+    "kcal": 423,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Weight Training"
+    }
+  },
+  {
+    "id": "strava_19032161599",
+    "dateISO": "2026-06-23",
+    "type": "Walk",
+    "timeMin": 36,
+    "distanceKm": 2.99,
+    "kcal": 241,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Walk"
+    }
+  },
+  {
+    "id": "strava_19038436443",
+    "dateISO": "2026-06-23",
+    "type": "VirtualRide",
+    "timeMin": 30,
+    "distanceKm": 12.58,
+    "kcal": 295,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - New Workout"
+    }
+  },
+  {
+    "id": "strava_19018494861",
+    "dateISO": "2026-06-22",
+    "type": "WeightTraining",
+    "timeMin": 48,
+    "distanceKm": null,
+    "kcal": 302,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Weight Training"
+    }
+  },
+  {
+    "id": "strava_19024614844",
+    "dateISO": "2026-06-22",
+    "type": "Walk",
+    "timeMin": 29,
+    "distanceKm": 2.65,
+    "kcal": 214,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Walk"
+    }
+  },
+  {
+    "id": "strava_19026158459",
+    "dateISO": "2026-06-22",
+    "type": "Ride",
+    "timeMin": 32,
+    "distanceKm": 11.61,
+    "kcal": 380,
+    "source": "strava",
+    "meta": {
+      "name": "Evening Ride"
+    }
+  },
+  {
+    "id": "strava_19027246581",
+    "dateISO": "2026-06-22",
+    "type": "Swim",
+    "timeMin": 26,
+    "distanceKm": 1.1,
+    "kcal": 440,
+    "source": "strava",
+    "meta": {
+      "name": "Evening Swim"
+    }
+  },
+  {
+    "id": "strava_19027246622",
+    "dateISO": "2026-06-22",
+    "type": "Ride",
+    "timeMin": 27,
+    "distanceKm": 10.83,
+    "kcal": 324,
+    "source": "strava",
+    "meta": {
+      "name": "Night Ride"
+    }
+  },
+  {
+    "id": "strava_19013598227",
+    "dateISO": "2026-06-21",
+    "type": "VirtualRide",
+    "timeMin": 60,
+    "distanceKm": 31.75,
+    "kcal": 636,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - New Workout"
+    }
+  },
+  {
+    "id": "strava_18994913834",
+    "dateISO": "2026-06-20",
+    "type": "Run",
+    "timeMin": 103,
+    "distanceKm": 18.05,
+    "kcal": 1759,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_18981010141",
+    "dateISO": "2026-06-19",
+    "type": "VirtualRide",
+    "timeMin": 30,
+    "distanceKm": 13.7,
+    "kcal": 318,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - New Workout"
+    }
+  },
+  {
+    "id": "strava_18981285382",
+    "dateISO": "2026-06-19",
+    "type": "Walk",
+    "timeMin": 30,
+    "distanceKm": 2.77,
+    "kcal": 224,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Walk"
+    }
+  },
+  {
+    "id": "strava_18986126565",
+    "dateISO": "2026-06-19",
+    "type": "Swim",
+    "timeMin": 24,
+    "distanceKm": 1.33,
+    "kcal": 462,
+    "source": "strava",
+    "meta": {
+      "name": "Afternoon Swim"
+    }
+  },
+  {
+    "id": "strava_18987808022",
+    "dateISO": "2026-06-19",
+    "type": "Run",
+    "timeMin": 14,
+    "distanceKm": 2.37,
+    "kcal": 235,
+    "source": "strava",
+    "meta": {
+      "name": "Evening Run"
+    }
+  },
+  {
+    "id": "strava_18960832592",
+    "dateISO": "2026-06-17",
+    "type": "Run",
+    "timeMin": 48,
+    "distanceKm": 9.32,
+    "kcal": 886,
+    "source": "strava",
+    "meta": {
+      "name": "Afternoon Run"
+    }
+  },
+  {
+    "id": "strava_18938647506",
+    "dateISO": "2026-06-16",
+    "type": "VirtualRide",
+    "timeMin": 47,
+    "distanceKm": 20.85,
+    "kcal": 502,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - New Workout"
+    }
+  },
+  {
+    "id": "strava_18946919718",
+    "dateISO": "2026-06-16",
+    "type": "WeightTraining",
+    "timeMin": 49,
+    "distanceKm": null,
+    "kcal": 473,
+    "source": "strava",
+    "meta": {
+      "name": "Evening Weight Training"
+    }
+  },
+  {
+    "id": "strava_18932323272",
+    "dateISO": "2026-06-15",
+    "type": "HighIntensityIntervalTraining",
+    "timeMin": 41,
+    "distanceKm": null,
+    "kcal": 628,
+    "source": "strava",
+    "meta": {
+      "name": "Evening HIIT"
+    }
+  },
+  {
+    "id": "strava_18916114278",
+    "dateISO": "2026-06-14",
+    "type": "Ride",
+    "timeMin": 129,
+    "distanceKm": 53.47,
+    "kcal": 1414,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Ride"
+    }
+  },
+  {
+    "id": "strava_18916892048",
+    "dateISO": "2026-06-14",
+    "type": "Ride",
+    "timeMin": 42,
+    "distanceKm": 17.74,
+    "kcal": 569,
+    "source": "strava",
+    "meta": {
+      "name": "Afternoon Ride"
+    }
+  },
+  {
+    "id": "strava_18898697173",
+    "dateISO": "2026-06-13",
+    "type": "VirtualRide",
+    "timeMin": 45,
+    "distanceKm": 19.3,
+    "kcal": 476,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - New Workout"
+    }
+  },
+  {
+    "id": "strava_18903831433",
+    "dateISO": "2026-06-13",
+    "type": "Run",
+    "timeMin": 134,
+    "distanceKm": 23.52,
+    "kcal": 2177,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_18887354875",
+    "dateISO": "2026-06-12",
+    "type": "VirtualRide",
+    "timeMin": 34,
+    "distanceKm": 17.1,
+    "kcal": 365,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - New Workout"
+    }
+  },
+  {
+    "id": "strava_18892959649",
+    "dateISO": "2026-06-12",
+    "type": "Swim",
+    "timeMin": 61,
+    "distanceKm": 2.8,
+    "kcal": 928,
+    "source": "strava",
+    "meta": {
+      "name": "Afternoon Swim"
+    }
+  },
+  {
+    "id": "strava_18861496356",
+    "dateISO": "2026-06-10",
+    "type": "Run",
+    "timeMin": 82,
+    "distanceKm": 14.31,
+    "kcal": 1363,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_18846652778",
+    "dateISO": "2026-06-09",
+    "type": "VirtualRide",
+    "timeMin": 45,
+    "distanceKm": 24.15,
+    "kcal": 478,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - New Workout"
+    }
+  },
+  {
+    "id": "strava_18853998231",
+    "dateISO": "2026-06-09",
+    "type": "WeightTraining",
+    "timeMin": 49,
+    "distanceKm": null,
+    "kcal": 602,
+    "source": "strava",
+    "meta": {
+      "name": "Evening Weight Training"
+    }
+  },
+  {
+    "id": "strava_18833076144",
+    "dateISO": "2026-06-08",
+    "type": "WeightTraining",
+    "timeMin": 53,
+    "distanceKm": null,
+    "kcal": 347,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Weight Training"
+    }
+  },
+  {
+    "id": "strava_18839385567",
+    "dateISO": "2026-06-08",
+    "type": "Walk",
+    "timeMin": 62,
+    "distanceKm": 4,
+    "kcal": 302,
+    "source": "strava",
+    "meta": {
+      "name": "Afternoon Walk"
+    }
+  },
+  {
+    "id": "strava_18793190080",
+    "dateISO": "2026-06-05",
+    "type": "VirtualRide",
+    "timeMin": 30,
+    "distanceKm": 14.94,
+    "kcal": 302,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - New Workout"
+    }
+  },
+  {
+    "id": "strava_18798912458",
+    "dateISO": "2026-06-05",
+    "type": "Swim",
+    "timeMin": 54,
+    "distanceKm": 2.48,
+    "kcal": 807,
+    "source": "strava",
+    "meta": {
+      "name": "Afternoon Swim"
+    }
+  },
+  {
+    "id": "strava_18766526268",
+    "dateISO": "2026-06-03",
+    "type": "Run",
+    "timeMin": 73,
+    "distanceKm": 14.05,
+    "kcal": 1309,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_18773221652",
+    "dateISO": "2026-06-03",
+    "type": "HighIntensityIntervalTraining",
+    "timeMin": 45,
+    "distanceKm": null,
+    "kcal": 750,
+    "source": "strava",
+    "meta": {
+      "name": "Evening HIIT"
+    }
+  },
+  {
+    "id": "strava_18751906206",
+    "dateISO": "2026-06-02",
+    "type": "VirtualRide",
+    "timeMin": 45,
+    "distanceKm": 18.68,
+    "kcal": 489,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - New Workout"
+    }
+  },
+  {
+    "id": "strava_18759076767",
+    "dateISO": "2026-06-02",
+    "type": "WeightTraining",
+    "timeMin": 45,
+    "distanceKm": null,
+    "kcal": 591,
+    "source": "strava",
+    "meta": {
+      "name": "Evening Weight Training"
+    }
+  },
+  {
+    "id": "strava_18737978713",
+    "dateISO": "2026-06-01",
+    "type": "WeightTraining",
+    "timeMin": 32,
+    "distanceKm": null,
+    "kcal": 269,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Weight Training"
+    }
+  },
+  {
+    "id": "strava_18738402095",
+    "dateISO": "2026-06-01",
+    "type": "Walk",
+    "timeMin": 34,
+    "distanceKm": 2.95,
+    "kcal": 235,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Walk"
+    }
+  },
+  {
+    "id": "strava_18724404625",
+    "dateISO": "2026-05-31",
+    "type": "VirtualRide",
+    "timeMin": 61,
+    "distanceKm": 27.23,
+    "kcal": 628,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - New Workout"
+    }
+  },
+  {
+    "id": "strava_18731763544",
+    "dateISO": "2026-05-31",
+    "type": "Run",
+    "timeMin": 118,
+    "distanceKm": 21.15,
+    "kcal": 1968,
+    "source": "strava",
+    "meta": {
+      "name": "Afternoon Run"
+    }
+  },
+  {
+    "id": "strava_18712186064",
+    "dateISO": "2026-05-30",
+    "type": "Ride",
+    "timeMin": 176,
+    "distanceKm": 76.49,
+    "kcal": 1725,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Ride"
+    }
+  },
+  {
+    "id": "strava_19077181549",
+    "dateISO": "2026-05-30",
+    "type": "Ride",
+    "timeMin": 177,
+    "distanceKm": 77.04,
+    "kcal": 3237,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Ride"
+    }
+  },
+  {
+    "id": "strava_18698572752",
+    "dateISO": "2026-05-29",
+    "type": "VirtualRide",
+    "timeMin": 10,
+    "distanceKm": 4.52,
+    "kcal": 129,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - New Workout"
+    }
+  },
+  {
+    "id": "strava_18698745423",
+    "dateISO": "2026-05-29",
+    "type": "VirtualRide",
+    "timeMin": 21,
+    "distanceKm": 10.1,
+    "kcal": 263,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - New Workout"
+    }
+  },
+  {
+    "id": "strava_18699117436",
+    "dateISO": "2026-05-29",
+    "type": "Walk",
+    "timeMin": 35,
+    "distanceKm": 2.83,
+    "kcal": 223,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Walk"
+    }
+  },
+  {
+    "id": "strava_18704091633",
+    "dateISO": "2026-05-29",
+    "type": "Swim",
+    "timeMin": 45,
+    "distanceKm": 2.15,
+    "kcal": 679,
+    "source": "strava",
+    "meta": {
+      "name": "Afternoon Swim"
+    }
+  },
+  {
+    "id": "strava_18685356580",
+    "dateISO": "2026-05-28",
+    "type": "Walk",
+    "timeMin": 22,
+    "distanceKm": 1.83,
+    "kcal": 144,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Walk"
+    }
+  },
+  {
+    "id": "strava_18671804371",
+    "dateISO": "2026-05-27",
+    "type": "Run",
+    "timeMin": 66,
+    "distanceKm": 11.75,
+    "kcal": 1105,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_18678256065",
+    "dateISO": "2026-05-27",
+    "type": "HighIntensityIntervalTraining",
+    "timeMin": 46,
+    "distanceKm": null,
+    "kcal": 800,
+    "source": "strava",
+    "meta": {
+      "name": "Evening HIIT"
+    }
+  },
+  {
+    "id": "strava_18657022449",
+    "dateISO": "2026-05-26",
+    "type": "Ride",
+    "timeMin": 29,
+    "distanceKm": 10.82,
+    "kcal": 256,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Ride"
+    }
+  },
+  {
+    "id": "strava_18657386681",
+    "dateISO": "2026-05-26",
+    "type": "Swim",
+    "timeMin": 28,
+    "distanceKm": 1.15,
+    "kcal": 470,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Swim"
+    }
+  },
+  {
+    "id": "strava_18657695024",
+    "dateISO": "2026-05-26",
+    "type": "Ride",
+    "timeMin": 29,
+    "distanceKm": 10.78,
+    "kcal": 339,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Ride"
+    }
+  },
+  {
+    "id": "strava_18666158443",
+    "dateISO": "2026-05-26",
+    "type": "Ride",
+    "timeMin": 10,
+    "distanceKm": 3.66,
+    "kcal": 180,
+    "source": "strava",
+    "meta": {
+      "name": "Afternoon Ride"
+    }
+  },
+  {
+    "id": "strava_18666164696",
+    "dateISO": "2026-05-26",
+    "type": "WeightTraining",
+    "timeMin": 42,
+    "distanceKm": null,
+    "kcal": 546,
+    "source": "strava",
+    "meta": {
+      "name": "Evening Weight Training"
+    }
+  },
+  {
+    "id": "strava_18645811825",
+    "dateISO": "2026-05-25",
+    "type": "WeightTraining",
+    "timeMin": 42,
+    "distanceKm": null,
+    "kcal": 450,
+    "source": "strava",
+    "meta": {
+      "name": "Lunch Weight Training"
+    }
+  },
+  {
+    "id": "strava_18631128256",
+    "dateISO": "2026-05-24",
+    "type": "Ride",
+    "timeMin": 146,
+    "distanceKm": 62.41,
+    "kcal": 1600,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Ride"
+    }
+  },
+  {
+    "id": "strava_18618731939",
+    "dateISO": "2026-05-23",
+    "type": "Run",
+    "timeMin": 79,
+    "distanceKm": 14.27,
+    "kcal": 1360,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_18578936155",
+    "dateISO": "2026-05-20",
+    "type": "Run",
+    "timeMin": 18,
+    "distanceKm": 2.98,
+    "kcal": 289,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_18551263304",
+    "dateISO": "2026-05-18",
+    "type": "WeightTraining",
+    "timeMin": 45,
+    "distanceKm": null,
+    "kcal": 417,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Weight Training"
+    }
+  },
+  {
+    "id": "strava_18551666014",
+    "dateISO": "2026-05-18",
+    "type": "Swim",
+    "timeMin": 24,
+    "distanceKm": 1,
+    "kcal": 394,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Swim"
+    }
+  },
+  {
+    "id": "strava_18551905850",
+    "dateISO": "2026-05-18",
+    "type": "Ride",
+    "timeMin": 28,
+    "distanceKm": 10.58,
+    "kcal": 178,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Ride"
+    }
+  },
+  {
+    "id": "strava_18540606581",
+    "dateISO": "2026-05-17",
+    "type": "VirtualRide",
+    "timeMin": 106,
+    "distanceKm": 52.94,
+    "kcal": 1111,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - New Workout"
+    }
+  },
+  {
+    "id": "strava_18527981465",
+    "dateISO": "2026-05-16",
+    "type": "Run",
+    "timeMin": 61,
+    "distanceKm": 10.64,
+    "kcal": 1028,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_18527980745",
+    "dateISO": "2026-05-16",
+    "type": "Swim",
+    "timeMin": 13,
+    "distanceKm": 0.6,
+    "kcal": 248,
+    "source": "strava",
+    "meta": {
+      "name": "Lunch Swim"
+    }
+  },
+  {
+    "id": "strava_18513273660",
+    "dateISO": "2026-05-15",
+    "type": "VirtualRide",
+    "timeMin": 22,
+    "distanceKm": 12.47,
+    "kcal": 286,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - New Workout"
+    }
+  },
+  {
+    "id": "strava_18518343250",
+    "dateISO": "2026-05-15",
+    "type": "Swim",
+    "timeMin": 47,
+    "distanceKm": 2.1,
+    "kcal": 769,
+    "source": "strava",
+    "meta": {
+      "name": "Afternoon Swim"
+    }
+  },
+  {
+    "id": "strava_18500424276",
+    "dateISO": "2026-05-14",
+    "type": "Walk",
+    "timeMin": 73,
+    "distanceKm": 6.05,
+    "kcal": 468,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Walk"
+    }
+  },
+  {
+    "id": "strava_18487359937",
+    "dateISO": "2026-05-13",
+    "type": "Run",
+    "timeMin": 34,
+    "distanceKm": 5.92,
+    "kcal": 554,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_18493233250",
+    "dateISO": "2026-05-13",
+    "type": "Walk",
+    "timeMin": 34,
+    "distanceKm": 3.4,
+    "kcal": 267,
+    "source": "strava",
+    "meta": {
+      "name": "Afternoon Walk"
+    }
+  },
+  {
+    "id": "strava_18493904529",
+    "dateISO": "2026-05-13",
+    "type": "HighIntensityIntervalTraining",
+    "timeMin": 45,
+    "distanceKm": null,
+    "kcal": 733,
+    "source": "strava",
+    "meta": {
+      "name": "Evening HIIT"
+    }
+  },
+  {
+    "id": "strava_18494449530",
+    "dateISO": "2026-05-13",
+    "type": "Walk",
+    "timeMin": 27,
+    "distanceKm": 2.34,
+    "kcal": 222,
+    "source": "strava",
+    "meta": {
+      "name": "Evening Walk"
+    }
+  },
+  {
+    "id": "strava_18473093895",
+    "dateISO": "2026-05-12",
+    "type": "VirtualRide",
+    "timeMin": 45,
+    "distanceKm": 22.49,
+    "kcal": 506,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - New Workout"
+    }
+  },
+  {
+    "id": "strava_18473467630",
+    "dateISO": "2026-05-12",
+    "type": "Walk",
+    "timeMin": 31,
+    "distanceKm": 2.63,
+    "kcal": 214,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Walk"
+    }
+  },
+  {
+    "id": "strava_18481099249",
+    "dateISO": "2026-05-12",
+    "type": "Walk",
+    "timeMin": 35,
+    "distanceKm": 3.43,
+    "kcal": 274,
+    "source": "strava",
+    "meta": {
+      "name": "Afternoon Walk"
+    }
+  },
+  {
+    "id": "strava_18480364681",
+    "dateISO": "2026-05-12",
+    "type": "WeightTraining",
+    "timeMin": 37,
+    "distanceKm": null,
+    "kcal": 457,
+    "source": "strava",
+    "meta": {
+      "name": "Evening Weight Training"
+    }
+  },
+  {
+    "id": "strava_18481107241",
+    "dateISO": "2026-05-12",
+    "type": "Walk",
+    "timeMin": 32,
+    "distanceKm": 2.96,
+    "kcal": 233,
+    "source": "strava",
+    "meta": {
+      "name": "Evening Walk"
+    }
+  },
+  {
+    "id": "strava_18465703106",
+    "dateISO": "2026-05-11",
+    "type": "Swim",
+    "timeMin": 36,
+    "distanceKm": 1.63,
+    "kcal": 572,
+    "source": "strava",
+    "meta": {
+      "name": "Afternoon Swim"
+    }
+  },
+  {
+    "id": "strava_18421775925",
+    "dateISO": "2026-05-08",
+    "type": "Run",
+    "timeMin": 31,
+    "distanceKm": 6.12,
+    "kcal": 558,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_18395417213",
+    "dateISO": "2026-05-06",
+    "type": "VirtualRide",
+    "timeMin": 61,
+    "distanceKm": 30.13,
+    "kcal": 636,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - New Workout"
+    }
+  },
+  {
+    "id": "strava_18381376975",
+    "dateISO": "2026-05-05",
+    "type": "VirtualRide",
+    "timeMin": 30,
+    "distanceKm": 9.74,
+    "kcal": 300,
+    "source": "strava",
+    "meta": {
+      "name": "MyWhoosh - Z1&2"
+    }
+  },
+  {
+    "id": "strava_18302616849",
+    "dateISO": "2026-04-29",
+    "type": "Walk",
+    "timeMin": 41,
+    "distanceKm": 3.22,
+    "kcal": 256,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Walk"
+    }
+  },
+  {
+    "id": "strava_18270470121",
+    "dateISO": "2026-04-26",
+    "type": "Run",
+    "timeMin": 267,
+    "distanceKm": 42.68,
+    "kcal": 4086,
+    "source": "strava",
+    "meta": {
+      "name": "London Marathon - not my day"
+    }
+  },
+  {
+    "id": "strava_18207305311",
+    "dateISO": "2026-04-22",
+    "type": "Run",
+    "timeMin": 22,
+    "distanceKm": 3.72,
+    "kcal": 307,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_18198914160",
+    "dateISO": "2026-04-21",
+    "type": "Ride",
+    "timeMin": 30,
+    "distanceKm": null,
+    "kcal": 316,
+    "source": "strava",
+    "meta": {
+      "name": "Afternoon Ride"
+    }
+  },
+  {
+    "id": "strava_18179889820",
+    "dateISO": "2026-04-20",
+    "type": "Run",
+    "timeMin": 30,
+    "distanceKm": 5,
+    "kcal": 444,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_18167185497",
+    "dateISO": "2026-04-19",
+    "type": "VirtualRide",
+    "timeMin": 90,
+    "distanceKm": 45.62,
+    "kcal": 965,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - New Workout"
+    }
+  },
+  {
+    "id": "strava_18157857203",
+    "dateISO": "2026-04-18",
+    "type": "Run",
+    "timeMin": 97,
+    "distanceKm": 17.25,
+    "kcal": 1622,
+    "source": "strava",
+    "meta": {
+      "name": "Lunch Run"
+    }
+  },
+  {
+    "id": "strava_18157856752",
+    "dateISO": "2026-04-18",
+    "type": "Walk",
+    "timeMin": 38,
+    "distanceKm": 2.98,
+    "kcal": 273,
+    "source": "strava",
+    "meta": {
+      "name": "Afternoon Walk"
+    }
+  },
+  {
+    "id": "strava_18141754080",
+    "dateISO": "2026-04-17",
+    "type": "Swim",
+    "timeMin": 25,
+    "distanceKm": 1.08,
+    "kcal": 427,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Swim"
+    }
+  },
+  {
+    "id": "strava_18141754266",
+    "dateISO": "2026-04-17",
+    "type": "Walk",
+    "timeMin": 40,
+    "distanceKm": 3.18,
+    "kcal": 249,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Walk"
+    }
+  },
+  {
+    "id": "strava_18144363208",
+    "dateISO": "2026-04-17",
+    "type": "Run",
+    "timeMin": 21,
+    "distanceKm": 3.9,
+    "kcal": 341,
+    "source": "strava",
+    "meta": {
+      "name": "Afternoon Run"
+    }
+  },
+  {
+    "id": "strava_18128521811",
+    "dateISO": "2026-04-16",
+    "type": "Walk",
+    "timeMin": 42,
+    "distanceKm": 3.51,
+    "kcal": 279,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Walk"
+    }
+  },
+  {
+    "id": "strava_18115093594",
+    "dateISO": "2026-04-15",
+    "type": "Run",
+    "timeMin": 25,
+    "distanceKm": 4.45,
+    "kcal": 413,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_18100783252",
+    "dateISO": "2026-04-14",
+    "type": "VirtualRide",
+    "timeMin": 31,
+    "distanceKm": 15.78,
+    "kcal": 370,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - New Workout"
+    }
+  },
+  {
+    "id": "strava_18088024320",
+    "dateISO": "2026-04-13",
+    "type": "Walk",
+    "timeMin": 42,
+    "distanceKm": 3.51,
+    "kcal": 283,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Walk"
+    }
+  },
+  {
+    "id": "strava_18093653072",
+    "dateISO": "2026-04-13",
+    "type": "Walk",
+    "timeMin": 32,
+    "distanceKm": 3.34,
+    "kcal": 277,
+    "source": "strava",
+    "meta": {
+      "name": "Afternoon Walk"
+    }
+  },
+  {
+    "id": "strava_18094273654",
+    "dateISO": "2026-04-13",
+    "type": "HighIntensityIntervalTraining",
+    "timeMin": 39,
+    "distanceKm": null,
+    "kcal": 666,
+    "source": "strava",
+    "meta": {
+      "name": "Evening HIIT"
+    }
+  },
+  {
+    "id": "strava_18095099317",
+    "dateISO": "2026-04-13",
+    "type": "Walk",
+    "timeMin": 41,
+    "distanceKm": 3.59,
+    "kcal": 335,
+    "source": "strava",
+    "meta": {
+      "name": "Evening Walk"
+    }
+  },
+  {
+    "id": "strava_18078430674",
+    "dateISO": "2026-04-12",
+    "type": "Run",
+    "timeMin": 135,
+    "distanceKm": 24.01,
+    "kcal": 2284,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_18063716627",
+    "dateISO": "2026-04-11",
+    "type": "VirtualRide",
+    "timeMin": 150,
+    "distanceKm": 64.2,
+    "kcal": 1636,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - New Workout"
+    }
+  },
+  {
+    "id": "strava_18023243097",
+    "dateISO": "2026-04-08",
+    "type": "VirtualRide",
+    "timeMin": 60,
+    "distanceKm": 20.32,
+    "kcal": 661,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - New Workout"
+    }
+  },
+  {
+    "id": "strava_18030573966",
+    "dateISO": "2026-04-08",
+    "type": "HighIntensityIntervalTraining",
+    "timeMin": 39,
+    "distanceKm": null,
+    "kcal": 698,
+    "source": "strava",
+    "meta": {
+      "name": "Evening HIIT"
+    }
+  },
+  {
+    "id": "strava_18009277901",
+    "dateISO": "2026-04-07",
+    "type": "Swim",
+    "timeMin": 34,
+    "distanceKm": 1.5,
+    "kcal": 499,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Swim"
+    }
+  },
+  {
+    "id": "strava_17997052424",
+    "dateISO": "2026-04-06",
+    "type": "Run",
+    "timeMin": 24,
+    "distanceKm": 4.01,
+    "kcal": 376,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_17991623840",
+    "dateISO": "2026-04-05",
+    "type": "VirtualRide",
+    "timeMin": 30,
+    "distanceKm": 15.59,
+    "kcal": 314,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - New Workout"
+    }
+  },
+  {
+    "id": "strava_17973611351",
+    "dateISO": "2026-04-04",
+    "type": "Run",
+    "timeMin": 172,
+    "distanceKm": 31.8,
+    "kcal": 2932,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_17958410830",
+    "dateISO": "2026-04-03",
+    "type": "Run",
+    "timeMin": 42,
+    "distanceKm": 8.5,
+    "kcal": 777,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_17946669853",
+    "dateISO": "2026-04-02",
+    "type": "Walk",
+    "timeMin": 42,
+    "distanceKm": 3.6,
+    "kcal": 154,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Walk"
+    }
+  },
+  {
+    "id": "strava_17934151811",
+    "dateISO": "2026-04-01",
+    "type": "Walk",
+    "timeMin": 35,
+    "distanceKm": 2.77,
+    "kcal": 218,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Walk"
+    }
+  },
+  {
+    "id": "strava_17934516842",
+    "dateISO": "2026-04-01",
+    "type": "Run",
+    "timeMin": 36,
+    "distanceKm": 7.14,
+    "kcal": 640,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_17940856640",
+    "dateISO": "2026-04-01",
+    "type": "Walk",
+    "timeMin": 32,
+    "distanceKm": 3.4,
+    "kcal": 283,
+    "source": "strava",
+    "meta": {
+      "name": "Afternoon Walk"
+    }
+  },
+  {
+    "id": "strava_17940856632",
+    "dateISO": "2026-04-01",
+    "type": "HighIntensityIntervalTraining",
+    "timeMin": 43,
+    "distanceKm": null,
+    "kcal": 719,
+    "source": "strava",
+    "meta": {
+      "name": "Evening HIIT"
+    }
+  },
+  {
+    "id": "strava_17941506589",
+    "dateISO": "2026-04-01",
+    "type": "Walk",
+    "timeMin": 35,
+    "distanceKm": 3.34,
+    "kcal": 320,
+    "source": "strava",
+    "meta": {
+      "name": "Evening Walk"
+    }
+  },
+  {
+    "id": "strava_17921538717",
+    "dateISO": "2026-03-31",
+    "type": "Swim",
+    "timeMin": 32,
+    "distanceKm": 1.35,
+    "kcal": 478,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Swim"
+    }
+  },
+  {
+    "id": "strava_17927127630",
+    "dateISO": "2026-03-31",
+    "type": "VirtualRide",
+    "timeMin": 36,
+    "distanceKm": 19.04,
+    "kcal": 442,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - New Workout"
+    }
+  },
+  {
+    "id": "strava_17909321080",
+    "dateISO": "2026-03-30",
+    "type": "Run",
+    "timeMin": 28,
+    "distanceKm": 5.01,
+    "kcal": 467,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_17914535793",
+    "dateISO": "2026-03-30",
+    "type": "Walk",
+    "timeMin": 34,
+    "distanceKm": 3.34,
+    "kcal": 286,
+    "source": "strava",
+    "meta": {
+      "name": "Afternoon Walk"
+    }
+  },
+  {
+    "id": "strava_17915145099",
+    "dateISO": "2026-03-30",
+    "type": "HighIntensityIntervalTraining",
+    "timeMin": 43,
+    "distanceKm": null,
+    "kcal": 590,
+    "source": "strava",
+    "meta": {
+      "name": "Evening HIIT"
+    }
+  },
+  {
+    "id": "strava_17915851982",
+    "dateISO": "2026-03-30",
+    "type": "Walk",
+    "timeMin": 44,
+    "distanceKm": 3.81,
+    "kcal": 366,
+    "source": "strava",
+    "meta": {
+      "name": "Evening Walk"
+    }
+  },
+  {
+    "id": "strava_17899799202",
+    "dateISO": "2026-03-29",
+    "type": "Run",
+    "timeMin": 138,
+    "distanceKm": 25.01,
+    "kcal": 2008,
+    "source": "strava",
+    "meta": {
+      "name": "25km @Z2"
+    }
+  },
+  {
+    "id": "strava_17891264963",
+    "dateISO": "2026-03-28",
+    "type": "VirtualRide",
+    "timeMin": 157,
+    "distanceKm": 78.93,
+    "kcal": 1726,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - New Workout"
+    }
+  },
+  {
+    "id": "strava_17875040904",
+    "dateISO": "2026-03-27",
+    "type": "Run",
+    "timeMin": 48,
+    "distanceKm": 8.72,
+    "kcal": 802,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_17850228154",
+    "dateISO": "2026-03-25",
+    "type": "Run",
+    "timeMin": 47,
+    "distanceKm": 7.85,
+    "kcal": 708,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_17838576705",
+    "dateISO": "2026-03-24",
+    "type": "VirtualRide",
+    "timeMin": 30,
+    "distanceKm": 17.09,
+    "kcal": 378,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - New Workout"
+    }
+  },
+  {
+    "id": "strava_17841688941",
+    "dateISO": "2026-03-24",
+    "type": "Swim",
+    "timeMin": 35,
+    "distanceKm": 1.63,
+    "kcal": 567,
+    "source": "strava",
+    "meta": {
+      "name": "Afternoon Swim"
+    }
+  },
+  {
+    "id": "strava_17824906783",
+    "dateISO": "2026-03-23",
+    "type": "Run",
+    "timeMin": 31,
+    "distanceKm": 5.21,
+    "kcal": 482,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_17831074715",
+    "dateISO": "2026-03-23",
+    "type": "HighIntensityIntervalTraining",
+    "timeMin": 30,
+    "distanceKm": null,
+    "kcal": 532,
+    "source": "strava",
+    "meta": {
+      "name": "Evening HIIT"
+    }
+  },
+  {
+    "id": "strava_17814320555",
+    "dateISO": "2026-03-22",
+    "type": "Run",
+    "timeMin": 121,
+    "distanceKm": 21.98,
+    "kcal": 2018,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_17803188434",
+    "dateISO": "2026-03-21",
+    "type": "VirtualRide",
+    "timeMin": 121,
+    "distanceKm": 58.54,
+    "kcal": 1372,
+    "source": "strava",
+    "meta": {
+      "name": "75mins @ 180w; 45 mins @ 230w"
+    }
+  },
+  {
+    "id": "strava_17795096188",
+    "dateISO": "2026-03-20",
+    "type": "Run",
+    "timeMin": 40,
+    "distanceKm": 7.51,
+    "kcal": 684,
+    "source": "strava",
+    "meta": {
+      "name": "Evening Run"
+    }
+  },
+  {
+    "id": "strava_17763705274",
+    "dateISO": "2026-03-18",
+    "type": "Run",
+    "timeMin": 32,
+    "distanceKm": 5.88,
+    "kcal": 541,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_17757926701",
+    "dateISO": "2026-03-17",
+    "type": "VirtualRide",
+    "timeMin": 60,
+    "distanceKm": 34.31,
+    "kcal": 723,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - 20 z2 20 z4 20 z2"
+    }
+  },
+  {
+    "id": "strava_17739492599",
+    "dateISO": "2026-03-16",
+    "type": "Run",
+    "timeMin": 34,
+    "distanceKm": 5.92,
+    "kcal": 547,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_17730171906",
+    "dateISO": "2026-03-15",
+    "type": "Run",
+    "timeMin": 48,
+    "distanceKm": 6.84,
+    "kcal": 604,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_17719515344",
+    "dateISO": "2026-03-14",
+    "type": "VirtualRide",
+    "timeMin": 121,
+    "distanceKm": 61.44,
+    "kcal": 1271,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - New Workout"
+    }
+  },
+  {
+    "id": "strava_17682463868",
+    "dateISO": "2026-03-11",
+    "type": "VirtualRide",
+    "timeMin": 46,
+    "distanceKm": 21.25,
+    "kcal": 556,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - FTP Test [Standard]"
+    }
+  },
+  {
+    "id": "strava_17663826413",
+    "dateISO": "2026-03-09",
+    "type": "Run",
+    "timeMin": 25,
+    "distanceKm": 4.46,
+    "kcal": 407,
+    "source": "strava",
+    "meta": {
+      "name": "Evening Run"
+    }
+  },
+  {
+    "id": "strava_17636423552",
+    "dateISO": "2026-03-07",
+    "type": "Run",
+    "timeMin": 134,
+    "distanceKm": 23,
+    "kcal": 2127,
+    "source": "strava",
+    "meta": {
+      "name": "Lunch Run"
+    }
+  },
+  {
+    "id": "strava_17627437646",
+    "dateISO": "2026-03-06",
+    "type": "Run",
+    "timeMin": 52,
+    "distanceKm": 9.6,
+    "kcal": 759,
+    "source": "strava",
+    "meta": {
+      "name": "Afternoon Run"
+    }
+  },
+  {
+    "id": "strava_17600132633",
+    "dateISO": "2026-03-04",
+    "type": "Run",
+    "timeMin": 30,
+    "distanceKm": 6.11,
+    "kcal": 528,
+    "source": "strava",
+    "meta": {
+      "name": "Ran for French pastries"
+    }
+  },
+  {
+    "id": "strava_17604490538",
+    "dateISO": "2026-03-04",
+    "type": "HighIntensityIntervalTraining",
+    "timeMin": 47,
+    "distanceKm": null,
+    "kcal": 661,
+    "source": "strava",
+    "meta": {
+      "name": "Evening HIIT"
+    }
+  },
+  {
+    "id": "strava_17584692860",
+    "dateISO": "2026-03-03",
+    "type": "Swim",
+    "timeMin": 27,
+    "distanceKm": 1.18,
+    "kcal": 413,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Swim"
+    }
+  },
+  {
+    "id": "strava_17591242138",
+    "dateISO": "2026-03-03",
+    "type": "VirtualRide",
+    "timeMin": 48,
+    "distanceKm": 22.72,
+    "kcal": 535,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - New Workout on Queen's Highway After Party in Yorkshire"
+    }
+  },
+  {
+    "id": "strava_17573396160",
+    "dateISO": "2026-03-02",
+    "type": "Run",
+    "timeMin": 38,
+    "distanceKm": 6.86,
+    "kcal": 613,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_17579209023",
+    "dateISO": "2026-03-02",
+    "type": "HighIntensityIntervalTraining",
+    "timeMin": 43,
+    "distanceKm": null,
+    "kcal": 691,
+    "source": "strava",
+    "meta": {
+      "name": "Evening HIIT"
+    }
+  },
+  {
+    "id": "strava_17562934581",
+    "dateISO": "2026-03-01",
+    "type": "VirtualRide",
+    "timeMin": 91,
+    "distanceKm": 48.07,
+    "kcal": 998,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - New Workout on Rolling Highlands in Scotland"
+    }
+  },
+  {
+    "id": "strava_17551661670",
+    "dateISO": "2026-02-28",
+    "type": "Run",
+    "timeMin": 119,
+    "distanceKm": 21.4,
+    "kcal": 1942,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_17541700192",
+    "dateISO": "2026-02-27",
+    "type": "Run",
+    "timeMin": 40,
+    "distanceKm": 8.19,
+    "kcal": 721,
+    "source": "strava",
+    "meta": {
+      "name": "Afternoon Run"
+    }
+  },
+  {
+    "id": "strava_17515250610",
+    "dateISO": "2026-02-25",
+    "type": "Run",
+    "timeMin": 32,
+    "distanceKm": 5.52,
+    "kcal": 507,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_17502589265",
+    "dateISO": "2026-02-24",
+    "type": "VirtualRide",
+    "timeMin": 46,
+    "distanceKm": 25.1,
+    "kcal": 536,
+    "source": "strava",
+    "meta": {
+      "name": "Zwift - New Workout on Volcano Flat in Watopia"
+    }
+  },
+  {
+    "id": "strava_17491580794",
+    "dateISO": "2026-02-23",
+    "type": "Run",
+    "timeMin": 29,
+    "distanceKm": 4.75,
+    "kcal": 451,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_17497184310",
+    "dateISO": "2026-02-23",
+    "type": "HighIntensityIntervalTraining",
+    "timeMin": 38,
+    "distanceKm": null,
+    "kcal": 666,
+    "source": "strava",
+    "meta": {
+      "name": "Evening HIIT"
+    }
+  },
+  {
+    "id": "strava_17481084549",
+    "dateISO": "2026-02-22",
+    "type": "Run",
+    "timeMin": 63,
+    "distanceKm": 11.3,
+    "kcal": 1054,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_17483705361",
+    "dateISO": "2026-02-22",
+    "type": "Run",
+    "timeMin": 64,
+    "distanceKm": 11.37,
+    "kcal": 1100,
+    "source": "strava",
+    "meta": {
+      "name": "Lunch Run"
+    }
+  },
+  {
+    "id": "strava_17458875070",
+    "dateISO": "2026-02-20",
+    "type": "Run",
+    "timeMin": 36,
+    "distanceKm": 7.28,
+    "kcal": 649,
+    "source": "strava",
+    "meta": {
+      "name": "Morning Run"
+    }
+  },
+  {
+    "id": "strava_17442348223",
+    "dateISO": "2026-02-18",
+    "type": "HighIntensityIntervalTraining",
+    "timeMin": 40,
+    "distanceKm": null,
+    "kcal": 588,
+    "source": "strava",
+    "meta": {
+      "name": "Evening HIIT"
+    }
+  }
+]
