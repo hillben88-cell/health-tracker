@@ -6,6 +6,8 @@ import { Plus, Trash2, Droplets, Apple, Dumbbell, Timer, Gauge, Activity, Flame,
 import { connect as connectStrava, clearAuth as clearStravaAuth, getAuth as getStravaAuth, handleOAuthRedirect, fetchActivities, normalizeActivity } from "./lib/strava";
 import { parseAppleHealthExport } from "./lib/appleHealth";
 import { parseGarminFile } from "./lib/garmin";
+import { computeIronmanProgress } from "./lib/ironmanProgress";
+import stravaSeed from "./data/stravaSeed.json";
 
 // ---------- Utility helpers ----------
 // Baseline daily burn (BMR + light NEAT, excludes logged exercise)
@@ -76,6 +78,17 @@ export default function App() {
   useEffect(() => saveLS("hft_exs", exs), [exs]);
   useEffect(() => saveLS("hft_weights", weights), [weights]);
   useEffect(() => saveLS("hft_health_daily", healthDaily), [healthDaily]);
+
+  // One-time seed of real Strava history pulled at build time, so Progress has
+  // real data before the user connects their own OAuth. Gated by a flag so a
+  // manually-deleted entry doesn't reappear on next load.
+  useEffect(() => {
+    if (loadLS("hft_seed_v1_imported", false)) return;
+    setExs((prev) => mergeById(prev, stravaSeed));
+    saveLS("hft_seed_v1_imported", true);
+  }, []);
+
+  const progress = useMemo(() => computeIronmanProgress(exs, new Date()), [exs]);
 
   // ---------- Strava connect ----------
   const [stravaAthlete, setStravaAthlete] = useState(() => getStravaAuth()?.athlete || null);
@@ -261,11 +274,43 @@ export default function App() {
   );
 
   const BottomTab = ({ id, label, icon }) => (
-    <button onClick={() => setTab(id)} className={`flex-1 py-2 flex flex-col items-center justify-center text-xs ${tab===id?"text-green-600":"text-gray-500"}`}>
+    <button onClick={() => setTab(id)} className={`flex-1 py-2 flex flex-col items-center justify-center text-[11px] ${tab===id?"text-green-600":"text-gray-500"}`}>
       {icon}
       <span className="mt-1">{label}</span>
     </button>
   );
+
+  const RAG_STYLES = {
+    green: { bg: "bg-green-50", border: "border-green-300", text: "text-green-700", dot: "bg-green-500", label: "On Track" },
+    amber: { bg: "bg-amber-50", border: "border-amber-300", text: "text-amber-700", dot: "bg-amber-500", label: "At Risk" },
+    red: { bg: "bg-red-50", border: "border-red-300", text: "text-red-700", dot: "bg-red-500", label: "Behind" },
+  };
+
+  const RagBadge = ({ status, size = "md" }) => {
+    const s = RAG_STYLES[status] || RAG_STYLES.amber;
+    return (
+      <span className={`inline-flex items-center gap-2 rounded-full border ${s.border} ${s.bg} ${s.text} px-3 ${size === "lg" ? "py-1.5 text-sm" : "py-0.5 text-xs"} font-semibold uppercase tracking-wide`}>
+        <span className={`h-2 w-2 rounded-full ${s.dot}`} />
+        {s.label}
+      </span>
+    );
+  };
+
+  const DisciplineCard = ({ label, data, weeklyLabel, weeklyValue, weeklyTarget, longLabel, longValue, longTarget }) => {
+    const s = RAG_STYLES[data.status] || RAG_STYLES.amber;
+    return (
+      <div className={`rounded-2xl border ${s.border} ${s.bg} p-4`}>
+        <div className="flex items-center justify-between mb-2">
+          <div className="font-semibold text-gray-800">{label}</div>
+          <RagBadge status={data.status} />
+        </div>
+        <div className="text-sm text-gray-700 space-y-1">
+          <div>{weeklyLabel}: <span className="font-medium">{weeklyValue}</span> <span className="text-gray-400">(green ≥ {weeklyTarget})</span></div>
+          {longLabel && <div>{longLabel}: <span className="font-medium">{longValue}</span> <span className="text-gray-400">(green ≥ {longTarget})</span></div>}
+        </div>
+      </div>
+    );
+  };
 
   // ---------- Uncontrolled refs (avoid focus loss) ----------
   const waterRef = React.useRef(null);
@@ -326,6 +371,64 @@ export default function App() {
                 </div>
               </Card>
             )}
+          </div>
+        </div>
+
+        {/* Progress */}
+        <div className={tab!=="progress"?"hidden":"block"}>
+          <div className="space-y-4">
+            <Card title={progress.race.name} icon={<Gauge size={18} color={GREEN} />} right={progress.overall && <RagBadge status={progress.overall} size="lg" />}>
+              <div className="text-sm text-gray-600">{progress.race.location} · {progress.race.dateISO}</div>
+              <div className="text-sm text-gray-600 mt-1">
+                {progress.phase === "post-race" ? "Race complete!" : (
+                  <>{progress.daysToRace} days ({progress.weeksToRace} weeks) to go · <span className="capitalize font-medium">{progress.phase}</span> phase</>
+                )}
+              </div>
+              {progress.overall === "red" && (
+                <div className="mt-2 text-sm text-red-700 bg-red-50 border border-red-200 rounded-xl p-2">Your weakest discipline is dragging the overall status down — see below for which one and by how much.</div>
+              )}
+            </Card>
+
+            <DisciplineCard
+              label="Swim"
+              data={progress.discipline.swim}
+              weeklyLabel="Weekly distance"
+              weeklyValue={`${progress.discipline.swim.weeklyKm} km`}
+              weeklyTarget={`${progress.discipline.swim.targetGreen.km} km`}
+              longLabel="Sessions/week"
+              longValue={progress.discipline.swim.weeklySessions}
+              longTarget={progress.discipline.swim.targetGreen.sessions}
+            />
+            <DisciplineCard
+              label="Bike"
+              data={progress.discipline.bike}
+              weeklyLabel="Weekly distance"
+              weeklyValue={`${progress.discipline.bike.weeklyKm} km`}
+              weeklyTarget={`${progress.discipline.bike.targetGreen.km} km`}
+              longLabel="Longest ride (6 wk)"
+              longValue={`${progress.discipline.bike.longestKm6wk} km`}
+              longTarget={`${progress.discipline.bike.targetGreen.long} km`}
+            />
+            <DisciplineCard
+              label="Run"
+              data={progress.discipline.run}
+              weeklyLabel="Weekly distance"
+              weeklyValue={`${progress.discipline.run.weeklyKm} km`}
+              weeklyTarget={`${progress.discipline.run.targetGreen.km} km`}
+              longLabel="Longest run (6 wk)"
+              longValue={`${progress.discipline.run.longestKm6wk} km`}
+              longTarget={`${progress.discipline.run.targetGreen.long} km`}
+            />
+
+            <details className="text-xs text-gray-500 bg-gray-50 rounded-xl p-3">
+              <summary className="cursor-pointer font-medium text-gray-600">Methodology</summary>
+              <p className="mt-2">
+                Status compares your trailing 4-week average weekly distance (and swim frequency / longest ride-run in
+                the last 6 weeks) against generic age-group IRONMAN training benchmarks for the current phase of your
+                build (base / build / peak / taper, based on weeks remaining). These are rough guidelines, not a
+                certified coach's plan — treat "red" as a prompt to review with a coach, not a verdict.
+              </p>
+            </details>
           </div>
         </div>
 
@@ -465,6 +568,7 @@ export default function App() {
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200">
         <div className="mx-auto max-w-md px-2 flex">
           <BottomTab id="summary" label="Summary" icon={<Activity size={18} color={tab==='summary'?GREEN:GRAY} />} />
+          <BottomTab id="progress" label="IM Wales" icon={<Gauge size={18} color={tab==='progress'?GREEN:GRAY} />} />
           <BottomTab id="add" label="Add" icon={<Plus size={18} color={tab==='add'?GREEN:GRAY} />} />
           <BottomTab id="connect" label="Connect" icon={<Link2 size={18} color={tab==='connect'?GREEN:GRAY} />} />
           <BottomTab id="trends" label="Trends" icon={<Gauge size={18} color={tab==='trends'?GREEN:GRAY} />} />

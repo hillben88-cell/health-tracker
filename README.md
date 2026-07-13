@@ -60,6 +60,25 @@ via a manual export:
    steps, active energy, heart rate, sleep, and body weight, and imports
    workouts into your exercise log.
 
+## IRONMAN Wales progress (IM Wales tab)
+
+Shows a red/amber/green readiness check against IRONMAN Wales (Tenby, 13 Sep
+2026), per discipline (swim/bike/run) and overall. It compares your trailing
+4-week average weekly volume (plus swim frequency, and longest ride/run over
+6 weeks) against generic age-group full-distance training benchmarks for
+whatever phase of the build you're currently in (base/build/peak/taper,
+determined from weeks remaining). The thresholds live in
+`src/lib/ironmanProgress.js` — these are rough coaching-guideline numbers,
+not a certified personalized plan, so treat "red" as a prompt to review your
+training, not a verdict.
+
+The app ships with a one-time seed of real Strava history
+(`src/data/stravaSeed.json`, ~185 activities from Feb–Jul 2026) so this tab
+has real data immediately. It's merged in once on first load (tagged
+`source: "strava"`, same id scheme as live sync) and won't reappear if you
+delete an entry. Connecting your own Strava account (above) keeps it current
+going forward.
+
 ## Data model notes
 
 - All records (`exercise`, `weight`) carry a `source` field (`manual`,
