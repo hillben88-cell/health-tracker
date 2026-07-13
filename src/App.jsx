@@ -2,7 +2,10 @@ import React, { useEffect, useMemo, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from "recharts";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Trash2, Droplets, Apple, Dumbbell, Timer, Gauge, Activity, Flame, Calendar, Scale } from "lucide-react";
+import { Plus, Trash2, Droplets, Apple, Dumbbell, Timer, Gauge, Activity, Flame, Calendar, Scale, Link2, Footprints, HeartPulse, Moon } from "lucide-react";
+import { connect as connectStrava, clearAuth as clearStravaAuth, getAuth as getStravaAuth, handleOAuthRedirect, fetchActivities, normalizeActivity } from "./lib/strava";
+import { parseAppleHealthExport } from "./lib/appleHealth";
+import { parseGarminFile } from "./lib/garmin";
 
 // ---------- Utility helpers ----------
 // Baseline daily burn (BMR + light NEAT, excludes logged exercise)
@@ -18,6 +21,13 @@ const sum = (arr) => arr.reduce((a, b) => a + b, 0);
 
 function saveLS(key, value) { localStorage.setItem(key, JSON.stringify(value)); }
 function loadLS(key, fallback) { try { const v = JSON.parse(localStorage.getItem(key)); return v ?? fallback; } catch { return fallback; } }
+
+// Upsert-merge two arrays of {id,...} records, incoming wins on id collisions.
+function mergeById(existing, incoming) {
+  const byId = new Map(existing.map((x) => [x.id, x]));
+  for (const item of incoming) byId.set(item.id, item);
+  return Array.from(byId.values());
+}
 
 // ---------- Minimal in-app nutrition lookup (offline) ----------
 const MINI_DB = [
@@ -59,11 +69,86 @@ export default function App() {
   const [foods, setFoods] = useState(() => loadLS("hft_foods", [])); // {id,dateISO,desc,kcal,macros}
   const [exs, setExs] = useState(() => loadLS("hft_exs", [])); // {id,dateISO,type,timeMin,distanceKm,kcal}
   const [weights, setWeights] = useState(() => loadLS("hft_weights", [])); // {id,dateISO,kg}
+  const [healthDaily, setHealthDaily] = useState(() => loadLS("hft_health_daily", {})); // dateISO -> {steps,distanceKm,activeKcal,avgHr,restingHr,sleepHours}
 
   useEffect(() => saveLS("hft_water", water), [water]);
   useEffect(() => saveLS("hft_foods", foods), [foods]);
   useEffect(() => saveLS("hft_exs", exs), [exs]);
   useEffect(() => saveLS("hft_weights", weights), [weights]);
+  useEffect(() => saveLS("hft_health_daily", healthDaily), [healthDaily]);
+
+  // ---------- Strava connect ----------
+  const [stravaAthlete, setStravaAthlete] = useState(() => getStravaAuth()?.athlete || null);
+  const [stravaBusy, setStravaBusy] = useState(false);
+  const [stravaMsg, setStravaMsg] = useState("");
+
+  useEffect(() => {
+    (async () => {
+      const result = await handleOAuthRedirect();
+      if (!result) return;
+      if (result.connected) { setStravaAthlete(result.athlete); setStravaMsg("Connected to Strava."); }
+      else if (result.error) setStravaMsg(`Strava error: ${result.error}`);
+    })();
+  }, []);
+
+  async function syncStrava() {
+    setStravaBusy(true); setStravaMsg("Syncing latest activities...");
+    try {
+      const activities = await fetchActivities({ perPage: 100 });
+      setExs((prev) => mergeById(prev, activities.map(normalizeActivity)));
+      setStravaMsg(`Synced ${activities.length} activities from Strava.`);
+    } catch (err) {
+      setStravaMsg(`Sync failed: ${err.message}`);
+    } finally {
+      setStravaBusy(false);
+    }
+  }
+
+  function disconnectStrava() { clearStravaAuth(); setStravaAthlete(null); setStravaMsg("Disconnected from Strava."); }
+
+  // ---------- Garmin / Apple Health file import ----------
+  const [importBusy, setImportBusy] = useState(false);
+  const [importProgress, setImportProgress] = useState(0);
+  const [importMsg, setImportMsg] = useState("");
+  const [garminUnit, setGarminUnit] = useState("km");
+
+  async function handleAppleHealthFile(e) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setImportBusy(true); setImportProgress(0); setImportMsg("Parsing Apple Health export... this can take a minute for large files.");
+    try {
+      const { daily, workouts } = await parseAppleHealthExport(file, (done, total) => setImportProgress(Math.round((done / total) * 100)));
+      setHealthDaily((prev) => ({ ...prev, ...daily }));
+      if (workouts.length) setExs((prev) => mergeById(prev, workouts));
+      const weightRecords = Object.entries(daily)
+        .filter(([, d]) => d.weightKg != null)
+        .map(([dateISO, d]) => ({ id: `applehealth_weight_${dateISO}`, dateISO, kg: d.weightKg, source: "apple_health" }));
+      if (weightRecords.length) setWeights((prev) => mergeById(prev, weightRecords));
+      setImportMsg(`Imported ${Object.keys(daily).length} days of health data and ${workouts.length} workouts from Apple Health.`);
+    } catch (err) {
+      setImportMsg(`Import failed: ${err.message}`);
+    } finally {
+      setImportBusy(false);
+      e.target.value = "";
+    }
+  }
+
+  async function handleGarminFile(e) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setImportBusy(true); setImportMsg("Parsing Garmin file...");
+    try {
+      const text = await file.text();
+      const records = parseGarminFile(file.name, text, { distanceUnit: garminUnit });
+      setExs((prev) => mergeById(prev, records));
+      setImportMsg(`Imported ${records.length} activities from ${file.name}.`);
+    } catch (err) {
+      setImportMsg(`Import failed: ${err.message}`);
+    } finally {
+      setImportBusy(false);
+      e.target.value = "";
+    }
+  }
 
   const [date, setDate] = useState(todayISO());
 
@@ -77,14 +162,15 @@ export default function App() {
   const dayExTime = useMemo(() => sum(dayEx.map((e) => Number(e.timeMin) || 0)), [dayEx]);
   const netCalories = useMemo(() => dayFoodKcal - (BASELINE_KCAL + dayExKcal), [dayFoodKcal, dayExKcal]);
   const dayWeights = useMemo(() => weights.filter((w) => w.dateISO === date).map(w => w.kg), [weights, date]);
+  const todayHealth = healthDaily[date];
 
   // ---------- Add Handlers ----------
   function showEntered() { setToast("entered"); setTimeout(() => setToast(""), 1400); }
 
   function addWater(amountMl, d = date) { if (!amountMl) return; setWater((prev) => [...prev, { id: uuidv4(), dateISO: d, amountMl: Number(amountMl) }]); showEntered(); }
   function addFood(desc, d = date) { if (!desc?.trim()) return; const est = estimateFood(desc); const rec = { id: uuidv4(), dateISO: d, desc: desc.trim(), kcal: Math.round(est.kcal), macros: est.macros, source: est.source }; setFoods((prev) => [rec, ...prev]); showEntered(); }
-  function addExercise({ type, timeMin, distanceKm, kcal }, d = date) { if (!type || !timeMin) return; setExs((prev) => [{ id: uuidv4(), dateISO: d, type, timeMin: Number(timeMin), distanceKm: distanceKm ? Number(distanceKm) : null, kcal: kcal ? Number(kcal) : 0 }, ...prev]); showEntered(); }
-  function addWeight(kg, d = date) { if (!kg) return; setWeights(prev => [{ id: uuidv4(), dateISO: d, kg: Number(kg) }, ...prev]); showEntered(); }
+  function addExercise({ type, timeMin, distanceKm, kcal }, d = date) { if (!type || !timeMin) return; setExs((prev) => [{ id: uuidv4(), dateISO: d, type, timeMin: Number(timeMin), distanceKm: distanceKm ? Number(distanceKm) : null, kcal: kcal ? Number(kcal) : 0, source: "manual" }, ...prev]); showEntered(); }
+  function addWeight(kg, d = date) { if (!kg) return; setWeights(prev => [{ id: uuidv4(), dateISO: d, kg: Number(kg), source: "manual" }, ...prev]); showEntered(); }
 
   function deleteEntry(kind, id) {
     if (kind === "water") setWater((prev) => prev.filter((x) => x.id !== id));
@@ -116,12 +202,22 @@ export default function App() {
     });
   }
 
+  function healthAggregate(days) {
+    return days.map((d) => {
+      const h = healthDaily[d] || {};
+      return { date: d.slice(5), steps: h.steps || 0, sleepHours: h.sleepHours || null, restingHr: h.restingHr || null };
+    });
+  }
+
   const days7 = useMemo(() => lastNDays(7), []);
   const days30 = useMemo(() => lastNDays(30), []);
   const weekData = useMemo(() => aggregate(days7), [water, foods, exs]);
   const monthData = useMemo(() => aggregate(days30), [water, foods, exs]);
   const weekWeight = useMemo(() => weightSeries(days7), [weights]);
   const monthWeight = useMemo(() => weightSeries(days30), [weights]);
+  const weekHealth = useMemo(() => healthAggregate(days7), [healthDaily]);
+  const monthHealth = useMemo(() => healthAggregate(days30), [healthDaily]);
+  const hasHealthData = Object.keys(healthDaily).length > 0;
 
   // ---------- UI Components ----------
   const TitleBar = ({ title }) => (
@@ -214,12 +310,22 @@ export default function App() {
                 {dayEx.length === 0 && <div className="text-sm text-gray-400">No sessions logged yet.</div>}
                 {dayEx.map((e) => (
                   <div key={e.id} className="flex justify-between items-center bg-gray-50 rounded-xl px-3 py-2">
-                    <div className="text-sm text-gray-800">{e.type}</div>
+                    <div className="text-sm text-gray-800">{e.type}{e.source && e.source !== "manual" && <span className="ml-2 text-[10px] uppercase tracking-wide text-gray-400">{e.source.replace("_", " ")}</span>}</div>
                     <div className="text-xs text-gray-500">{e.timeMin} min{e.distanceKm ? ` · ${e.distanceKm} km` : ""} · {e.kcal || 0} kcal</div>
                   </div>
                 ))}
               </div>
             </Card>
+            {todayHealth && (
+              <Card title="Apple Health" icon={<HeartPulse size={18} color={GREEN} />}>
+                <div className="grid grid-cols-2 gap-3">
+                  <Stat label="Steps" value={todayHealth.steps?.toLocaleString() ?? "-"} />
+                  <Stat label="Resting HR" value={todayHealth.restingHr ? `${todayHealth.restingHr} bpm` : "-"} />
+                  <Stat label="Sleep" value={todayHealth.sleepHours ? `${todayHealth.sleepHours} h` : "-"} />
+                  <Stat label="Active Energy" value={todayHealth.activeKcal ? `${todayHealth.activeKcal} kcal` : "-"} />
+                </div>
+              </Card>
+            )}
           </div>
         </div>
 
@@ -256,6 +362,51 @@ export default function App() {
           </div>
         </div>
 
+        {/* Connect */}
+        <div className={tab!=="connect"?"hidden":"block"}>
+          <div className="space-y-4">
+            <Card title="Strava" icon={<Activity size={18} color={GREEN} />}>
+              {stravaAthlete ? (
+                <div className="space-y-2">
+                  <div className="text-sm text-gray-700">Connected as {stravaAthlete.firstname} {stravaAthlete.lastname}</div>
+                  <div className="flex gap-2">
+                    <button onClick={syncStrava} disabled={stravaBusy} className="rounded-xl bg-green-600 text-white px-4 py-2 text-sm disabled:opacity-50">{stravaBusy ? "Syncing..." : "Sync latest activities"}</button>
+                    <button onClick={disconnectStrava} className="rounded-xl border border-gray-200 px-4 py-2 text-sm text-gray-600">Disconnect</button>
+                  </div>
+                </div>
+              ) : (
+                <div className="space-y-2">
+                  <div className="text-sm text-gray-500">Connect your Strava account to automatically import runs, rides, swims and more.</div>
+                  <button onClick={connectStrava} className="rounded-xl bg-orange-500 text-white px-4 py-2 text-sm">Connect Strava</button>
+                </div>
+              )}
+              {stravaMsg && <div className="text-xs text-gray-500 mt-2">{stravaMsg}</div>}
+            </Card>
+
+            <Card title="Apple Health Import" icon={<HeartPulse size={18} color={GREEN} />}>
+              <div className="text-sm text-gray-500 mb-2">Health app → profile picture → Export All Health Data → upload the <code>export.xml</code> here. Parsing happens entirely in your browser; large exports may take a minute.</div>
+              <input type="file" accept=".xml" onChange={handleAppleHealthFile} disabled={importBusy} className="text-sm" />
+              {importBusy && importProgress > 0 && (
+                <div className="mt-2 h-2 bg-gray-100 rounded-full overflow-hidden"><div className="h-full bg-green-600" style={{ width: `${importProgress}%` }} /></div>
+              )}
+            </Card>
+
+            <Card title="Garmin Import" icon={<Dumbbell size={18} color={GREEN} />}>
+              <div className="text-sm text-gray-500 mb-2">Garmin Connect → Activities → Export CSV (bulk history), or open a single activity → Export Original for TCX/GPX.</div>
+              <div className="flex items-center gap-2 mb-2">
+                <label className="text-xs text-gray-500">Distance unit in CSV export:</label>
+                <select value={garminUnit} onChange={(e) => setGarminUnit(e.target.value)} className="rounded-lg border border-gray-200 text-sm px-2 py-1">
+                  <option value="km">km</option>
+                  <option value="mi">mi</option>
+                </select>
+              </div>
+              <input type="file" accept=".csv,.tcx,.gpx" onChange={handleGarminFile} disabled={importBusy} className="text-sm" />
+            </Card>
+
+            {importMsg && <div className="text-xs text-gray-600 bg-gray-50 rounded-xl p-3">{importMsg}</div>}
+          </div>
+        </div>
+
         {/* Trends */}
         <div className={tab!=="trends"?"hidden":"block"}>
           <div className="space-y-4">
@@ -265,14 +416,22 @@ export default function App() {
                 <div className="h-56"><div className="text-xs text-gray-500 mb-1">Calories: Food vs Net</div><ResponsiveContainer width="100%" height="100%"><LineChart data={weekData}><CartesianGrid strokeDasharray="3 3" /><XAxis dataKey="date" /><YAxis /><Tooltip /><Legend /><Line type="monotone" dataKey="foodKcal" stroke={GREEN} strokeWidth={2} dot={false} name="Food" /><Line type="monotone" dataKey="netKcal" stroke={YELLOW} strokeWidth={2} dot={false} name="Net" /></LineChart></ResponsiveContainer></div>
                 <div className="h-56"><div className="text-xs text-gray-500 mb-1">Exercise Time (min)</div><ResponsiveContainer width="100%" height="100%"><BarChart data={weekData}><CartesianGrid strokeDasharray="3 3" /><XAxis dataKey="date" /><YAxis /><Tooltip /><Bar dataKey="exMin" fill={GRAY} radius={[8,8,0,0]} /></BarChart></ResponsiveContainer></div>
                 <div className="h-56"><div className="text-xs text-gray-500 mb-1">Weight (kg)</div><ResponsiveContainer width="100%" height="100%"><LineChart data={weekWeight}><CartesianGrid strokeDasharray="3 3" /><XAxis dataKey="date" /><YAxis domain={["auto","auto"]} /><Tooltip /><Line type="monotone" dataKey="weight" stroke={GREEN} strokeWidth={2} dot={true} name="Weight" /></LineChart></ResponsiveContainer></div>
+                {hasHealthData && (<>
+                  <div className="h-56"><div className="text-xs text-gray-500 mb-1">Steps</div><ResponsiveContainer width="100%" height="100%"><BarChart data={weekHealth}><CartesianGrid strokeDasharray="3 3" /><XAxis dataKey="date" /><YAxis /><Tooltip /><Bar dataKey="steps" fill={GREEN} radius={[8,8,0,0]} /></BarChart></ResponsiveContainer></div>
+                  <div className="h-56"><div className="text-xs text-gray-500 mb-1">Sleep (h) &amp; Resting HR (bpm)</div><ResponsiveContainer width="100%" height="100%"><LineChart data={weekHealth}><CartesianGrid strokeDasharray="3 3" /><XAxis dataKey="date" /><YAxis /><Tooltip /><Legend /><Line type="monotone" dataKey="sleepHours" stroke={GREEN} strokeWidth={2} dot={false} name="Sleep (h)" /><Line type="monotone" dataKey="restingHr" stroke={YELLOW} strokeWidth={2} dot={false} name="Resting HR" /></LineChart></ResponsiveContainer></div>
+                </>)}
               </div>
             </Card>
-            <Card title="Monthly Trends" icon={<Timer size={18} color={GREEN} />}> 
+            <Card title="Monthly Trends" icon={<Timer size={18} color={GREEN} />}>
               <div className="grid gap-4">
                 <div className="h-56"><div className="text-xs text-gray-500 mb-1">Water (L)</div><ResponsiveContainer width="100%" height="100%"><BarChart data={monthData}><CartesianGrid strokeDasharray="3 3" /><XAxis dataKey="date" /><YAxis /><Tooltip /><Bar dataKey="waterL" fill={GREEN} radius={[8,8,0,0]} /></BarChart></ResponsiveContainer></div>
                 <div className="h-56"><div className="text-xs text-gray-500 mb-1">Calories: Food vs Net</div><ResponsiveContainer width="100%" height="100%"><LineChart data={monthData}><CartesianGrid strokeDasharray="3 3" /><XAxis dataKey="date" /><YAxis /><Tooltip /><Legend /><Line type="monotone" dataKey="foodKcal" stroke={GREEN} strokeWidth={2} dot={false} name="Food" /><Line type="monotone" dataKey="netKcal" stroke={YELLOW} strokeWidth={2} dot={false} name="Net" /></LineChart></ResponsiveContainer></div>
                 <div className="h-56"><div className="text-xs text-gray-500 mb-1">Exercise Time (min)</div><ResponsiveContainer width="100%" height="100%"><BarChart data={monthData}><CartesianGrid strokeDasharray="3 3" /><XAxis dataKey="date" /><YAxis /><Tooltip /><Bar dataKey="exMin" fill={GRAY} radius={[8,8,0,0]} /></BarChart></ResponsiveContainer></div>
                 <div className="h-56"><div className="text-xs text-gray-500 mb-1">Weight (kg)</div><ResponsiveContainer width="100%" height="100%"><LineChart data={monthWeight}><CartesianGrid strokeDasharray="3 3" /><XAxis dataKey="date" /><YAxis domain={["auto","auto"]} /><Tooltip /><Line type="monotone" dataKey="weight" stroke={GREEN} strokeWidth={2} dot={false} name="Weight" /></LineChart></ResponsiveContainer></div>
+                {hasHealthData && (<>
+                  <div className="h-56"><div className="text-xs text-gray-500 mb-1">Steps</div><ResponsiveContainer width="100%" height="100%"><BarChart data={monthHealth}><CartesianGrid strokeDasharray="3 3" /><XAxis dataKey="date" /><YAxis /><Tooltip /><Bar dataKey="steps" fill={GREEN} radius={[8,8,0,0]} /></BarChart></ResponsiveContainer></div>
+                  <div className="h-56"><div className="text-xs text-gray-500 mb-1">Sleep (h) &amp; Resting HR (bpm)</div><ResponsiveContainer width="100%" height="100%"><LineChart data={monthHealth}><CartesianGrid strokeDasharray="3 3" /><XAxis dataKey="date" /><YAxis /><Tooltip /><Legend /><Line type="monotone" dataKey="sleepHours" stroke={GREEN} strokeWidth={2} dot={false} name="Sleep (h)" /><Line type="monotone" dataKey="restingHr" stroke={YELLOW} strokeWidth={2} dot={false} name="Resting HR" /></LineChart></ResponsiveContainer></div>
+                </>)}
               </div>
             </Card>
           </div>
@@ -287,12 +446,17 @@ export default function App() {
             <Card title="Food Entries" icon={<Apple size={18} color={GREEN} />}> 
               <div className="overflow-auto"><table className="min-w-full text-sm"><thead className="text-left text-gray-500"><tr><th className="py-2">Date</th><th>Description</th><th>Kcal</th><th>Macros (P/C/F g)</th><th></th></tr></thead><tbody>{foods.length===0 && (<tr><td className="py-2 text-gray-400" colSpan={5}>No entries yet.</td></tr>)}{foods.map((f)=>(<tr key={f.id} className="border-t border-gray-100"><td className="py-2">{f.dateISO}</td><td>{f.desc}</td><td>{f.kcal}</td><td>{Math.round(f.macros.protein_g)}/{Math.round(f.macros.carbs_g)}/{Math.round(f.macros.fat_g)}</td><td className="text-right"><button onClick={()=>deleteEntry('food', f.id)} className="inline-flex items-center gap-1 text-red-600 hover:text-red-700"><Trash2 size={16}/>Delete</button></td></tr>))}</tbody></table></div>
             </Card>
-            <Card title="Exercise Entries" icon={<Activity size={18} color={GREEN} />}> 
-              <div className="overflow-auto"><table className="min-w-full text-sm"><thead className="text-left text-gray-500"><tr><th className="py-2">Date</th><th>Type</th><th>Time (min)</th><th>Distance (km)</th><th>Kcal</th><th></th></tr></thead><tbody>{exs.length===0 && (<tr><td className="py-2 text-gray-400" colSpan={6}>No entries yet.</td></tr>)}{exs.map((e)=>(<tr key={e.id} className="border-t border-gray-100"><td className="py-2">{e.dateISO}</td><td>{e.type}</td><td>{e.timeMin}</td><td>{e.distanceKm ?? '-'}</td><td>{e.kcal || 0}</td><td className="text-right"><button onClick={()=>deleteEntry('ex', e.id)} className="inline-flex items-center gap-1 text-red-600 hover:text-red-700"><Trash2 size={16}/>Delete</button></td></tr>))}</tbody></table></div>
+            <Card title="Exercise Entries" icon={<Activity size={18} color={GREEN} />}>
+              <div className="overflow-auto"><table className="min-w-full text-sm"><thead className="text-left text-gray-500"><tr><th className="py-2">Date</th><th>Type</th><th>Time (min)</th><th>Distance (km)</th><th>Kcal</th><th>Source</th><th></th></tr></thead><tbody>{exs.length===0 && (<tr><td className="py-2 text-gray-400" colSpan={7}>No entries yet.</td></tr>)}{exs.map((e)=>(<tr key={e.id} className="border-t border-gray-100"><td className="py-2">{e.dateISO}</td><td>{e.type}</td><td>{e.timeMin}</td><td>{e.distanceKm ?? '-'}</td><td>{e.kcal || 0}</td><td className="text-xs text-gray-400">{(e.source || 'manual').replace('_',' ')}</td><td className="text-right"><button onClick={()=>deleteEntry('ex', e.id)} className="inline-flex items-center gap-1 text-red-600 hover:text-red-700"><Trash2 size={16}/>Delete</button></td></tr>))}</tbody></table></div>
             </Card>
-            <Card title="Weight Entries" icon={<Scale size={18} color={GREEN} />}> 
-              <div className="overflow-auto"><table className="min-w-full text-sm"><thead className="text-left text-gray-500"><tr><th className="py-2">Date</th><th>Weight (kg)</th><th></th></tr></thead><tbody>{weights.length===0 && (<tr><td className="py-2 text-gray-400" colSpan={3}>No entries yet.</td></tr>)}{weights.map((w)=>(<tr key={w.id} className="border-t border-gray-100"><td className="py-2">{w.dateISO}</td><td>{w.kg}</td><td className="text-right"><button onClick={()=>deleteEntry('weight', w.id)} className="inline-flex items-center gap-1 text-red-600 hover:text-red-700"><Trash2 size={16}/>Delete</button></td></tr>))}</tbody></table></div>
+            <Card title="Weight Entries" icon={<Scale size={18} color={GREEN} />}>
+              <div className="overflow-auto"><table className="min-w-full text-sm"><thead className="text-left text-gray-500"><tr><th className="py-2">Date</th><th>Weight (kg)</th><th>Source</th><th></th></tr></thead><tbody>{weights.length===0 && (<tr><td className="py-2 text-gray-400" colSpan={4}>No entries yet.</td></tr>)}{weights.map((w)=>(<tr key={w.id} className="border-t border-gray-100"><td className="py-2">{w.dateISO}</td><td>{w.kg}</td><td className="text-xs text-gray-400">{(w.source || 'manual').replace('_',' ')}</td><td className="text-right"><button onClick={()=>deleteEntry('weight', w.id)} className="inline-flex items-center gap-1 text-red-600 hover:text-red-700"><Trash2 size={16}/>Delete</button></td></tr>))}</tbody></table></div>
             </Card>
+            {hasHealthData && (
+              <Card title="Apple Health Daily Data" icon={<Footprints size={18} color={GREEN} />}>
+                <div className="overflow-auto max-h-96"><table className="min-w-full text-sm"><thead className="text-left text-gray-500 sticky top-0 bg-white"><tr><th className="py-2">Date</th><th>Steps</th><th>Active kcal</th><th>Avg HR</th><th>Resting HR</th><th>Sleep (h)</th></tr></thead><tbody>{Object.entries(healthDaily).sort((a,b)=>b[0].localeCompare(a[0])).map(([d,h])=>(<tr key={d} className="border-t border-gray-100"><td className="py-2">{d}</td><td>{h.steps?.toLocaleString() ?? '-'}</td><td>{h.activeKcal ?? '-'}</td><td>{h.avgHr ?? '-'}</td><td>{h.restingHr ?? '-'}</td><td>{h.sleepHours ?? '-'}</td></tr>))}</tbody></table></div>
+              </Card>
+            )}
           </div>
         </div>
       </div>
@@ -302,6 +466,7 @@ export default function App() {
         <div className="mx-auto max-w-md px-2 flex">
           <BottomTab id="summary" label="Summary" icon={<Activity size={18} color={tab==='summary'?GREEN:GRAY} />} />
           <BottomTab id="add" label="Add" icon={<Plus size={18} color={tab==='add'?GREEN:GRAY} />} />
+          <BottomTab id="connect" label="Connect" icon={<Link2 size={18} color={tab==='connect'?GREEN:GRAY} />} />
           <BottomTab id="trends" label="Trends" icon={<Gauge size={18} color={tab==='trends'?GREEN:GRAY} />} />
           <BottomTab id="raw" label="Raw Data" icon={<Trash2 size={18} color={tab==='raw'?GREEN:GRAY} />} />
         </div>
