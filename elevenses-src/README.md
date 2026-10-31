@@ -37,7 +37,7 @@ On the iPhone:
 2. Tap **Share** → **Add to Home Screen** → **Add**.
 3. Launch Elevenses from the new icon.
 
-It caches itself for offline play. Progress is stored on the device; use
+It caches itself for offline play (iOS 15.4 or later; iOS 16.2+ recommended). Progress is stored on the device; use
 **Settings → Back up your progress → Export** now and then.
 
 > Local preview: `cd public/elevenses && python3 -m http.server 8000`, then open
