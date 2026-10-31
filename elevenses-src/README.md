@@ -8,7 +8,7 @@ Screen and runs full-screen and offline). It has six games:
 | **Mini Crossword** | 5×5 quick crossword, fully checked, with a timer. |
 | **Midi Crossword** | 9×9 British-style quick crossword (unchecked squares, answer lengths in brackets). |
 | **Inkling** | Guess the five-letter word in six goes (British word list, optional hard mode). |
-| **Spokes** | A nine-letter word wheel: make words that use the hub letter, using each tile once. Ranks run from *Stabilisers* to *Yellow Jersey* and *Hors Catégorie*. Find the Nine for 10 points. |
+| **Spokes** | A seven-letter word wheel: make words of four or more letters that use the hub letter. Letters can be reused. Every wheel has at least one *Full Circle* word using all seven letters (+10 points). Ranks run from *Stabilisers* to *Yellow Jersey* and *Hors Catégorie*. |
 | **Quartets** | Sixteen words, four hidden groups of four, four lives. Categories are British-flavoured. |
 | **Ramble** | A themed word trail: every letter of the 6×7 grid belongs to one theme word. Find bonus words to earn hints. |
 
@@ -40,6 +40,32 @@ On the iPhone:
 It caches itself for offline play (iOS 15.4 or later; iOS 16.2+ recommended). Progress is stored on the device; use
 **Settings → Back up your progress → Export** now and then.
 
+## Sharing with friends and family
+
+Elevenses has no accounts and no server-side data. Each person's progress, stats and
+streaks are saved in their own browser on their own phone, so everyone you share it
+with gets their own stats automatically. **Settings → Share Elevenses with friends**
+sends them the link, and shared results include it too.
+
+**Give Elevenses its own address before sharing it.** On the main deployment it sits
+next to the health tracker, which ships with personal Strava history
+(`src/data/stravaSeed.json`). Anyone with the main address could open that too. A
+separate Vercel project serves *only* the puzzles:
+
+1. In Vercel: **Add New… → Project**, then import this same GitHub repository.
+2. Set **Root Directory** to `public/elevenses` and **Framework Preset** to *Other*.
+   Leave the build and output settings empty.
+3. Deploy. Name the project something like `elevenses` to get a tidy
+   `https://elevenses….vercel.app` address. Production deployments are public by
+   default, unlike preview links, which ask visitors to sign in to Vercel.
+4. Share that address. Each friend opens it in Safari and taps Share → Add to Home
+   Screen. A tip on the home screen walks them through it.
+
+Stats stay on the device, so a friend who switches phones should use **Settings →
+Export** first, then **Import** on the new phone. Installing to the Home Screen
+matters on iPhone: Safari can clear a website's saved data if it hasn't been opened
+for about a week, but Home Screen apps keep theirs.
+
 > Local preview: `cd public/elevenses && python3 -m http.server 8000`, then open
 > <http://localhost:8000>. (With `npm run dev`, use `/elevenses/index.html`
 > explicitly, because Vite's dev server hands bare folders to the main app.)
@@ -64,8 +90,9 @@ The generators:
   avoids words used in recent days. The Midi uses random 180°-symmetric British
   lattice grids with these checks: no 2-letter entries, at most two unchecked letters
   in a row, a connected grid, and at most four 9-letter entries.
-- **Spokes** — picks a common nine-letter word and a hub letter that gives 18–70
-  valid words. Plurals in -S and blocked words are excluded.
+- **Spokes** — starts from a well-known word with exactly seven different letters
+  (never S), so every wheel has at least one Full Circle word. It then picks a hub
+  letter that gives 20–75 valid words. Letter sets don't repeat for nearly four years.
 - **Quartets** — picks one category per difficulty band. Categories sharing a tag never
   appear together, and any word that belongs to two chosen categories is kept off the
   board, so each puzzle has one solution. Recently used categories are rested.

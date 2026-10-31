@@ -94,24 +94,33 @@ function load() {
   } catch {
     db = {};
   }
-  db.settings ??= { theme: 'auto', inklingHard: false, showTimer: true, autocheck: false };
+  db.settings = { theme: 'auto', inklingHard: false, showTimer: true, autocheck: false, ...(db.settings || {}) };
   db.games ??= {};
   return db;
 }
 load();
 let saveTimer;
+let dirty = false;
 function persist() {
+  dirty = true;
   clearTimeout(saveTimer);
   saveTimer = setTimeout(flush, 120);
 }
+/** Write pending changes. Only writes when something changed, so an idle tab never overwrites newer data. */
 export function flush() {
   clearTimeout(saveTimer);
+  if (!dirty) return;
+  dirty = false;
   try {
     localStorage.setItem(KEY, JSON.stringify(db));
   } catch {
-    /* storage unavailable (private mode) — keep in memory */
+    /* storage unavailable (private mode): keep in memory */
   }
 }
+// Another tab saved: pick up its data so we build on it rather than overwrite it.
+addEventListener('storage', (e) => {
+  if (e.key === KEY && !dirty) load();
+});
 addEventListener('pagehide', flush);
 document.addEventListener('visibilitychange', () => document.hidden && flush());
 
@@ -127,6 +136,17 @@ export const store = {
     persist();
   },
   all: (game) => db.games[game] || {},
+  /** Drop records that `keep` rejects (used when a game's rules change). */
+  prune(game, keep) {
+    const g = db.games[game];
+    if (!g) return;
+    let changed = false;
+    for (const [d, r] of Object.entries(g)) if (!keep(r)) { delete g[d]; changed = true; }
+    if (changed) {
+      dirty = true;
+      flush();
+    }
+  },
   exportJSON: () => JSON.stringify({ app: 'elevenses', version: 1, exported: new Date().toISOString(), ...db }),
   importJSON(text) {
     const obj = JSON.parse(text);
@@ -140,10 +160,12 @@ export const store = {
       }
     }
     if (obj.settings) Object.assign(db.settings, obj.settings);
+    dirty = true;
     flush();
   },
   reset() {
     db = { settings: db.settings, games: {} };
+    dirty = true;
     flush();
   },
 };
@@ -255,22 +277,42 @@ export function closeModal() {
 addEventListener('keydown', (e) => e.key === 'Escape' && closeModal());
 export const modalOpen = () => !!openModal;
 
-export async function share(text) {
+/** The address friends can open, when the app runs at its own URL (not inside another page). */
+export function appUrl() {
+  try {
+    if (window.top !== window || !/^https?:$/.test(location.protocol) || /^(localhost|127\.)/.test(location.hostname)) return null;
+  } catch {
+    return null;
+  }
+  return location.origin + location.pathname.replace(/index\.html$/, '');
+}
+
+export async function share(text, { withLink = true } = {}) {
+  const url = withLink ? appUrl() : null;
+  const full = url ? `${text}\n${url}` : text;
   try {
     if (navigator.share && matchMedia('(pointer: coarse)').matches) {
-      await navigator.share({ text });
+      await navigator.share({ text: full });
       return;
     }
   } catch (e) {
     if (e?.name === 'AbortError') return;
   }
   try {
-    await navigator.clipboard.writeText(text);
+    await navigator.clipboard.writeText(full);
     toast('Copied to clipboard');
   } catch {
-    toast('Couldn’t copy — sorry!');
+    toast('Couldn’t copy that. Try again?');
   }
 }
+
+/** Ask the browser to keep this device's stats rather than clearing them under storage pressure. */
+export function persistStorage() {
+  try {
+    navigator.storage?.persist?.().catch(() => {});
+  } catch {}
+}
+export const isStandalone = () => matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
 
 /** Stat tiles row. items: [[value, label], ...] */
 export function statRow(items) {

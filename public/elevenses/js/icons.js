@@ -16,7 +16,7 @@ export const GAME_ICONS = {
     <rect x="7" y="21" width="12" height="11" rx="2" fill="var(--ink-correct-2)"/><rect x="21" y="21" width="12" height="11" rx="2" fill="#fff"/></svg>`,
   spokes: `<svg viewBox="0 0 40 40" aria-hidden="true"><rect x="3" y="3" width="34" height="34" rx="5" fill="var(--icon-bg)"/>
     <circle cx="20" cy="20" r="12.5" fill="#fff"/>
-    <g stroke="var(--icon-bg)" stroke-width="1.6">${[0, 1, 2, 3, 4, 5, 6, 7].map((k) => { const a = (k * Math.PI) / 4 + Math.PI / 8; return `<line x1="${20 + 4.5 * Math.cos(a)}" y1="${20 + 4.5 * Math.sin(a)}" x2="${20 + 12.5 * Math.cos(a)}" y2="${20 + 12.5 * Math.sin(a)}"/>`; }).join('')}</g>
+    <g stroke="var(--icon-bg)" stroke-width="1.6">${[0, 1, 2, 3, 4, 5].map((k) => { const a = (k * Math.PI) / 3 + Math.PI / 6; return `<line x1="${20 + 4.5 * Math.cos(a)}" y1="${20 + 4.5 * Math.sin(a)}" x2="${20 + 12.5 * Math.cos(a)}" y2="${20 + 12.5 * Math.sin(a)}"/>`; }).join('')}</g>
     <circle cx="20" cy="20" r="4.8" fill="var(--hub)" stroke="#fff" stroke-width="1.4"/></svg>`,
   quartets: `<svg viewBox="0 0 40 40" aria-hidden="true"><rect x="3" y="3" width="34" height="34" rx="5" fill="var(--icon-bg)"/>
     <rect x="7" y="7" width="12" height="12" rx="2.5" fill="var(--q1)"/><rect x="21" y="7" width="12" height="12" rx="2.5" fill="var(--q2)"/>

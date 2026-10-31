@@ -417,17 +417,18 @@ input[role='switch']:checked::after { transform: translateX(20px); }
 .sp-seg { fill: var(--surface-2); stroke: var(--bg); stroke-width: 3.5; transition: fill 0.12s; }
 .sp-g { cursor: pointer; }
 .sp-g:active .sp-seg { fill: var(--line-2); }
-.sp-g.used .sp-seg { fill: var(--line); }
-.sp-g.used .sp-letter { opacity: 0.3; }
+.sp-g.tap .sp-seg { animation: segtap 0.18s; }
+@keyframes segtap { 50% { fill: var(--line-2); } }
 .sp-letter { font: 800 28px var(--sans); fill: var(--ink); pointer-events: none; text-transform: uppercase; }
 .sp-letter.hub { fill: #fff; font-size: 32px; }
 .sp-hub { fill: var(--hub); stroke: var(--bg); stroke-width: 4; }
-.sp-g.hub.used .sp-hub { opacity: 0.45; }
-.sp-g.hub.used .sp-letter { opacity: 1; }
+.sp-g.hub.tap .sp-hub { animation: hubtap 0.18s; }
+@keyframes hubtap { 50% { opacity: 0.7; } }
+.sp-input.long { font-size: 24px; }
 .sp-btns { display: flex; gap: 12px; margin-top: 4px; }
 .sp-list ul.cols { columns: 2; column-gap: 20px; padding: 0; list-style: none; margin: 0 0 12px; }
 .sp-list li { padding: 5px 0; border-bottom: 1px solid var(--line); break-inside: avoid; font-size: 15px; }
-.sp-list li.nine { color: var(--hub); font-weight: 800; }
+.sp-list li.full { color: var(--hub); font-weight: 800; }
 .sp-list li.got::before { content: '✓ '; color: var(--inkling); font-weight: 800; }
 .sp-list li.miss { color: var(--ink-3); }
 .sp-ranks ul { list-style: none; padding: 0; margin: 10px 0; }
@@ -564,3 +565,13 @@ input[role='switch']:checked::after { transform: translateX(20px); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
+
+/* ---------- Install tip & share ---------- */
+.install-tip {
+  display: flex; gap: 12px; align-items: flex-start; margin: 0 0 14px; padding: 12px 14px; border-radius: 12px;
+  background: var(--surface); border: 1px dashed var(--line-2); font-size: 14px; color: var(--ink-2);
+}
+.install-tip strong { color: var(--ink); display: block; margin-bottom: 2px; }
+.install-tip .icon-btn { width: 32px; height: 32px; margin: -4px -6px 0 auto; }
+.install-tip .share-glyph { display: inline-block; vertical-align: -3px; }
+.share-app { display: flex; flex-direction: column; gap: 8px; }

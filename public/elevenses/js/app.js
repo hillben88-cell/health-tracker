@@ -1,7 +1,7 @@
 // Elevenses — app shell: routing, home, archive, stats, settings.
 import {
   h, svg, store, today, addDays, longDate, dayMonth, monthName, shortDate, puzzleNo, isPlayable, EPOCH, LAST,
-  modal, closeModal, toast, share, countdownEl, ICON, iconBtn, flush,
+  modal, closeModal, toast, share, countdownEl, ICON, iconBtn, flush, appUrl, persistStorage, isStandalone,
 } from './core.js';
 import { GAME_ICONS, LOGO } from './icons.js';
 import mini from './games/mini.js';
@@ -115,11 +115,42 @@ function homeScreen() {
         h('h1', { class: 'hero-date' }, dayMonth(d)),
         h('div', { class: 'hero-progress' }, h('div', { class: 'pips' }, GAMES.map((g) => h('i', { class: rec(g, d)?.done ? 'on' : rec(g, d) ? 'half' : '', style: { '--accent': g.color } }))), h('span', null, done === GAMES.length ? 'All done for today — lovely work.' : `${done} of ${GAMES.length} played today`)),
       ),
+      installTip(),
       h('section', { class: 'cards' }, cards),
       h('p', { class: 'home-foot' }, 'New puzzles every day at midnight. Puzzle No. ', puzzleNo(d), '.'),
     ),
     tabBar('home'),
   );
+}
+
+/** A one-off nudge for people who've opened the link in Safari but not installed it yet. */
+function installTip() {
+  let dismissed = false;
+  try {
+    dismissed = !!localStorage.getItem('elevenses.tipDismissed');
+  } catch {}
+  if (dismissed || isStandalone() || !appUrl()) return null;
+  const ios = /iPhone|iPad|iPod/.test(navigator.userAgent);
+  const tip = h(
+    'aside',
+    { class: 'install-tip', role: 'note' },
+    h(
+      'div',
+      null,
+      h('strong', null, 'Add Elevenses to your Home Screen'),
+      ios
+        ? h('span', null, 'In Safari, tap Share ', h('span', { class: 'share-glyph', html: ICON.share }), ' then “Add to Home Screen”. It opens full-screen, works offline and keeps your stats safe.')
+        : h('span', null, 'Use your browser menu’s “Install app” or “Add to Home screen”. It opens full-screen, works offline and keeps your stats safe.'),
+    ),
+    h('button', {
+      class: 'icon-btn', 'aria-label': 'Dismiss tip', html: ICON.close,
+      onclick: () => {
+        try { localStorage.setItem('elevenses.tipDismissed', '1'); } catch {}
+        tip.remove();
+      },
+    }),
+  );
+  return tip;
 }
 
 /* ---------------- Play ---------------- */
@@ -375,6 +406,14 @@ function settingsModal() {
     h(
       'div',
       { class: 'settings' },
+      appUrl()
+        ? h(
+            'div',
+            { class: 'setting share-app' },
+            h('div', null, h('strong', null, 'Share Elevenses with friends'), h('small', null, 'Send them the link. Everyone gets their own stats, saved on their own phone. Nothing is uploaded or shared.')),
+            h('button', { class: 'btn primary sm', onclick: () => share('Fancy a puzzle? Elevenses has six daily British puzzles: two crosswords, Inkling, Spokes, Quartets and Ramble.'), html: ICON.share + '<span>Share the link</span>' }),
+          )
+        : null,
       h('div', { class: 'setting' }, h('strong', null, 'Appearance'), seg('theme', [['auto', 'Auto'], ['light', 'Light'], ['dark', 'Dark']])),
       toggle('inklingHard', 'Inkling hard mode', 'Any revealed hints must be used in later guesses.'),
       toggle('showTimer', 'Show crossword timer', 'The clock still runs in the background for your stats.'),
@@ -392,7 +431,7 @@ function settingsModal() {
         ),
       ),
       h('details', { class: 'setting about' }, h('summary', null, h('strong', null, 'Add Elevenses to your Home Screen')), h('ol', null, h('li', null, 'Open this page in Safari.'), h('li', null, 'Tap the Share button.'), h('li', null, 'Choose “Add to Home Screen”, then “Add”.'), h('li', null, 'Open Elevenses from its icon — it runs full-screen and works offline.'))),
-      h('details', { class: 'setting about' }, h('summary', null, h('strong', null, 'About')), h('p', null, 'Elevenses is a small daily puzzle collection made in Britain: two crosswords, a word-guessing game, a word wheel, a grouping puzzle and a themed word search. Puzzles are generated from original British clue and category banks. Word lists derive from SCOWL (© Kevin Atkinson) and are used under its permissive licence.')),
+      h('details', { class: 'setting about' }, h('summary', null, h('strong', null, 'About')), h('p', null, 'Elevenses is a small daily puzzle collection made in Britain: two crosswords, a word-guessing game, a word wheel, a grouping puzzle and a themed word search. Puzzles are generated from original British clue and category banks. Word lists derive from SCOWL (© Kevin Atkinson) and are used under its permissive licence.'), h('p', null, 'Your progress and stats are stored only on this device, in this browser. There are no accounts and nothing is sent anywhere.')),
       h('button', {
         class: 'btn danger sm',
         onclick: (e) => {
@@ -417,6 +456,7 @@ function settingsModal() {
 
 /* ---------------- Boot ---------------- */
 route();
+addEventListener('pointerdown', persistStorage, { once: true });
 // Refresh the home screen when the day ticks over while the app is open.
 let lastDay = today();
 setInterval(() => {
