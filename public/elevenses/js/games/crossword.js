@@ -45,10 +45,15 @@ export function createCrossword({ id, name, size, blurb, tagline, color, tint, s
     perfect: (r) => r.win && !r.revealed && !r.checked,
 
     async load(date) {
-      const [grid, clues] = await Promise.all([dayData(id, date), fetchJSON('data/clues.json')]);
+      // The Mini uses its own, trickier clues where it has one, and the plain bank otherwise.
+      const [grid, clues, tricky] = await Promise.all([
+        dayData(id, date),
+        fetchJSON('data/clues.json'),
+        id === 'mini' ? fetchJSON('data/clues-mini.json').catch(() => ({})) : {},
+      ]);
       const { entries, numbers } = buildEntries(grid, size);
       for (const e of entries) {
-        const list = clues[e.answer] || ['(clue missing)'];
+        const list = tricky[e.answer] || clues[e.answer] || ['(clue missing)'];
         e.clue = list[hash(date + e.answer) % list.length];
       }
       return { grid, entries, numbers };

@@ -3,10 +3,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { CONTENT, lexicon, shuffle, pick } from './util.mjs';
 
-/** Parse every content/clues-*.txt file into Map(word -> [clues]). */
-export function loadClues() {
+function readClueFiles(files) {
   const bank = new Map();
-  const files = fs.readdirSync(CONTENT).filter((f) => /^clues-.*\.txt$/.test(f)).sort();
   for (const f of files) {
     for (const raw of fs.readFileSync(path.join(CONTENT, f), 'utf8').split('\n')) {
       const line = raw.trim();
@@ -21,6 +19,16 @@ export function loadClues() {
     }
   }
   return bank;
+}
+
+/** The main clue bank: every content/clues-*.txt except the Mini's tricky clues. Map(word -> [clues]). */
+export function loadClues() {
+  return readClueFiles(fs.readdirSync(CONTENT).filter((f) => /^clues-.*\.txt$/.test(f) && !/^clues-mini/.test(f)).sort());
+}
+
+/** Trickier clues used by the Mini (content/clues-mini*.txt). Map(word -> [clues]). */
+export function loadMiniClues() {
+  return readClueFiles(fs.readdirSync(CONTENT).filter((f) => /^clues-mini.*\.txt$/.test(f)).sort());
 }
 
 /** Maximal runs of white cells (length >= 2) in a template (array of strings, '#' = block). */
@@ -226,10 +234,14 @@ export function randomLattice(rand) {
 }
 
 /** Build the word index for crosswords: only words with clues; quality score from frequency. */
-export function crosswordIndex(bank, lengths) {
+/**
+ * Word index for crosswords: only words with clues. Fill quality score comes from word frequency,
+ * plus `bonus` for words in `preferred` (the Mini uses this to favour words with tricky clues).
+ */
+export function crosswordIndex(bank, lengths, preferred = null, bonus = 0) {
   const lex = lexicon();
   const words = [...bank.keys()].filter((w) => lengths.includes(w.length));
-  const score = new Map(words.map((w) => [w, lex.get(w)?.zipf ?? 2.5]));
+  const score = new Map(words.map((w) => [w, (lex.get(w)?.zipf ?? 2.5) + (preferred?.has(w) ? bonus : 0)]));
   return new WordIndex(words, score);
 }
 

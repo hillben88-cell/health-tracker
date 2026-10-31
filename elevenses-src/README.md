@@ -79,6 +79,7 @@ All puzzle data is generated ahead of time by `scripts/build.mjs` into
 | Source file (`content/`) | Used for |
 | --- | --- |
 | `clues-*.txt` | ~3,400 original clues, British spelling and references. `answer = clue \| alternative clue` |
+| `clues-mini.txt` | ~1,000 trickier clues (misdirection, wordplay, British references) used by the Mini in place of the plain ones. The Mini generator strongly prefers words that have one. |
 | `quartets.txt` | ~340 categories with difficulty levels and tags. `level \| tags \| Title \| MEMBERS, …` |
 | `ramble.txt` | ~150 themes. `Theme \| Hint \| WORDS, …` |
 | `inkling-answers.txt` | ~1,740 answer words (one per line) |

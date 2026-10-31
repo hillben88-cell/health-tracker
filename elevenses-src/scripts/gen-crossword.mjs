@@ -1,6 +1,6 @@
 // Mini (5x5) and Midi (9x9 British-style) crossword generators.
 import { rng, hash } from './lib/util.mjs';
-import { loadClues, crosswordIndex, fill, miniTemplates, randomLattice, slotsOf } from './lib/crossword.mjs';
+import { loadClues, loadMiniClues, crosswordIndex, fill, miniTemplates, randomLattice, slotsOf } from './lib/crossword.mjs';
 
 function recentSet(lastUsed, day, window) {
   const s = new Set();
@@ -10,7 +10,12 @@ function recentSet(lastUsed, day, window) {
 
 export function genCrosswords(N, { log = () => {} } = {}) {
   const bank = loadClues();
-  const miniIdx = crosswordIndex(bank, [3, 4, 5]);
+  const miniClues = loadMiniClues();
+  // The Mini strongly prefers words that have a tricky clue, so most entries get one.
+  const miniIdx = crosswordIndex(bank, [3, 4, 5], miniClues, 6);
+  // Weak fill that makes a Mini feel flat: only used when nothing else fits.
+  const MINI_WEAK = 'dos yea pap deb meg ifs ups ahs has doer newer wider ell ism pol nth eta ems ids abs ads ins hes sis mas tho yep yup huh duh meh oho pis hos'.split(' ');
+  for (const w of MINI_WEAK) if (miniIdx.score.has(w)) miniIdx.score.set(w, miniIdx.score.get(w) - 6);
   const midiIdx = crosswordIndex(bank, [3, 4, 5, 6, 7, 8, 9]);
   // Mini templates that fill reliably, weighted towards the more open shapes.
   const tpls = miniTemplates().filter((t) => {
@@ -20,6 +25,7 @@ export function genCrosswords(N, { log = () => {} } = {}) {
   const mini = [], midi = [];
   const lastMini = new Map(), lastMidi = new Map();
   const used = new Set();
+  const usedMini = new Set();
   const t0 = Date.now();
   for (let day = 0; day < N; day++) {
     // ---- Mini
@@ -36,6 +42,7 @@ export function genCrosswords(N, { log = () => {} } = {}) {
       const w = s.cells.map((i) => flat[i]).join('');
       lastMini.set(w, day);
       used.add(w);
+      usedMini.add(w);
     }
     mini.push(flat);
 
@@ -59,14 +66,16 @@ export function genCrosswords(N, { log = () => {} } = {}) {
   }
   const clues = {};
   for (const w of [...used].sort()) clues[w] = bank.get(w);
-  return { mini, midi, clues };
+  const cluesMini = {};
+  for (const w of [...usedMini].sort()) if (miniClues.has(w)) cluesMini[w] = miniClues.get(w);
+  return { mini, midi, clues, cluesMini };
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
   const n = +process.argv[2] || 20;
   const t0 = Date.now();
-  const { mini, midi, clues } = genCrosswords(n, { log: console.log });
-  console.log('ms', Date.now() - t0, 'clued words used', Object.keys(clues).length);
+  const { mini, midi, clues, cluesMini } = genCrosswords(n, { log: console.log });
+  console.log('ms', Date.now() - t0, 'clued words used', Object.keys(clues).length, '| mini words with tricky clues', Object.keys(cluesMini).length);
   const show = (flat, size) => { for (let i = 0; i < size; i++) console.log('  ' + flat.slice(i * size, i * size + size).split('').join(' ')); console.log(); };
   show(mini[0], 5); show(mini[1], 5); show(midi[0], 9);
 }

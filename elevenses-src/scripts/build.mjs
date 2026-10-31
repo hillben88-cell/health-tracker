@@ -48,24 +48,34 @@ if (want('ramble')) {
   writeByYear('ramble', days.map((d) => ({ n: themes[d.t].n, c: themes[d.t].c, g: d.g, w: d.w, p: d.p })));
 }
 if (want('crossword')) {
-  const { mini, midi, clues } = genCrosswords(N, { log: console.log });
+  const { mini, midi, clues, cluesMini } = genCrosswords(N, { log: console.log });
   writeByYear('mini', mini);
   writeByYear('midi', midi);
   console.log(`  clues: ${Object.keys(clues).length} words, ${(writeJSON('clues.json', clues) / 1024).toFixed(0)} KB`);
+  console.log(`  mini clues: ${Object.keys(cluesMini).length} words, ${(writeJSON('clues-mini.json', cluesMini) / 1024).toFixed(0)} KB`);
 }
 if (only === 'clues') {
   // Re-export clue text for the existing grids (edit clues without changing any puzzle).
-  const { loadClues, slotsOf } = await import('./lib/crossword.mjs');
+  const { loadClues, loadMiniClues, slotsOf } = await import('./lib/crossword.mjs');
   const bank = loadClues();
+  const miniBank = loadMiniClues();
   const used = new Set();
+  const usedMini = new Set();
   for (const [game, size] of [['mini', 5], ['midi', 9]]) {
     for (const f of fs.readdirSync(path.join(OUT, game))) {
       for (const flat of JSON.parse(fs.readFileSync(path.join(OUT, game, f), 'utf8')).days) {
         const rows = Array.from({ length: size }, (_, r) => flat.slice(r * size, r * size + size));
-        for (const s of slotsOf(rows)) used.add(s.cells.map((i) => flat[i]).join(''));
+        for (const s of slotsOf(rows)) {
+          const w = s.cells.map((i) => flat[i]).join('');
+          used.add(w);
+          if (game === 'mini') usedMini.add(w);
+        }
       }
     }
   }
+  const cluesMini = {};
+  for (const w of [...usedMini].sort()) if (miniBank.has(w)) cluesMini[w] = miniBank.get(w);
+  console.log(`  mini clues: ${Object.keys(cluesMini).length} words, ${(writeJSON('clues-mini.json', cluesMini) / 1024).toFixed(0)} KB`);
   const clues = {};
   for (const w of [...used].sort()) {
     if (!bank.has(w)) throw new Error(`No clue for "${w}" — it is used in a grid, so keep at least one clue for it.`);
