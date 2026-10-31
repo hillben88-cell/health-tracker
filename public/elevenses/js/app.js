@@ -1,7 +1,7 @@
 // Elevenses — app shell: routing, home, archive, stats, settings.
 import {
   h, svg, store, today, addDays, longDate, dayMonth, monthName, shortDate, puzzleNo, isPlayable, EPOCH, LAST,
-  modal, closeModal, toast, share, countdownEl, ICON, iconBtn, flush, appUrl, persistStorage, isStandalone,
+  modal, closeModal, modalOpen, toast, share, countdownEl, ICON, iconBtn, flush, appUrl, persistStorage, isStandalone,
 } from './core.js';
 import { GAME_ICONS, LOGO } from './icons.js';
 import mini from './games/mini.js';
@@ -123,24 +123,54 @@ function homeScreen() {
   );
 }
 
-/** A one-off nudge for people who've opened the link in Safari but not installed it yet. */
+/* ---------------- Install ---------------- */
+// Android (and desktop Chrome/Edge) offer an install prompt we can trigger from our own button.
+// iPhone has no such prompt, so iPhone users get Safari's "Add to Home Screen" steps instead.
+let installPrompt = null;
+const refreshHome = () => !parse()[0] && !modalOpen() && route();
+addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault(); // use our Install button rather than the browser's own banner
+  installPrompt = e;
+  refreshHome();
+});
+addEventListener('appinstalled', () => {
+  installPrompt = null;
+  toast('Installed. Open Elevenses from your Home screen.', { ms: 3000 });
+  refreshHome();
+});
+async function installApp() {
+  const p = installPrompt;
+  if (!p) return;
+  installPrompt = null;
+  try {
+    await p.prompt();
+    await p.userChoice;
+  } catch {}
+  refreshHome();
+}
+
+/** A one-off nudge for people who've opened the link in a browser but not installed it yet. */
 function installTip() {
   let dismissed = false;
   try {
     dismissed = !!localStorage.getItem('elevenses.tipDismissed');
   } catch {}
   if (dismissed || isStandalone() || !appUrl()) return null;
-  const ios = /iPhone|iPad|iPod/.test(navigator.userAgent);
+  const ios = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const why = 'It opens full-screen, works offline and keeps your stats safe.';
   const tip = h(
     'aside',
     { class: 'install-tip', role: 'note' },
     h(
       'div',
       null,
-      h('strong', null, 'Add Elevenses to your Home Screen'),
-      ios
-        ? h('span', null, 'In Safari, tap Share ', h('span', { class: 'share-glyph', html: ICON.share }), ' then “Add to Home Screen”. It opens full-screen, works offline and keeps your stats safe.')
-        : h('span', null, 'Use your browser menu’s “Install app” or “Add to Home screen”. It opens full-screen, works offline and keeps your stats safe.'),
+      h('strong', null, installPrompt ? 'Install Elevenses' : 'Add Elevenses to your Home Screen'),
+      installPrompt
+        ? h('span', null, `Put it on your Home screen like any other app. ${why}`)
+        : ios
+          ? h('span', null, 'In Safari, tap Share ', h('span', { class: 'share-glyph', html: ICON.share }), ` then “Add to Home Screen”. ${why}`)
+          : h('span', null, `Use your browser menu’s “Install app” or “Add to Home screen”. ${why}`),
+      installPrompt ? h('button', { class: 'btn primary sm install-btn', onclick: installApp }, 'Install') : null,
     ),
     h('button', {
       class: 'icon-btn', 'aria-label': 'Dismiss tip', html: ICON.close,
@@ -430,7 +460,15 @@ function settingsModal() {
           fileInput,
         ),
       ),
-      h('details', { class: 'setting about' }, h('summary', null, h('strong', null, 'Add Elevenses to your Home Screen')), h('ol', null, h('li', null, 'Open this page in Safari.'), h('li', null, 'Tap the Share button.'), h('li', null, 'Choose “Add to Home Screen”, then “Add”.'), h('li', null, 'Open Elevenses from its icon — it runs full-screen and works offline.'))),
+      installPrompt && !isStandalone()
+        ? h('div', { class: 'setting toggle' }, h('div', null, h('strong', null, 'Install Elevenses'), h('small', null, 'Add it to your Home screen. It opens full-screen and works offline.')), h('button', { class: 'btn primary sm', onclick: () => { closeModal(); installApp(); } }, 'Install'))
+        : null,
+      h('details', { class: 'setting about' }, h('summary', null, h('strong', null, 'Add Elevenses to your Home Screen')),
+        h('p', null, h('b', null, 'iPhone or iPad')),
+        h('ol', null, h('li', null, 'Open the Elevenses link in Safari.'), h('li', null, 'Tap the Share button.'), h('li', null, 'Choose “Add to Home Screen”, then “Add”.')),
+        h('p', null, h('b', null, 'Android')),
+        h('ol', null, h('li', null, 'Open the Elevenses link in Chrome.'), h('li', null, 'Tap Install on the home screen tip, or ⋮ → “Install app”.')),
+        h('p', null, 'Then open Elevenses from its icon. It runs full-screen and works offline.')),
       h('details', { class: 'setting about' }, h('summary', null, h('strong', null, 'About')), h('p', null, 'Elevenses is a small daily puzzle collection made in Britain: two crosswords, a word-guessing game, a word wheel, a grouping puzzle and a themed word search. Puzzles are generated from original British clue and category banks. Word lists derive from SCOWL (© Kevin Atkinson) and are used under its permissive licence.'), h('p', null, 'Your progress and stats are stored only on this device, in this browser. There are no accounts and nothing is sent anywhere.')),
       h('button', {
         class: 'btn danger sm',

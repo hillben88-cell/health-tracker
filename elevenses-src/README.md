@@ -58,8 +58,9 @@ separate Vercel project serves *only* the puzzles:
 3. Deploy. Name the project something like `elevenses` to get a tidy
    `https://elevenses….vercel.app` address. Production deployments are public by
    default, unlike preview links, which ask visitors to sign in to Vercel.
-4. Share that address. Each friend opens it in Safari and taps Share → Add to Home
-   Screen. A tip on the home screen walks them through it.
+4. Share that address. On iPhone, friends open it in Safari and tap Share → Add to
+   Home Screen. On Android, they open it in Chrome and tap **Install** on the home
+   screen tip (or ⋮ → Install app). The tip shows the right steps for each phone.
 
 Stats stay on the device, so a friend who switches phones should use **Settings →
 Export** first, then **Import** on the new phone. Installing to the Home Screen

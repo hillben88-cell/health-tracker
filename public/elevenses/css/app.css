@@ -580,4 +580,6 @@ input[role='switch']:checked::after { transform: translateX(20px); }
 .install-tip strong { color: var(--ink); display: block; margin-bottom: 2px; }
 .install-tip .icon-btn { width: 32px; height: 32px; margin: -4px -6px 0 auto; }
 .install-tip .share-glyph { display: inline-block; vertical-align: -3px; }
+.install-tip .install-btn { margin-top: 10px; }
+.install-tip > div { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; }
 .share-app { display: flex; flex-direction: column; gap: 8px; }
