@@ -10,8 +10,9 @@ import inkling from './games/inkling.js';
 import spokes from './games/spokes.js';
 import quartets from './games/quartets.js';
 import ramble from './games/ramble.js';
+import quiz from './games/quiz.js';
 
-export const GAMES = [mini, midi, inkling, spokes, quartets, ramble];
+export const GAMES = [mini, midi, inkling, spokes, quartets, ramble, quiz];
 const byId = Object.fromEntries(GAMES.map((g) => [g.id, g]));
 const app = document.getElementById('app');
 let cleanup = null;
@@ -441,7 +442,7 @@ function settingsModal() {
             'div',
             { class: 'setting share-app' },
             h('div', null, h('strong', null, 'Share Elevenses with friends'), h('small', null, 'Send them the link. Everyone gets their own stats, saved on their own phone. Nothing is uploaded or shared.')),
-            h('button', { class: 'btn primary sm', onclick: () => share('Fancy a puzzle? Elevenses has six daily British puzzles: two crosswords, Inkling, Spokes, Quartets and Ramble.'), html: ICON.share + '<span>Share the link</span>' }),
+            h('button', { class: 'btn primary sm', onclick: () => share('Fancy a puzzle? Elevenses has seven daily British puzzles: two crosswords, Inkling, Spokes, Quartets, Ramble and a Pub Quiz.'), html: ICON.share + '<span>Share the link</span>' }),
           )
         : null,
       h('div', { class: 'setting' }, h('strong', null, 'Appearance'), seg('theme', [['auto', 'Auto'], ['light', 'Light'], ['dark', 'Dark']])),

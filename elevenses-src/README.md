@@ -1,7 +1,7 @@
 # Elevenses — daily British puzzles
 
 Elevenses is a small daily-puzzle web app built for iPhone (it installs to the Home
-Screen and runs full-screen and offline). It has six games:
+Screen and runs full-screen and offline). It has seven games:
 
 | Game | What it is |
 | --- | --- |
@@ -11,6 +11,7 @@ Screen and runs full-screen and offline). It has six games:
 | **Spokes** | A seven-letter word wheel: make words of four or more letters that use the hub letter. Letters can be reused. Every wheel has at least one *Full Circle* word using all seven letters (+10 points). Ranks run from *Stabilisers* to *Yellow Jersey* and *Hors Catégorie*. **Hints** show words left by first letter and length, two-letter starts, and can reveal the start of a word. |
 | **Quartets** | Sixteen words, four hidden groups of four, four lives. Categories are British-flavoured. **Hints** reveal a group's theme (easiest first), then mark its words. |
 | **Ramble** | A themed word trail: every letter of the 6×7 grid belongs to one theme word. Find bonus words to earn hints. |
+| **Pub Quiz** | Twenty classic multiple-choice pub quiz questions a day, two from each of ten rounds (general knowledge, history, geography, science, music, TV & film, sport, books, food & drink, Britain). Easiest first, one 50:50 per quiz. Scores earn a title, from *Wooden Spoon* (0–4) to *Perfect Pint* (20). |
 
 Every game has a new puzzle each day at local midnight. Puzzle No. 1 was on
 1 September 2026, and puzzles are pre-generated to 31 December 2030. The
@@ -82,6 +83,7 @@ All puzzle data is generated ahead of time by `scripts/build.mjs` into
 | `clues-mini.txt` | ~1,000 trickier clues (misdirection, wordplay, British references) used by the Mini in place of the plain ones. The Mini generator strongly prefers words that have one. |
 | `quartets.txt` | ~340 categories with difficulty levels and tags. `level \| tags \| Title \| MEMBERS, …` |
 | `ramble.txt` | ~150 themes. `Theme \| Hint \| WORDS, …` |
+| `pubquiz.txt` | ~840 questions in ten `## code \| Round name` sections. `difficulty (1–3) \| question \| answer \| wrong \| wrong \| wrong` |
 | `inkling-answers.txt` | ~1,740 answer words (one per line) |
 | `blocklist.txt` | Words never used as generated answers |
 
@@ -101,13 +103,17 @@ The generators:
 - **Ramble** — chooses theme words totalling 42 letters, then tiles the grid with
   non-crossing paths. A partition check keeps the remaining space fillable.
 - **Inkling** — a seeded shuffle of the answer list.
+- **Pub Quiz** — takes two questions from each round, working through a shuffled
+  cycle per round, so no question comes back until its whole round has been used
+  (about every five to six weeks). Questions are ordered easiest first, never two from
+  the same round in a row. Answer order is shuffled per day.
 
 ### Rebuilding or adding puzzles
 
 ```bash
 pip install wordfreq            # only needed to regenerate the lexicon
 node elevenses-src/scripts/build.mjs            # everything (~10 minutes, crosswords are the slow bit)
-node elevenses-src/scripts/build.mjs quartets   # just one game: inkling|spokes|quartets|ramble|crossword|dict
+node elevenses-src/scripts/build.mjs quartets   # just one game: inkling|spokes|quartets|ramble|quiz|crossword|dict
 node elevenses-src/scripts/build.mjs clues      # re-export edited clue text without changing any grids
 ```
 

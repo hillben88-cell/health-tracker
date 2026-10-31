@@ -1,7 +1,7 @@
 {
   "name": "Elevenses — daily puzzles",
   "short_name": "Elevenses",
-  "description": "Daily British puzzles: Mini and Midi crosswords, Inkling, Spokes, Quartets and Ramble.",
+  "description": "Daily British puzzles: Mini and Midi crosswords, Inkling, Spokes, Quartets, Ramble and a Pub Quiz.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

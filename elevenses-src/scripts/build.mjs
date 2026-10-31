@@ -1,6 +1,6 @@
 // Build every Elevenses puzzle from EPOCH to END into public/elevenses/data.
 //   node elevenses-src/scripts/build.mjs            (everything)
-//   node elevenses-src/scripts/build.mjs quartets   (just one game: inkling|spokes|quartets|ramble|crossword|dict)
+//   node elevenses-src/scripts/build.mjs quartets   (just one game: inkling|spokes|quartets|ramble|quiz|crossword|dict)
 import fs from 'node:fs';
 import path from 'node:path';
 import { EPOCH, END, OUT, dayCount, dateOf, writeJSON } from './lib/util.mjs';
@@ -8,6 +8,7 @@ import { genInkling, genSpokes, buildDictionary } from './gen-words.mjs';
 import { genQuartets } from './gen-quartets.mjs';
 import { genRamble } from './gen-ramble.mjs';
 import { genCrosswords } from './gen-crossword.mjs';
+import { genQuiz } from './gen-quiz.mjs';
 
 const N = dayCount();
 const only = process.argv[2];
@@ -46,6 +47,11 @@ if (want('quartets')) writeByYear('quartets', genQuartets(N));
 if (want('ramble')) {
   const { themes, days } = genRamble(N);
   writeByYear('ramble', days.map((d) => ({ n: themes[d.t].n, c: themes[d.t].c, g: d.g, w: d.w, p: d.p })));
+}
+if (want('quiz')) {
+  const { bank, days } = genQuiz(N);
+  writeByYear('quiz', days); // clears data/quiz first, so the bank is written after
+  console.log(`  quiz bank: ${bank.q.length} questions, ${(writeJSON('quiz/bank.json', bank) / 1024).toFixed(0)} KB`);
 }
 if (want('crossword')) {
   const { mini, midi, clues, cluesMini } = genCrosswords(N, { log: console.log });

@@ -21,6 +21,10 @@ export const GAME_ICONS = {
   quartets: `<svg viewBox="0 0 40 40" aria-hidden="true"><rect x="3" y="3" width="34" height="34" rx="5" fill="var(--icon-bg)"/>
     <rect x="7" y="7" width="12" height="12" rx="2.5" fill="var(--q1)"/><rect x="21" y="7" width="12" height="12" rx="2.5" fill="var(--q2)"/>
     <rect x="7" y="21" width="12" height="12" rx="2.5" fill="var(--q3)"/><rect x="21" y="21" width="12" height="12" rx="2.5" fill="#fff"/></svg>`,
+  quiz: `<svg viewBox="0 0 40 40" aria-hidden="true"><rect x="3" y="3" width="34" height="34" rx="5" fill="var(--icon-bg)"/>
+    <circle cx="20" cy="20" r="12.5" fill="#fff"/><circle cx="20" cy="20" r="10" fill="none" stroke="var(--icon-bg)" stroke-width="1.2" stroke-dasharray="2 2"/>
+    <path d="M16.6 16.4a3.5 3.5 0 0 1 6.8 1.1c0 2.4-3.4 2.6-3.4 5" fill="none" stroke="var(--icon-bg)" stroke-width="2.6" stroke-linecap="round"/>
+    <circle cx="20" cy="26.2" r="1.6" fill="var(--icon-bg)"/></svg>`,
   ramble: `<svg viewBox="0 0 40 40" aria-hidden="true"><rect x="3" y="3" width="34" height="34" rx="5" fill="var(--icon-bg)"/>
     <path d="M10.5 10.5 L20 10.5 L29.5 20 L20 29.5 L10.5 29.5" fill="none" stroke="var(--ramble-path)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
     <g fill="#fff">${[0, 1, 2].flatMap((r) => [0, 1, 2].map((c) => `<circle cx="${10.5 + c * 9.5}" cy="${10.5 + r * 9.5}" r="2.9"/>`)).join('')}</g></svg>`,

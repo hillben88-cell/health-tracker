@@ -249,6 +249,11 @@ export function toast(msg, { ms = 1600, tone = '' } = {}) {
   }, ms);
 }
 
+/** Clear any toast still showing (e.g. before a result sheet opens). */
+export function clearToasts() {
+  toastHost?.replaceChildren();
+}
+
 let openModal = null;
 export function modal(content, { title, cls = '', onClose } = {}) {
   closeModal();

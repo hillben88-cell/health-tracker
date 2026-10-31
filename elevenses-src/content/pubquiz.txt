@@ -1,0 +1,860 @@
+# Pub Quiz question bank.
+# Sections start "## code | Category name". Each question line:
+#   difficulty (1 easy, 2 medium, 3 hard) | question | correct answer | wrong | wrong | wrong
+# Keep facts timeless (no "current" holders or records that change). No "|" inside text.
+
+## gk | General Knowledge
+1 | How many sides does a hexagon have? | Six | Five | Seven | Eight
+1 | What colour is the 'Black Box' flight recorder on an aeroplane? | Orange | Black | Red | Yellow
+1 | How many days are there in a leap year? | 366 | 365 | 364 | 367
+1 | Which day of the week is named after the Norse god Thor? | Thursday | Tuesday | Wednesday | Friday
+1 | How many minutes are there in a day? | 1,440 | 1,240 | 1,640 | 1,360
+1 | What is the name of the bell inside the Elizabeth Tower in Westminster? | Big Ben | Great Paul | Great Tom | Old Bailey
+1 | What do you call a baby kangaroo? | Joey | Kit | Cub | Calf
+1 | How many players are there in a netball team on court? | Seven | Six | Five | Eight
+1 | Which zodiac sign is represented by the scales? | Libra | Gemini | Virgo | Aquarius
+1 | What is the plural of 'mouse' when it refers to the animal? | Mice | Mouses | Meese | Mousen
+1 | What colour do you get by mixing blue and yellow paint? | Green | Purple | Orange | Brown
+1 | In the phonetic alphabet, what word represents the letter 'D'? | Delta | Dog | David | Danger
+1 | How many hours are there in a week? | 168 | 148 | 172 | 144
+1 | What is the name for a group of crows? | A murder | A parliament | A gaggle | A pride
+1 | Which wedding anniversary is celebrated with gold? | 50th | 25th | 40th | 60th
+1 | What is the highest-scoring letter in English Scrabble alongside Q? | Z | X | J | K
+1 | How many strings does a standard guitar have? | Six | Five | Seven | Four
+1 | What is the main ingredient in guacamole? | Avocado | Pea | Cucumber | Courgette
+1 | Which planet is known as the Red Planet? | Mars | Venus | Jupiter | Mercury
+1 | What shape is a 'Toblerone' bar's cross-section? | Triangle | Square | Circle | Hexagon
+1 | In which country would you find the city of Timbuktu? | Mali | Niger | Chad | Morocco
+1 | How many legs does a spider have? | Eight | Six | Ten | Twelve
+1 | What does the 'S' stand for in the clothing size 'S'? | Small | Standard | Slim | Short
+1 | Which children's TV character lives in a pineapple under the sea? | SpongeBob SquarePants | Peppa Pig | Fireman Sam | Bob the Builder
+1 | What is a female fox called? | Vixen | Doe | Sow | Jenny
+2 | What is the national flower of Wales? | Daffodil | Thistle | Rose | Shamrock
+2 | Which wedding anniversary is marked with silver? | 25th | 10th | 20th | 30th
+2 | What is a group of owls called? | A parliament | A murder | A congregation | A flock
+2 | In which year did decimalisation come to UK currency? | 1971 | 1966 | 1969 | 1975
+2 | How many pence were in an old shilling? | 12 | 10 | 20 | 24
+2 | What is the fear of spiders called? | Arachnophobia | Agoraphobia | Claustrophobia | Acrophobia
+2 | What is the longest bone in the human body? | Femur | Tibia | Humerus | Fibula
+2 | Which London street is famous for its tailors? | Savile Row | Carnaby Street | Bond Street | Jermyn Street
+2 | What does the abbreviation 'RSVP' stand for in French? | Répondez s'il vous plaît | Réservez s'il vous plaît | Revenez s'il vous plaît | Rappelez s'il vous plaît
+2 | How many pieces does each player start with in chess? | 16 | 12 | 14 | 18
+2 | What is the name of the paper-folding art from Japan? | Origami | Ikebana | Bonsai | Kirigami
+2 | How many furlongs are there in a mile? | Eight | Ten | Six | Twelve
+2 | What kind of creature is a Portuguese man o' war? | Siphonophore (jellyfish-like) | Shark | Squid | Crab
+2 | What is the collective noun for a group of lions? | Pride | Pack | Herd | Troop
+2 | Which colour is the 'Mayfair' property on a UK Monopoly board? | Dark blue | Green | Red | Yellow
+2 | How much is a 'monkey' in British slang? | £500 | £50 | £25 | £1,000
+2 | How much is a 'pony' in British slang? | £25 | £50 | £100 | £5
+2 | What is the name of the knot used to make a fixed loop at the end of a rope? | Bowline | Reef knot | Clove hitch | Sheepshank
+2 | Which gas makes up most of the Earth's atmosphere? | Nitrogen | Oxygen | Carbon dioxide | Argon
+2 | What is the name of the imaginary line at 0 degrees longitude? | Prime Meridian | Equator | Tropic of Cancer | International Date Line
+2 | In which city is the Brandenburg Gate? | Berlin | Munich | Vienna | Hamburg
+2 | Who painted the ceiling of the Sistine Chapel? | Michelangelo | Leonardo da Vinci | Raphael | Botticelli
+2 | What is a baby swan called? | Cygnet | Gosling | Duckling | Fledgling
+2 | How many squares are there on a chessboard? | 64 | 81 | 49 | 100
+2 | Which board game features Colonel Mustard? | Cluedo | Monopoly | Scrabble | Risk
+2 | What is the name of the ring-shaped coral island formed around a lagoon? | Atoll | Archipelago | Isthmus | Fjord
+2 | What does a sommelier specialise in? | Wine | Cheese | Coffee | Bread
+2 | What is the term for a word that reads the same backwards as forwards? | Palindrome | Anagram | Homophone | Acronym
+2 | What does the 'N' in 'NATO' stand for? | North | National | Naval | New
+3 | What is a 'quidnunc'? | A gossip | A coin collector | A young monk | A small boat
+3 | What name is given to the dot over a lowercase 'i'? | Tittle | Jot | Pip | Speck
+3 | How many dots are there on a standard six-sided die in total? | 21 | 18 | 24 | 20
+3 | What is the name for the plastic tip at the end of a shoelace? | Aglet | Ferrule | Grommet | Toggle
+3 | What is vexillology the study of? | Flags | Volcanoes | Shells | Handwriting
+3 | Which wedding anniversary is traditionally paper? | 1st | 5th | 10th | 2nd
+3 | In which year did the Channel Tunnel open? | 1994 | 1989 | 1997 | 1991
+3 | How many pounds are there in a stone? | 14 | 12 | 16 | 10
+3 | What is the name of the triangular sail at the front of a yacht? | Jib | Mainsail | Spinnaker | Mizzen
+3 | What is campanology? | Bell-ringing | Camping | Cave exploring | Bird-watching
+3 | How many sides does a dodecagon have? | 12 | 10 | 14 | 20
+3 | Which Roman numeral represents 500? | D | L | C | M
+3 | What is the national animal of Scotland? | Unicorn | Red deer | Golden eagle | Highland cow
+3 | What does 'ibid.' mean when used in a footnote? | In the same place | See also | For example | Note well
+3 | What is the name for a group of flamingos? | A flamboyance | A pandemonium | A conspiracy | A dazzle
+3 | Which metal is liquid at room temperature? | Mercury | Gallium | Caesium | Lead
+3 | What was the name of the dog that found the stolen World Cup trophy in 1966? | Pickles | Patch | Rover | Biscuit
+3 | In which Scottish city is the Royal Yacht Britannia moored? | Edinburgh | Glasgow | Aberdeen | Dundee
+3 | Which country gifted the Statue of Liberty to the United States? | France | Britain | Spain | Italy
+2 | How many teeth does an adult human usually have, including wisdom teeth? | 32 | 28 | 30 | 36
+1 | Which fruit is used to make a traditional Seville marmalade? | Orange | Lemon | Grapefruit | Lime
+2 | What is the smallest prime number? | 2 | 1 | 3 | 0
+2 | Which famous ship sank in 1912 on its maiden voyage? | Titanic | Lusitania | Britannic | Mary Rose
+1 | How many sides does a 50p coin have? | Seven | Six | Eight | Five
+2 | What is the name of the fairy in Peter Pan? | Tinker Bell | Silvermist | Pixie Hollow | Wendy
+2 | Which item of clothing is a 'trilby'? | Hat | Coat | Shoe | Scarf
+2 | How many lines are in a limerick? | Five | Four | Six | Eight
+2 | How many lines does a sonnet have? | 14 | 12 | 16 | 10
+1 | What is the opposite of 'nocturnal'? | Diurnal | Lunar | Vernal | Crepuscular
+3 | Which is the only mammal capable of true flight? | Bat | Flying squirrel | Sugar glider | Colugo
+2 | What is the name of the London Underground's map designer, whose 1933 design is still used? | Harry Beck | Frank Pick | Edward Johnston | Charles Holden
+
+## hist | History
+1 | In which year did the Battle of Hastings take place? | 1066 | 1086 | 1016 | 1166
+1 | Who was the first President of the United States? | George Washington | Thomas Jefferson | Abraham Lincoln | John Adams
+1 | Which Tudor king had six wives? | Henry VIII | Henry VII | Edward VI | Richard III
+1 | In which year did the Second World War end? | 1945 | 1944 | 1946 | 1939
+1 | Who was the British Prime Minister for most of the Second World War? | Winston Churchill | Neville Chamberlain | Clement Attlee | Anthony Eden
+1 | What was the name of the ship that carried the Pilgrims to America in 1620? | Mayflower | Endeavour | Golden Hind | Victory
+1 | Which wall was built across northern England by the Romans? | Hadrian's Wall | Antonine Wall | Offa's Dyke | The Great Wall
+1 | Who was the first woman to become UK Prime Minister? | Margaret Thatcher | Theresa May | Barbara Castle | Shirley Williams
+1 | In which year did the Berlin Wall fall? | 1989 | 1991 | 1985 | 1979
+1 | Which ancient civilisation built the pyramids at Giza? | Egyptians | Romans | Greeks | Aztecs
+1 | Who was the first man to walk on the Moon? | Neil Armstrong | Buzz Aldrin | Yuri Gagarin | Michael Collins
+1 | Which queen reigned for over 63 years in the 19th and early 20th centuries? | Victoria | Anne | Mary II | Elizabeth I
+1 | In which year did the First World War begin? | 1914 | 1912 | 1916 | 1918
+1 | Which famous diarist recorded the Great Fire of London? | Samuel Pepys | John Evelyn | Daniel Defoe | Christopher Wren
+1 | In which year was the Great Fire of London? | 1666 | 1665 | 1605 | 1688
+1 | Guy Fawkes was part of a plot to blow up what? | Houses of Parliament | Tower of London | St Paul's Cathedral | Westminster Abbey
+1 | Who led the Iceni revolt against the Romans? | Boudica | Cartimandua | Cleopatra | Agrippina
+1 | Which emperor was the first to bring Rome to Britain in force, in AD 43? | Claudius | Julius Caesar | Nero | Augustus
+2 | Which battle of 1815 saw Napoleon finally defeated? | Waterloo | Trafalgar | Austerlitz | Leipzig
+2 | Who was the admiral killed at the Battle of Trafalgar? | Horatio Nelson | Francis Drake | Walter Raleigh | John Jellicoe
+2 | Which king signed the Magna Carta? | King John | Richard I | Henry III | Edward I
+2 | In which year was Magna Carta sealed? | 1215 | 1066 | 1314 | 1415
+2 | Which Tudor monarch was known as the 'Virgin Queen'? | Elizabeth I | Mary I | Jane Grey | Anne Boleyn
+2 | Who was the last Tsar of Russia? | Nicholas II | Alexander III | Peter the Great | Ivan IV
+2 | Which civilisation built Machu Picchu? | Inca | Aztec | Maya | Olmec
+2 | Who was the leader of the Soviet Union during the Second World War? | Joseph Stalin | Vladimir Lenin | Nikita Khrushchev | Leon Trotsky
+2 | What was the codename for the Allied invasion of Normandy in 1944? | Operation Overlord | Operation Market Garden | Operation Torch | Operation Barbarossa
+2 | Which wife of Henry VIII was the mother of Elizabeth I? | Anne Boleyn | Catherine of Aragon | Jane Seymour | Catherine Parr
+2 | Which wife of Henry VIII outlived him? | Catherine Parr | Anne of Cleves | Catherine Howard | Jane Seymour
+2 | In which year did women in the UK first get the vote (over 30, with conditions)? | 1918 | 1928 | 1903 | 1945
+2 | Who founded the Women's Social and Political Union in 1903? | Emmeline Pankhurst | Millicent Fawcett | Emily Davison | Sylvia Pankhurst
+2 | Which ancient wonder stood in the harbour of Rhodes? | The Colossus | The Lighthouse | The Mausoleum | The Hanging Gardens
+2 | In which year did the Titanic sink? | 1912 | 1910 | 1914 | 1905
+2 | Who was the first Tudor king? | Henry VII | Henry VIII | Richard III | Edward IV
+2 | The Wars of the Roses were fought between the houses of York and which other? | Lancaster | Tudor | Stuart | Windsor
+2 | Which explorer's ship was the Endeavour? | James Cook | Francis Drake | Walter Raleigh | Ernest Shackleton
+2 | Which city was the capital of the Byzantine Empire? | Constantinople | Rome | Athens | Alexandria
+2 | Who was the Roman god of war? | Mars | Jupiter | Mercury | Neptune
+2 | Which year saw the first humans land on the Moon? | 1969 | 1967 | 1971 | 1965
+2 | Which country did Britain fight in the Falklands War? | Argentina | Chile | Spain | Uruguay
+2 | In which year was the Falklands War? | 1982 | 1979 | 1985 | 1975
+2 | Which English king was killed at the Battle of Bosworth Field? | Richard III | Henry VI | Edward V | Richard II
+2 | Whose skeleton was discovered under a car park in Leicester in 2012? | Richard III | King Alfred | Henry I | Harold II
+2 | Which leader was known as the 'Iron Duke'? | Duke of Wellington | Duke of Marlborough | Oliver Cromwell | Lord Nelson
+2 | Who was Lord Protector after the English Civil War? | Oliver Cromwell | Thomas Cromwell | Charles II | John Pym
+2 | Which king was executed in 1649? | Charles I | James I | Charles II | James II
+2 | What was the name of Captain Scott's ship on his final Antarctic expedition? | Terra Nova | Endurance | Discovery | Fram
+2 | Who was the first person to reach the South Pole? | Roald Amundsen | Robert Falcon Scott | Ernest Shackleton | Edmund Hillary
+2 | Which two men first summited Everest in 1953? | Edmund Hillary and Tenzing Norgay | George Mallory and Andrew Irvine | Chris Bonington and Doug Scott | Reinhold Messner and Peter Habeler
+2 | Which ship did Francis Drake sail around the world? | Golden Hind | Revenge | Mary Rose | Victory
+2 | Which famous Tudor warship sank in the Solent in 1545? | Mary Rose | Golden Hind | Great Harry | Victory
+2 | Who was the Egyptian boy-king whose tomb was found by Howard Carter? | Tutankhamun | Ramesses II | Akhenaten | Khufu
+2 | In which year was Tutankhamun's tomb discovered? | 1922 | 1912 | 1932 | 1905
+2 | Which wall divided a city from 1961 to 1989? | Berlin Wall | Belfast Peace Wall | Warsaw Wall | Prague Wall
+2 | Who was President of the USA during the Cuban Missile Crisis? | John F Kennedy | Dwight Eisenhower | Lyndon Johnson | Richard Nixon
+2 | Which Saxon king is said to have burnt the cakes? | Alfred the Great | Harold II | Æthelred | Edward the Confessor
+2 | What did the 1707 Acts of Union join? | England and Scotland | England and Wales | Great Britain and Ireland | Scotland and Ireland
+2 | Who was Prime Minister when the NHS was founded in 1948? | Clement Attlee | Winston Churchill | Harold Wilson | Ramsay MacDonald
+2 | Which minister is credited as the architect of the NHS? | Aneurin Bevan | William Beveridge | Hugh Gaitskell | Ernest Bevin
+3 | In which year did the Peasants' Revolt take place? | 1381 | 1415 | 1348 | 1450
+3 | Who led the Peasants' Revolt of 1381? | Wat Tyler | Jack Cade | Robert Kett | Perkin Warbeck
+3 | Which battle in 1314 saw Robert the Bruce defeat Edward II? | Bannockburn | Culloden | Stirling Bridge | Flodden
+3 | Which battle in 1746 ended the Jacobite rising? | Culloden | Prestonpans | Falkirk | Killiecrankie
+3 | Who was the 'Nine Days' Queen' in 1553? | Lady Jane Grey | Mary Queen of Scots | Matilda | Anne of Cleves
+3 | Which Roman emperor is said to have fiddled while Rome burned? | Nero | Caligula | Commodus | Tiberius
+3 | What was the name of the Anglo-Saxon ship burial discovered in Suffolk in 1939? | Sutton Hoo | Snape | Staffordshire Hoard | Mildenhall
+3 | Which plague swept through Europe in the 1340s? | The Black Death | The Great Plague | Spanish Flu | Justinian's Plague
+3 | Which treaty ended the First World War with Germany? | Treaty of Versailles | Treaty of Paris | Treaty of Ghent | Treaty of Utrecht
+3 | In which year did the Battle of the Somme begin? | 1916 | 1915 | 1917 | 1914
+3 | Who was the British Prime Minister at the start of the First World War? | H H Asquith | David Lloyd George | Arthur Balfour | Stanley Baldwin
+3 | What was the name of the Second World War codebreaking centre in Buckinghamshire? | Bletchley Park | Porton Down | Chequers | Hughenden
+3 | Which mathematician helped break Enigma at Bletchley Park? | Alan Turing | Charles Babbage | Ada Lovelace | John von Neumann
+3 | Who was the first monarch of the House of Windsor? | George V | Edward VII | George VI | Victoria
+3 | In which year did the House of Saxe-Coburg and Gotha become Windsor? | 1917 | 1901 | 1910 | 1936
+3 | Which king abdicated in 1936? | Edward VIII | George V | George VI | Edward VII
+3 | Which empire was ruled by Suleiman the Magnificent? | Ottoman | Mughal | Persian | Byzantine
+3 | Which ancient city was destroyed by Vesuvius in AD 79 along with Herculaneum? | Pompeii | Ostia | Paestum | Capua
+3 | Who was the first Emperor of Rome? | Augustus | Julius Caesar | Tiberius | Nero
+3 | Which Scottish queen was executed in 1587? | Mary, Queen of Scots | Margaret Tudor | Mary of Guise | Anne of Denmark
+3 | Which battle in 1805 saw the British fleet defeat the French and Spanish? | Trafalgar | The Nile | Copenhagen | Jutland
+3 | Who invented the printing press in Europe around 1440? | Johannes Gutenberg | William Caxton | Martin Luther | Leonardo da Vinci
+3 | Who set up England's first printing press in 1476? | William Caxton | Wynkyn de Worde | Richard Pynson | John Wycliffe
+3 | What were the 'Rotten Boroughs' abolished by the 1832 Reform Act? | Constituencies with tiny electorates | Corrupt city councils | Debtors' prisons | Failing workhouses
+3 | Which Prime Minister led Britain during the Napoleonic Wars and became PM at 24? | William Pitt the Younger | Lord Liverpool | Spencer Perceval | George Canning
+3 | Which is the only British Prime Minister to have been assassinated? | Spencer Perceval | William Pitt | Robert Peel | Lord North
+2 | Which famous nurse was known as 'The Lady with the Lamp'? | Florence Nightingale | Mary Seacole | Edith Cavell | Elizabeth Fry
+2 | In which war did Florence Nightingale make her name? | Crimean War | Boer War | Napoleonic Wars | First World War
+1 | Which Egyptian queen had relationships with Julius Caesar and Mark Antony? | Cleopatra | Nefertiti | Hatshepsut | Nefertari
+2 | Who was the first Christian Roman emperor? | Constantine | Augustus | Hadrian | Trajan
+2 | Which castle in Kent is known as 'the loveliest castle in the world'? | Leeds Castle | Dover Castle | Hever Castle | Rochester Castle
+
+## geo | Geography
+1 | What is the capital of Australia? | Canberra | Sydney | Melbourne | Perth
+1 | What is the longest river in the UK? | Severn | Thames | Trent | Wye
+1 | What is the highest mountain in the UK? | Ben Nevis | Snowdon | Scafell Pike | Ben Macdui
+1 | What is the capital of Canada? | Ottawa | Toronto | Vancouver | Montreal
+1 | Which is the largest ocean? | Pacific | Atlantic | Indian | Southern
+1 | Which country has the largest population in South America? | Brazil | Argentina | Colombia | Peru
+1 | What is the capital of Spain? | Madrid | Barcelona | Seville | Valencia
+1 | On which continent is Kenya? | Africa | Asia | South America | Oceania
+1 | Which river flows through Paris? | Seine | Loire | Rhône | Rhine
+1 | What is the capital of Italy? | Rome | Milan | Venice | Naples
+1 | Which is the largest country in the world by area? | Russia | Canada | China | USA
+1 | What is the capital of Japan? | Tokyo | Kyoto | Osaka | Hiroshima
+1 | Which country is shaped like a boot? | Italy | Greece | Portugal | Chile
+1 | Which sea lies between England and Ireland? | Irish Sea | North Sea | Celtic Sea | Norwegian Sea
+1 | What is the capital of Scotland? | Edinburgh | Glasgow | Aberdeen | Inverness
+1 | What is the capital of Wales? | Cardiff | Swansea | Newport | Bangor
+1 | In which country is the Taj Mahal? | India | Pakistan | Bangladesh | Nepal
+1 | Which desert is the largest hot desert in the world? | Sahara | Gobi | Kalahari | Arabian
+1 | Which mountain range separates France and Spain? | Pyrenees | Alps | Apennines | Carpathians
+1 | What is the capital of Germany? | Berlin | Munich | Frankfurt | Bonn
+2 | What is the capital of New Zealand? | Wellington | Auckland | Christchurch | Queenstown
+2 | Which river flows through Cairo? | Nile | Tigris | Euphrates | Jordan
+2 | Which is the largest lake in the UK by surface area? | Lough Neagh | Loch Lomond | Windermere | Loch Ness
+2 | Which is the largest lake in England? | Windermere | Ullswater | Coniston Water | Derwentwater
+2 | What is the capital of Turkey? | Ankara | Istanbul | Izmir | Antalya
+2 | Which country has the most natural lakes? | Canada | Finland | Russia | Sweden
+2 | Which strait separates Spain from Morocco? | Strait of Gibraltar | Bosphorus | Strait of Dover | Strait of Messina
+2 | What is the capital of Brazil? | Brasília | Rio de Janeiro | São Paulo | Salvador
+2 | What is the capital of Switzerland? | Bern | Zurich | Geneva | Basel
+2 | Which is the smallest country in the world? | Vatican City | Monaco | San Marino | Liechtenstein
+2 | Which English county is known as 'the Garden of England'? | Kent | Surrey | Sussex | Devon
+2 | Which island is the largest in the Mediterranean? | Sicily | Sardinia | Cyprus | Crete
+2 | What is the capital of Norway? | Oslo | Bergen | Stockholm | Trondheim
+2 | Through which city does the River Liffey flow? | Dublin | Cork | Belfast | Galway
+2 | Which is the longest river in the world, by most measures? | Nile | Amazon | Yangtze | Mississippi
+2 | Which river carries the most water in the world? | Amazon | Nile | Congo | Yangtze
+2 | In which mountain range is Mount Everest? | Himalayas | Andes | Karakoram | Hindu Kush
+2 | What is the capital of Portugal? | Lisbon | Porto | Faro | Coimbra
+2 | Which African country was formerly called Rhodesia? | Zimbabwe | Zambia | Malawi | Botswana
+2 | Which country is home to the city of Marrakesh? | Morocco | Tunisia | Algeria | Egypt
+2 | Which national park contains England's highest mountain? | Lake District | Peak District | Yorkshire Dales | Northumberland
+2 | Which city is known as 'the Granite City'? | Aberdeen | Edinburgh | Dundee | Inverness
+2 | Which city sits on the River Tyne? | Newcastle | Sunderland | Durham | Carlisle
+2 | What is the capital of Egypt? | Cairo | Alexandria | Luxor | Giza
+2 | What is the capital of Argentina? | Buenos Aires | Santiago | Montevideo | Córdoba
+2 | Which two countries share the longest international border? | Canada and USA | Russia and China | Argentina and Chile | Russia and Kazakhstan
+2 | Which ocean lies between Africa and Australia? | Indian Ocean | Pacific Ocean | Atlantic Ocean | Southern Ocean
+2 | Which European capital is built on 14 islands? | Stockholm | Copenhagen | Amsterdam | Helsinki
+2 | Which country has the city of Kraków? | Poland | Czech Republic | Slovakia | Hungary
+2 | What is the highest mountain in Wales? | Snowdon (Yr Wyddfa) | Cadair Idris | Pen y Fan | Tryfan
+2 | What is the highest mountain in England? | Scafell Pike | Helvellyn | Skiddaw | Great Gable
+2 | What is the highest mountain in Africa? | Kilimanjaro | Mount Kenya | Ras Dashen | Mount Stanley
+2 | Which US state is known as the Sunshine State? | Florida | California | Texas | Arizona
+2 | Which is the most populous country in Africa? | Nigeria | Egypt | Ethiopia | South Africa
+2 | What is the capital of Greece? | Athens | Thessaloniki | Sparta | Corinth
+2 | In which country is the Atacama Desert? | Chile | Peru | Bolivia | Argentina
+2 | Which Scottish loch is the largest by volume? | Loch Ness | Loch Lomond | Loch Awe | Loch Tay
+2 | Which island group includes Mainland, Hoy and South Ronaldsay? | Orkney | Shetland | Outer Hebrides | Inner Hebrides
+2 | Which country's flag features a red maple leaf? | Canada | Japan | Switzerland | Austria
+3 | What is the capital of Kazakhstan? | Astana | Almaty | Tashkent | Bishkek
+3 | Which is the deepest lake in the world? | Lake Baikal | Lake Tanganyika | Caspian Sea | Lake Superior
+3 | What is the capital of Mongolia? | Ulaanbaatar | Almaty | Bishkek | Hohhot
+3 | Which river forms much of the border between the USA and Mexico? | Rio Grande | Colorado | Mississippi | Pecos
+3 | Which country has the most time zones, including overseas territories? | France | Russia | USA | United Kingdom
+3 | What is the capital of Canada's province of British Columbia? | Victoria | Vancouver | Kelowna | Surrey
+3 | Which is the most northerly city in the UK? | Inverness | Aberdeen | Dundee | Perth
+3 | What is the largest island in Scotland? | Lewis and Harris | Skye | Mull | Islay
+3 | What is the capital of Iceland? | Reykjavík | Akureyri | Nuuk | Tórshavn
+3 | Which country is the Faroe Islands part of? | Denmark | Norway | Iceland | United Kingdom
+3 | Which sea is the saltiest large body of water bordering Jordan? | Dead Sea | Red Sea | Caspian Sea | Aral Sea
+3 | What is the capital of Vietnam? | Hanoi | Ho Chi Minh City | Hue | Da Nang
+3 | What is the longest river entirely within England? | Thames | Trent | Great Ouse | Severn
+3 | Which Welsh island is connected to the mainland by the Menai Bridge? | Anglesey | Bardsey | Caldey | Skomer
+3 | Which English city was known to the Romans as Eboracum? | York | Chester | Lincoln | Colchester
+3 | Which English city was called Deva by the Romans? | Chester | Bath | Exeter | Gloucester
+3 | Which city was Roman Londinium? | London | Colchester | St Albans | Winchester
+3 | What is the name of the channel between the Isle of Wight and mainland England? | The Solent | Spithead | The Needles | Bristol Channel
+3 | Which African country has three capital cities? | South Africa | Nigeria | Kenya | Egypt
+3 | Which country does Greenland belong to? | Denmark | Canada | Norway | Iceland
+3 | What is the capital of Australia's state of Western Australia? | Perth | Darwin | Adelaide | Broome
+3 | In which country is Lake Titicaca shared with Bolivia? | Peru | Chile | Ecuador | Argentina
+3 | Which Spanish city is home to the Alhambra? | Granada | Seville | Córdoba | Málaga
+3 | Which is the largest country in Africa by area? | Algeria | DR Congo | Sudan | Libya
+3 | Which river flows through Budapest? | Danube | Vltava | Rhine | Elbe
+3 | Which river flows through Prague? | Vltava | Danube | Elbe | Oder
+1 | Which country is home to the kangaroo in the wild? | Australia | South Africa | Brazil | India
+1 | In which city is the Eiffel Tower? | Paris | Lyon | Brussels | Marseille
+
+## sci | Science & Nature
+1 | What is the chemical symbol for gold? | Au | Ag | Gd | Go
+1 | What is the chemical formula for water? | H2O | CO2 | O2 | H2O2
+1 | How many planets are in our solar system? | Eight | Nine | Seven | Ten
+1 | What is the largest planet in our solar system? | Jupiter | Saturn | Neptune | Earth
+1 | What gas do plants absorb from the air for photosynthesis? | Carbon dioxide | Oxygen | Nitrogen | Hydrogen
+1 | What is the hardest natural substance? | Diamond | Granite | Quartz | Steel
+1 | What is the boiling point of water at sea level in Celsius? | 100 | 90 | 110 | 212
+1 | How many bones are there in an adult human body? | 206 | 186 | 226 | 256
+1 | What is the closest star to Earth? | The Sun | Proxima Centauri | Sirius | Alpha Centauri A
+1 | Which organ pumps blood around the body? | Heart | Liver | Lungs | Kidney
+1 | Which is the largest mammal? | Blue whale | African elephant | Sperm whale | Giraffe
+1 | What sweet substance do bees make? | Honey | Silk | Nectar | Pollen
+1 | What is the freezing point of water in Fahrenheit? | 32 | 0 | 10 | 100
+1 | Which planet has the most famous rings? | Saturn | Jupiter | Uranus | Neptune
+1 | What is the chemical symbol for sodium? | Na | So | Sd | S
+1 | What is the largest organ of the human body? | Skin | Liver | Brain | Lungs
+1 | What type of animal is a Komodo dragon? | Lizard | Snake | Crocodile | Dinosaur
+1 | What is the fastest land animal? | Cheetah | Lion | Pronghorn | Greyhound
+1 | Which blood cells fight infection? | White blood cells | Red blood cells | Platelets | Plasma
+1 | What force keeps us on the ground? | Gravity | Magnetism | Friction | Inertia
+2 | What is the chemical symbol for iron? | Fe | Ir | In | I
+2 | What is the chemical symbol for silver? | Ag | Si | Sv | Au
+2 | What is the chemical symbol for potassium? | K | P | Po | Pt
+2 | Which planet is closest to the Sun? | Mercury | Venus | Mars | Earth
+2 | How many chambers does the human heart have? | Four | Two | Three | Six
+2 | What is the speed of light, approximately? | 300,000 km per second | 30,000 km per second | 3,000,000 km per second | 3,000 km per second
+2 | Who developed the theory of general relativity? | Albert Einstein | Isaac Newton | Niels Bohr | Max Planck
+2 | Who discovered penicillin? | Alexander Fleming | Louis Pasteur | Joseph Lister | Edward Jenner
+2 | Who developed the first smallpox vaccine? | Edward Jenner | Louis Pasteur | Robert Koch | Joseph Lister
+2 | What is the most abundant element in the universe? | Hydrogen | Helium | Oxygen | Carbon
+2 | What part of the cell contains the genetic material? | Nucleus | Mitochondrion | Ribosome | Cell wall
+2 | Which is the powerhouse of the cell? | Mitochondrion | Nucleus | Golgi body | Vacuole
+2 | What does DNA stand for? | Deoxyribonucleic acid | Dinitrogen acid | Deoxyribose nitrate | Dual nucleic acid
+2 | Which famous naturalist sailed on HMS Beagle? | Charles Darwin | Alfred Russel Wallace | Joseph Banks | David Attenborough
+2 | What is the name of the galaxy we live in? | Milky Way | Andromeda | Triangulum | Whirlpool
+2 | What is the pH of pure water? | 7 | 0 | 14 | 1
+2 | What type of rock is formed from cooled lava? | Igneous | Sedimentary | Metamorphic | Limestone
+2 | What is the largest bird in the world? | Ostrich | Emu | Albatross | Condor
+2 | Which bird has the largest wingspan? | Wandering albatross | Andean condor | Golden eagle | Pelican
+2 | How many hearts does an octopus have? | Three | One | Two | Eight
+2 | What is a scientist who studies earthquakes called? | Seismologist | Volcanologist | Meteorologist | Hydrologist
+2 | Which element has the atomic number 1? | Hydrogen | Helium | Oxygen | Carbon
+2 | What is the common name for sodium chloride? | Table salt | Baking soda | Chalk | Bleach
+2 | What is the common name for calcium carbonate found in cliffs at Dover? | Chalk | Slate | Granite | Sandstone
+2 | Which vitamin does the body make in sunlight? | Vitamin D | Vitamin C | Vitamin A | Vitamin B12
+2 | What is the name of the pigment that makes plants green? | Chlorophyll | Carotene | Melanin | Haemoglobin
+2 | What is the study of fungi called? | Mycology | Botany | Entomology | Ornithology
+2 | Which is the only marsupial found wild in the USA and Canada? | Opossum | Wombat | Raccoon | Armadillo
+2 | Which British scientist wrote 'A Brief History of Time'? | Stephen Hawking | Brian Cox | Richard Dawkins | Patrick Moore
+2 | Which planet spins on its side? | Uranus | Neptune | Saturn | Venus
+2 | What is the hottest planet in our solar system? | Venus | Mercury | Mars | Jupiter
+2 | Which gas gives fizzy drinks their bubbles? | Carbon dioxide | Oxygen | Nitrogen | Helium
+2 | Which part of the eye controls how much light enters? | Iris | Retina | Cornea | Lens
+2 | How many teeth does a typical adult dog have? | 42 | 32 | 28 | 36
+2 | Which is Britain's only venomous snake? | Adder | Grass snake | Smooth snake | Slow worm
+2 | What kind of animal is a slow worm? | Legless lizard | Snake | Worm | Eel
+2 | What is the name of the protein that carries oxygen in red blood cells? | Haemoglobin | Insulin | Keratin | Collagen
+2 | Which organ produces insulin? | Pancreas | Liver | Kidney | Spleen
+2 | What is the unit of electrical resistance? | Ohm | Volt | Amp | Watt
+2 | Who formulated the laws of motion and universal gravitation? | Isaac Newton | Galileo Galilei | Johannes Kepler | Robert Hooke
+3 | What is the chemical symbol for tungsten? | W | Tu | Tn | Wo
+3 | What is the chemical symbol for lead? | Pb | Le | Ld | Pl
+3 | What is the most common element in the Earth's crust? | Oxygen | Silicon | Iron | Aluminium
+3 | Which element is named after the Greek word for sun? | Helium | Selenium | Solarium | Hydrogen
+3 | What is the name of the boundary around a black hole beyond which nothing escapes? | Event horizon | Singularity | Photon sphere | Accretion disc
+3 | Which bone in the ear is the smallest in the human body? | Stapes (stirrup) | Malleus (hammer) | Incus (anvil) | Cochlea
+3 | What is the name of the largest moon of Saturn? | Titan | Ganymede | Europa | Enceladus
+3 | Which is the largest moon in the solar system? | Ganymede | Titan | Callisto | The Moon
+3 | Which English chemist is credited, with Carl Scheele, with discovering oxygen? | Joseph Priestley | Humphry Davy | Michael Faraday | Henry Cavendish
+3 | Who invented the miners' safety lamp in 1815? | Humphry Davy | George Stephenson | Michael Faraday | James Watt
+3 | Which scientist is famous for experiments in electromagnetic induction in 1831? | Michael Faraday | James Clerk Maxwell | Alessandro Volta | André-Marie Ampère
+3 | What is the scientific name for the kneecap? | Patella | Scapula | Clavicle | Sternum
+3 | What is the name of the process by which cells divide into two identical cells? | Mitosis | Meiosis | Osmosis | Diffusion
+3 | What is absolute zero in Celsius, approximately? | Minus 273 | Minus 100 | Minus 459 | Minus 373
+3 | Which planet has a moon called Phobos? | Mars | Jupiter | Neptune | Uranus
+3 | What is the hardest substance in the human body? | Tooth enamel | Bone | Cartilage | Fingernail
+3 | Which British bird is known for its 'drumming' on trees? | Great spotted woodpecker | Nuthatch | Treecreeper | Wren
+3 | What is the study of birds' eggs called? | Oology | Oenology | Ornithology | Ovology
+3 | Which gas did Henry Cavendish identify as 'inflammable air'? | Hydrogen | Oxygen | Methane | Nitrogen
+3 | Which scientist first proposed the heliocentric model in 1543? | Nicolaus Copernicus | Galileo Galilei | Tycho Brahe | Johannes Kepler
+3 | How long does light from the Sun take to reach Earth, roughly? | 8 minutes | 8 seconds | 80 minutes | 8 hours
+3 | What is the name of the tiny hairs that line the airways? | Cilia | Villi | Follicles | Alveoli
+3 | What are the tiny air sacs in the lungs called? | Alveoli | Bronchi | Villi | Cilia
+3 | Which is the only bird that can fly backwards? | Hummingbird | Kingfisher | Swift | Kestrel
+1 | What do caterpillars turn into? | Butterflies or moths | Beetles | Bees | Dragonflies
+1 | Which part of the plant absorbs water from the soil? | Roots | Leaves | Petals | Stem
+
+## music | Music
+1 | Which band released the album 'Abbey Road'? | The Beatles | The Rolling Stones | The Who | The Kinks
+1 | Who was the lead singer of Queen? | Freddie Mercury | Brian May | Roger Taylor | John Deacon
+1 | How many members were there in the Spice Girls? | Five | Four | Six | Three
+1 | Which instrument has 88 keys? | Piano | Organ | Harpsichord | Accordion
+1 | Which singer is known as 'The King of Pop'? | Michael Jackson | Elvis Presley | Prince | Justin Timberlake
+1 | Which singer is known as 'The King of Rock and Roll'? | Elvis Presley | Chuck Berry | Little Richard | Buddy Holly
+1 | Which band sang 'Wonderwall'? | Oasis | Blur | Pulp | The Verve
+1 | Which Swedish group won Eurovision with 'Waterloo'? | ABBA | Roxette | Ace of Base | Europe
+1 | How many strings does a violin have? | Four | Five | Six | Three
+1 | Who sang 'Rocket Man' and 'Your Song'? | Elton John | David Bowie | Rod Stewart | Billy Joel
+1 | Which Beatles drummer narrated 'Thomas the Tank Engine'? | Ringo Starr | Pete Best | Paul McCartney | George Harrison
+1 | Which singer had hits with 'Rolling in the Deep' and 'Someone Like You'? | Adele | Amy Winehouse | Duffy | Florence Welch
+1 | Which girl group sang 'Wannabe'? | Spice Girls | All Saints | Atomic Kitten | Sugababes
+1 | What is the national anthem of the UK? | God Save the King | Jerusalem | Rule, Britannia! | Land of Hope and Glory
+1 | Which composer wrote 'The Four Seasons'? | Vivaldi | Bach | Handel | Mozart
+1 | Which composer became deaf but still wrote his Ninth Symphony? | Beethoven | Mozart | Haydn | Schubert
+1 | What is the name of the music festival held near Pilton in Somerset? | Glastonbury | Reading | Download | Isle of Wight
+1 | Which band's members included Gary Barlow and Robbie Williams? | Take That | Westlife | Boyzone | East 17
+1 | Which brass instrument has a slide? | Trombone | Trumpet | Tuba | French horn
+1 | What do you call a group of three musicians? | Trio | Duet | Quartet | Quintet
+2 | Which band released 'Bohemian Rhapsody' in 1975? | Queen | Led Zeppelin | Pink Floyd | Genesis
+2 | Which Welsh singer had a hit with 'Delilah'? | Tom Jones | Shirley Bassey | Shakin' Stevens | Bonnie Tyler
+2 | Which Welsh singer sang 'Total Eclipse of the Heart'? | Bonnie Tyler | Shirley Bassey | Duffy | Charlotte Church
+2 | Who sang the theme song for the Bond film 'Goldfinger'? | Shirley Bassey | Tom Jones | Lulu | Nancy Sinatra
+2 | Which Pink Floyd album features a prism on its cover? | The Dark Side of the Moon | Wish You Were Here | The Wall | Animals
+2 | What was David Bowie's real surname? | Jones | Smith | Bowie | Jagger
+2 | Which band was fronted by Damon Albarn in the 1990s? | Blur | Oasis | Suede | Pulp
+2 | Which Manchester band sang 'Love Will Tear Us Apart'? | Joy Division | The Smiths | New Order | Happy Mondays
+2 | Who was the lead singer of The Smiths? | Morrissey | Johnny Marr | Ian Curtis | Shaun Ryder
+2 | Which Beatles album was released in 1967 with a famous collage cover? | Sgt. Pepper's Lonely Hearts Club Band | Revolver | Rubber Soul | Help!
+2 | Which composer wrote the 'Enigma Variations'? | Edward Elgar | Ralph Vaughan Williams | Gustav Holst | Benjamin Britten
+2 | Who composed 'The Planets' suite? | Gustav Holst | Edward Elgar | Benjamin Britten | Frederick Delius
+2 | Which Elgar march is sung as 'Land of Hope and Glory' at the Last Night of the Proms? | Pomp and Circumstance March No. 1 | Nimrod | Crown Imperial | Orb and Sceptre
+2 | In which London venue are the BBC Proms mainly held? | Royal Albert Hall | Royal Festival Hall | Barbican | Wigmore Hall
+2 | Which band had hits with 'Common People' and 'Disco 2000'? | Pulp | Blur | Supergrass | Elastica
+2 | Which UK act won Eurovision in 1997 with 'Love Shine a Light'? | Katrina and the Waves | Bucks Fizz | Brotherhood of Man | Sandie Shaw
+2 | Which UK act won Eurovision in 1981 with 'Making Your Mind Up'? | Bucks Fizz | Brotherhood of Man | Sandie Shaw | Lulu
+2 | Who sang 'Puppet on a String' to win Eurovision in 1967? | Sandie Shaw | Lulu | Cilla Black | Dusty Springfield
+2 | Which singer released the album 'Back to Black'? | Amy Winehouse | Adele | Lily Allen | Duffy
+2 | Which Irish band released 'The Joshua Tree'? | U2 | The Cranberries | Thin Lizzy | The Corrs
+2 | Which rock band was fronted by Mick Jagger? | The Rolling Stones | The Who | The Kinks | The Animals
+2 | Who sang 'Dancing Queen'? | ABBA | Boney M | Bee Gees | Blondie
+2 | Which Mozart opera features the Queen of the Night? | The Magic Flute | Don Giovanni | The Marriage of Figaro | Così fan tutte
+2 | What nationality was the composer Frédéric Chopin? | Polish | French | Austrian | Hungarian
+2 | Which instrument did jazz legend Louis Armstrong famously play? | Trumpet | Saxophone | Clarinet | Trombone
+2 | What does 'forte' mean in music? | Loud | Soft | Fast | Slow
+2 | What does 'piano' mean as a musical direction? | Soft | Loud | Quick | Smooth
+2 | How many lines are on a standard musical stave? | Five | Four | Six | Seven
+2 | Which festival takes place each August in Edinburgh, alongside the International Festival? | The Fringe | Celtic Connections | T in the Park | Hogmanay
+2 | Which band sang 'Don't Look Back in Anger'? | Oasis | The Verve | Blur | Ocean Colour Scene
+2 | Which band released the 1997 album 'OK Computer'? | Radiohead | Coldplay | Muse | Travis
+2 | Which Coldplay song begins 'Look at the stars'? | Yellow | Fix You | Clocks | The Scientist
+2 | Which singer was known as 'The Boss'? | Bruce Springsteen | Bob Dylan | Jon Bon Jovi | Tom Petty
+2 | Who wrote and recorded 'Like a Rolling Stone'? | Bob Dylan | Neil Young | Leonard Cohen | Paul Simon
+2 | Which group sang 'Stayin' Alive'? | Bee Gees | ABBA | The Jacksons | Earth, Wind and Fire
+2 | Which band is known for 'Smells Like Teen Spirit'? | Nirvana | Pearl Jam | Soundgarden | Foo Fighters
+2 | Which singer's real name is Reginald Dwight? | Elton John | Cliff Richard | Rod Stewart | Engelbert Humperdinck
+2 | Who sang 'Living Doll' with The Shadows in 1959? | Cliff Richard | Billy Fury | Marty Wilde | Adam Faith
+2 | Which 1980s band sang 'Don't You Want Me'? | The Human League | Duran Duran | Spandau Ballet | Depeche Mode
+2 | Who wrote the opera 'La Bohème'? | Puccini | Verdi | Rossini | Bizet
+2 | Who composed the opera 'Carmen'? | Bizet | Puccini | Verdi | Offenbach
+2 | Which band recorded 'Wish You Were Here' (1975)? | Pink Floyd | Yes | Genesis | Deep Purple
+3 | Which band was originally called 'The Quarrymen'? | The Beatles | The Hollies | The Searchers | Gerry and the Pacemakers
+3 | Which Beatle was the youngest? | George Harrison | Ringo Starr | Paul McCartney | John Lennon
+3 | What was the name of the Manchester club associated with Factory Records? | The Haçienda | The Cavern | The Ritz | Barrowland
+3 | In which Liverpool club did The Beatles regularly perform early on? | The Cavern Club | The Haçienda | The Marquee | The 100 Club
+3 | Which composer wrote 'Zadok the Priest', sung at coronations? | Handel | Purcell | Elgar | Parry
+3 | Who composed the music for the hymn 'Jerusalem'? | Hubert Parry | Edward Elgar | William Blake | Charles Villiers Stanford
+3 | Who wrote the words of 'Jerusalem'? | William Blake | John Milton | Hubert Parry | William Wordsworth
+3 | What is the highest standard male singing voice? | Countertenor | Tenor | Baritone | Alto
+3 | Which instrument is Yo-Yo Ma famous for playing? | Cello | Violin | Piano | Double bass
+3 | Which Russian composer wrote 'The Nutcracker'? | Tchaikovsky | Rachmaninoff | Stravinsky | Rimsky-Korsakov
+3 | Which Russian composer wrote 'The Rite of Spring'? | Stravinsky | Prokofiev | Shostakovich | Tchaikovsky
+3 | Which British composer wrote 'The Lark Ascending'? | Ralph Vaughan Williams | Gustav Holst | Edward Elgar | Frederick Delius
+3 | What was the real name of the singer Sting? | Gordon Sumner | Gordon Matthews | Stuart Copeland | Andy Summers
+3 | What was the first UK number one single by The Beatles, according to the official chart? | From Me to You | Love Me Do | Please Please Me | She Loves You
+3 | Which singer released the album 'The Kick Inside' as a teenager? | Kate Bush | Annie Lennox | Siouxsie Sioux | Toyah
+3 | Which Kate Bush song shares its title with an Emily Brontë novel? | Wuthering Heights | Running Up That Hill | Babooshka | Cloudbusting
+3 | Which band sang 'Blue Monday' (1983)? | New Order | Joy Division | Depeche Mode | OMD
+3 | In which city did the Britpop band Pulp form? | Sheffield | Manchester | Leeds | Nottingham
+3 | Which instrument has pedals, a soundboard and around 47 strings? | Concert harp | Grand piano | Harpsichord | Zither
+3 | What does 'a cappella' mean? | Sung without instruments | Sung in Latin | Very slowly | With a full choir
+3 | Which Austrian composer wrote 'The Blue Danube' waltz? | Johann Strauss II | Joseph Haydn | Franz Schubert | Gustav Mahler
+3 | Which Italian city is home to the opera house La Scala? | Milan | Rome | Venice | Naples
+3 | Which jazz musician was nicknamed 'Satchmo'? | Louis Armstrong | Duke Ellington | Dizzy Gillespie | Miles Davis
+3 | Who composed the 'Brandenburg Concertos'? | Johann Sebastian Bach | Antonio Vivaldi | George Frideric Handel | Georg Philipp Telemann
+
+## tv | Film & TV
+1 | Which fictional wizard attends Hogwarts? | Harry Potter | Gandalf | Merlin | Rincewind
+1 | Who played James Bond in 'Goldfinger'? | Sean Connery | Roger Moore | George Lazenby | Timothy Dalton
+1 | In which TV show would you find Del Boy and Rodney? | Only Fools and Horses | Minder | Porridge | Steptoe and Son
+1 | Which hotel did Basil Fawlty run? | Fawlty Towers | Crossroads Motel | The Grand | The Royal Oak
+1 | What is the name of the pub in 'EastEnders'? | The Queen Vic | The Rovers Return | The Woolpack | The Dog in the Pond
+1 | What is the name of the pub in 'Coronation Street'? | The Rovers Return | The Queen Vic | The Woolpack | The Bull
+1 | What is the name of the pub in 'Emmerdale'? | The Woolpack | The Rovers Return | The Queen Vic | The Black Swan
+1 | Which time-travelling character travels in the TARDIS? | The Doctor | Captain Jack | Marty McFly | Dr Emmett Brown
+1 | What type of animal is Paddington? | Bear | Badger | Rabbit | Mouse
+1 | In 'The Wizard of Oz', what colour are Dorothy's slippers in the film? | Ruby red | Silver | Gold | Emerald
+1 | Which animated film features the song 'Let It Go'? | Frozen | Tangled | Moana | Encanto
+1 | Which children's TV presenter used Sooty and Sweep puppets with his son taking over later? | Harry Corbett | Rolf Harris | Johnny Ball | Tony Hart
+1 | In which country is 'Father Ted' set? | Ireland | Scotland | Wales | England
+1 | Which detective lives at 221B Baker Street? | Sherlock Holmes | Hercule Poirot | Inspector Morse | Miss Marple
+1 | Which film features a shark terrorising Amity Island? | Jaws | The Deep | Deep Blue Sea | Orca
+1 | Who directed 'Jaws' and 'E.T.'? | Steven Spielberg | George Lucas | James Cameron | Ridley Scott
+1 | Which Wallace and Gromit film won the Oscar for Best Animated Feature? | The Curse of the Were-Rabbit | A Close Shave | The Wrong Trousers | A Grand Day Out
+1 | What is the name of Wallace's dog? | Gromit | Shaun | Feathers | Preston
+1 | Which TV quiz show features 'The Chaser'? | The Chase | Pointless | Eggheads | Tipping Point
+1 | Which TV programme is hosted in a big white tent in a garden? | The Great British Bake Off | Strictly Come Dancing | MasterChef | Gardeners' World
+2 | Who played Del Boy in 'Only Fools and Horses'? | David Jason | Nicholas Lyndhurst | Ronnie Barker | John Thaw
+2 | Which actor played Inspector Morse? | John Thaw | David Jason | Kevin Whately | Dennis Waterman
+2 | Who played Basil Fawlty? | John Cleese | Michael Palin | Ronnie Barker | Rowan Atkinson
+2 | Which comedian played Mr Bean? | Rowan Atkinson | Lee Evans | Hugh Laurie | Stephen Fry
+2 | What was the name of Blackadder's dim-witted servant? | Baldrick | Percy | George | Bob
+2 | Which BBC sitcom was set in Slade Prison? | Porridge | Open All Hours | Steptoe and Son | Dad's Army
+2 | In 'Dad's Army', what was Captain Mainwaring's profession? | Bank manager | Butcher | Undertaker | Grocer
+2 | Which 1997 film starred Robert Carlyle as a Sheffield steelworker turned stripper? | The Full Monty | Brassed Off | Billy Elliot | Trainspotting
+2 | Which film won the Best Picture Oscar for 1997, starring Leonardo DiCaprio? | Titanic | Good Will Hunting | As Good as It Gets | L.A. Confidential
+2 | Who directed 'Psycho' and 'The Birds'? | Alfred Hitchcock | Orson Welles | Stanley Kubrick | Billy Wilder
+2 | Which actor played the Eleventh Doctor in 'Doctor Who'? | Matt Smith | David Tennant | Peter Capaldi | Christopher Eccleston
+2 | Who was the first actor to play the Doctor in 'Doctor Who'? | William Hartnell | Patrick Troughton | Jon Pertwee | Tom Baker
+2 | In 'Star Wars', who is Luke Skywalker's father? | Darth Vader | Obi-Wan Kenobi | Han Solo | Yoda
+2 | What is the name of the hobbit played by Elijah Wood in 'The Lord of the Rings' films? | Frodo Baggins | Samwise Gamgee | Bilbo Baggins | Pippin Took
+2 | Which actress played Mary Poppins in the 1964 film? | Julie Andrews | Audrey Hepburn | Deborah Kerr | Maggie Smith
+2 | In which city is 'Peaky Blinders' mainly set? | Birmingham | Manchester | Liverpool | Leeds
+2 | Which drama follows the Crawley family and their servants? | Downton Abbey | Upstairs, Downstairs | The Crown | Bridgerton
+2 | Who hosted 'University Challenge' from 1994? | Jeremy Paxman | Bamber Gascoigne | Amol Rajan | John Humphrys
+2 | Who was the original presenter of 'University Challenge'? | Bamber Gascoigne | Jeremy Paxman | Magnus Magnusson | Bob Holness
+2 | Which quiz show's catchphrase is 'I've started so I'll finish'? | Mastermind | Fifteen to One | Countdown | Blockbusters
+2 | On 'Countdown', how many letters are chosen in the letters round? | Nine | Seven | Eight | Ten
+2 | Which film features the line 'Here's looking at you, kid'? | Casablanca | Gone with the Wind | The Maltese Falcon | Citizen Kane
+2 | In which film does Tom Hanks say 'Life is like a box of chocolates'? | Forrest Gump | Big | Cast Away | Philadelphia
+2 | Which Ealing comedy features a gang trying to rob a security van while lodging with an old lady? | The Ladykillers | The Lavender Hill Mob | Kind Hearts and Coronets | Passport to Pimlico
+2 | Which British spy film series features the character Q? | James Bond | Kingsman | Mission: Impossible | Austin Powers
+2 | Who played Hermione Granger in the Harry Potter films? | Emma Watson | Emma Stone | Keira Knightley | Bonnie Wright
+2 | Which 2000 film starred Jamie Bell as a boy who wants to dance ballet? | Billy Elliot | Brassed Off | The Full Monty | Kes
+2 | What is the name of the coffee shop in 'Friends'? | Central Perk | Monk's Café | The Max | Luke's Diner
+2 | Which TV comedy was set in the Nag's Head pub in Peckham? | Only Fools and Horses | The Royle Family | Shameless | Phoenix Nights
+2 | Which comedy duo were famous for 'The Four Candles' sketch? | The Two Ronnies | Morecambe and Wise | French and Saunders | Hale and Pace
+2 | Which comedy duo's theme song was 'Bring Me Sunshine'? | Morecambe and Wise | The Two Ronnies | Cannon and Ball | Little and Large
+2 | Which children's show featured Bill and Ben? | Flower Pot Men | Andy Pandy | Camberwick Green | The Herbs
+2 | Which film won the first Academy Award for Best Picture? | Wings | Sunrise | The Jazz Singer | Ben-Hur
+3 | What was the name of the robot dog in 'Doctor Who'? | K-9 | Rover | Bolt | Spot
+3 | Which director made 'Lawrence of Arabia' and 'Doctor Zhivago'? | David Lean | Carol Reed | Michael Powell | Richard Attenborough
+3 | Who directed the film 'Gandhi' (1982)? | Richard Attenborough | David Lean | Ridley Scott | John Schlesinger
+3 | Which actor has won the Best Actor Oscar three times, the most of any man? | Daniel Day-Lewis | Jack Nicholson | Tom Hanks | Anthony Hopkins
+3 | In 'Casablanca', what is the name of Rick's bar? | Rick's Café Américain | The Blue Parrot | The Moroccan | Sam's Place
+3 | Which Hitchcock film is set mostly in a Greenwich Village apartment courtyard? | Rear Window | Vertigo | Rope | Notorious
+3 | What was the name of the ship in 'Alien' (1979)? | Nostromo | Sulaco | Discovery | Prometheus
+3 | Which TV detective was played by Peter Falk? | Columbo | Kojak | Rockford | Ironside
+3 | In 'Fawlty Towers', what was the name of the Spanish waiter? | Manuel | Pedro | Carlos | Juan
+3 | Which actress played Basil's wife Sybil in 'Fawlty Towers'? | Prunella Scales | Connie Booth | Penelope Keith | Wendy Craig
+3 | In 'Coronation Street', which character has been played by William Roache since 1960? | Ken Barlow | Mike Baldwin | Jack Duckworth | Norris Cole
+3 | Which BBC drama was set in the fictional Cornish village of Portwenn? | Doc Martin | Poldark | Broadchurch | Wycliffe
+3 | What is the name of the village in 'The Vicar of Dibley'? | Dibley | Royston Vasey | Little Britain | Midsomer Norton
+3 | Which comedy's fictional town is Royston Vasey? | The League of Gentlemen | Little Britain | Phoenix Nights | The Fast Show
+3 | Which actor played Professor Dumbledore in the first two Harry Potter films? | Richard Harris | Michael Gambon | Ian McKellen | Patrick Stewart
+3 | Which 1966 film starring Michael Caine features the line 'What's it all about'? | Alfie | Get Carter | The Italian Job | Zulu
+3 | Which Michael Caine film ends with a coach teetering over a cliff? | The Italian Job | Get Carter | Zulu | The Ipcress File
+3 | Which 1971 film stars Michael Caine as a gangster in Newcastle? | Get Carter | Alfie | The Long Good Friday | Brighton Rock
+3 | Which stop-motion studio in Bristol made 'Chicken Run'? | Aardman Animations | Cosgrove Hall | Laika | Ealing Studios
+3 | Who played the title role in the 1962 film 'Lawrence of Arabia'? | Peter O'Toole | Omar Sharif | Alec Guinness | Richard Burton
+3 | Which British actor played Hannibal Lecter in 'The Silence of the Lambs'? | Anthony Hopkins | Ralph Fiennes | Gary Oldman | Ben Kingsley
+3 | In which fictional county is 'Midsomer Murders' set? | Midsomer | Wessex | Barsetshire | Loamshire
+3 | What was the name of the computer in '2001: A Space Odyssey'? | HAL 9000 | Skynet | Mother | Deep Thought
+
+## sport | Sport
+1 | How many players are on a football team on the pitch? | Eleven | Ten | Twelve | Nine
+1 | How many players are in a rugby union team? | Fifteen | Thirteen | Eleven | Twelve
+1 | How many players are in a rugby league team? | Thirteen | Fifteen | Eleven | Twelve
+1 | In which sport would you use a shuttlecock? | Badminton | Squash | Table tennis | Tennis
+1 | How many holes are played in a standard round of golf? | 18 | 9 | 12 | 24
+1 | Which city hosted the 2012 Summer Olympics? | London | Beijing | Rio de Janeiro | Tokyo
+1 | Which sport is played at Wimbledon? | Tennis | Cricket | Golf | Croquet
+1 | How many points is the bullseye worth in darts? | 50 | 25 | 60 | 100
+1 | What is the maximum score with three darts? | 180 | 150 | 160 | 200
+1 | In cricket, how many balls are in a standard over? | Six | Five | Eight | Four
+1 | What colour jersey does the leader of the Tour de France wear? | Yellow | Green | Pink | Polka dot
+1 | Which country hosts the Tour de France? | France | Italy | Spain | Belgium
+1 | In which sport might you perform a 'slam dunk'? | Basketball | Volleyball | Netball | Handball
+1 | How long is a marathon, to the nearest mile? | 26 miles | 24 miles | 28 miles | 30 miles
+1 | What are the three disciplines in a triathlon, in order? | Swim, bike, run | Run, bike, swim | Bike, swim, run | Swim, run, bike
+1 | Which snooker ball is worth seven points? | Black | Pink | Blue | Brown
+1 | What is the national sport of Japan? | Sumo wrestling | Judo | Karate | Baseball
+1 | Which famous horse race is run at Aintree? | The Grand National | The Derby | The Gold Cup | The St Leger
+1 | How often are the Summer Olympic Games normally held? | Every four years | Every two years | Every three years | Every five years
+1 | Which sport uses the terms 'love', 'deuce' and 'advantage'? | Tennis | Badminton | Squash | Table tennis
+2 | Which English football club is nicknamed 'The Gunners'? | Arsenal | Chelsea | Tottenham Hotspur | West Ham United
+2 | Which football club is nicknamed 'The Toffees'? | Everton | Liverpool | Sunderland | Newcastle United
+2 | Which football club is nicknamed 'The Magpies'? | Newcastle United | Everton | Leeds United | Fulham
+2 | Which country won the 1966 FIFA World Cup? | England | West Germany | Brazil | Italy
+2 | Who captained England to the 1966 World Cup victory? | Bobby Moore | Bobby Charlton | Geoff Hurst | Nobby Stiles
+2 | Who scored a hat-trick in the 1966 World Cup final? | Geoff Hurst | Martin Peters | Bobby Charlton | Roger Hunt
+2 | How long is a marathon in kilometres, approximately? | 42.2 km | 40 km | 45 km | 38.5 km
+2 | What is the distance of the swim in a full Ironman triathlon? | 2.4 miles (3.8 km) | 1.2 miles (1.9 km) | 1 mile (1.6 km) | 5 km
+2 | What is the cycling distance in a full Ironman triathlon? | 112 miles (180 km) | 100 miles (160 km) | 56 miles (90 km) | 140 miles (225 km)
+2 | In which Welsh town does IRONMAN Wales take place? | Tenby | Swansea | Aberystwyth | Pembroke
+2 | Which British cyclist was the first Briton to win the Tour de France, in 2012? | Bradley Wiggins | Chris Froome | Mark Cavendish | Geraint Thomas
+2 | Which Welsh cyclist won the Tour de France in 2018? | Geraint Thomas | Bradley Wiggins | Chris Froome | Luke Rowe
+2 | Which British athlete won Olympic triathlon gold in 2012 and 2016? | Alistair Brownlee | Jonny Brownlee | Alex Yee | Tim Don
+2 | Which British triathlete won Olympic gold in Paris 2024? | Alex Yee | Alistair Brownlee | Jonny Brownlee | Sam Laidlow
+2 | In snooker, what is the maximum break in a standard frame? | 147 | 155 | 140 | 167
+2 | Which rugby union trophy is contested by England and Scotland? | Calcutta Cup | Webb Ellis Cup | Triple Crown | Bledisloe Cup
+2 | What is the Rugby World Cup trophy called? | Webb Ellis Cup | Calcutta Cup | Lombardi Trophy | Ashes Urn
+2 | In which year did England win the Rugby World Cup? | 2003 | 2007 | 1999 | 1991
+2 | Who kicked the winning drop goal for England in the 2003 Rugby World Cup final? | Jonny Wilkinson | Martin Johnson | Will Greenwood | Mike Catt
+2 | What is the cricket trophy contested between England and Australia? | The Ashes | The Wisden Trophy | The Basil D'Oliveira Trophy | The Frank Worrell Trophy
+2 | Which London ground is known as 'the home of cricket'? | Lord's | The Oval | Edgbaston | Headingley
+2 | In cricket, what does LBW stand for? | Leg before wicket | Long ball wide | Leg bye wicket | Low bounce wide
+2 | Which golfer won the Masters in 1997 aged 21? | Tiger Woods | Phil Mickelson | Ernie Els | Rory McIlroy
+2 | Which Scottish golf course is known as 'the Home of Golf'? | St Andrews | Carnoustie | Muirfield | Turnberry
+2 | What is a score of one under par on a golf hole called? | Birdie | Eagle | Bogey | Albatross
+2 | What is a score of two under par on a hole called? | Eagle | Birdie | Albatross | Condor
+2 | Which British driver equalled Michael Schumacher's record of seven Formula One world titles in 2020? | Lewis Hamilton | Jenson Button | Nigel Mansell | Damon Hill
+2 | Which circuit hosts the British Grand Prix? | Silverstone | Brands Hatch | Donington Park | Goodwood
+2 | In which sport do teams compete for the Stanley Cup? | Ice hockey | Baseball | American football | Basketball
+2 | Which annual rowing race takes place on the Thames between Putney and Mortlake? | The Boat Race | Henley Royal Regatta | Head of the River | The Doggett's race
+2 | Which British rower won gold at five consecutive Olympics? | Steve Redgrave | Matthew Pinsent | James Cracknell | Pete Reed
+2 | Which sprinter set the 100m world record of 9.58 seconds in 2009? | Usain Bolt | Tyson Gay | Yohan Blake | Asafa Powell
+2 | Which British athlete won the 5,000m and 10,000m at both London 2012 and Rio 2016? | Mo Farah | Paula Radcliffe | Kelly Holmes | Steve Cram
+2 | Which British heptathlete won gold at London 2012? | Jessica Ennis | Katarina Johnson-Thompson | Denise Lewis | Kelly Sotherton
+2 | Which British swimmer won 100m breaststroke gold at Rio 2016 and Tokyo 2020? | Adam Peaty | Duncan Goodhew | Tom Daley | Michael Jamieson
+2 | How many players are there in a polo team on the field? | Four | Five | Six | Seven
+2 | How many players are on a volleyball team on court? | Six | Five | Seven | Eight
+2 | Which boxer was known as 'The Greatest'? | Muhammad Ali | Joe Frazier | George Foreman | Sugar Ray Leonard
+2 | What is the term for three strikes in a row in tenpin bowling? | Turkey | Hat-trick | Triple | Eagle
+2 | In which sport is the term 'chukka' used? | Polo | Croquet | Lacrosse | Hockey
+3 | Which footballer scored the 'Hand of God' goal against England? | Diego Maradona | Pelé | Lionel Messi | Mario Kempes
+3 | In which year did that 'Hand of God' World Cup match take place? | 1986 | 1982 | 1990 | 1978
+3 | Who was the first footballer to be knighted while still playing? | Stanley Matthews | Bobby Charlton | Tom Finney | Bobby Moore
+3 | Which British runner first ran a mile in under four minutes? | Roger Bannister | Sebastian Coe | Chris Chataway | Steve Ovett
+3 | In which year did Roger Bannister run the first sub-four-minute mile? | 1954 | 1950 | 1958 | 1962
+3 | At which Oxford ground did Bannister run his sub-four-minute mile? | Iffley Road | White City | Crystal Palace | Headington
+3 | Which horse won the Grand National three times in the 1970s? | Red Rum | Aldaniti | Party Politics | Tiger Roll
+3 | Which cricketer is the leading Test wicket-taker for England? | James Anderson | Stuart Broad | Ian Botham | Fred Trueman
+3 | Which bearded Victorian doctor was the first cricketer to score 100 first-class centuries? | W G Grace | Jack Hobbs | Herbert Sutcliffe | Wally Hammond
+3 | How many balls make up a full set in a frame of snooker at the start? | 22 | 21 | 15 | 16
+3 | How many red balls are there at the start of a snooker frame? | 15 | 10 | 21 | 12
+3 | Which sport's governing body was founded at the Freemasons' Tavern in London in 1863? | Football (The FA) | Rugby (The RFU) | Cricket (The MCC) | Tennis (The LTA)
+3 | Which English football club plays home games at Anfield? | Liverpool | Everton | Manchester City | Newcastle United
+3 | Which football club plays at St James' Park? | Newcastle United | Sunderland | Middlesbrough | Leeds United
+3 | What is the oldest of tennis's four Grand Slam tournaments? | Wimbledon | US Open | French Open | Australian Open
+3 | In which year was the first Wimbledon Championship held? | 1877 | 1867 | 1888 | 1901
+3 | Which race is known as 'The Blue Riband' of the Flat, run at Epsom? | The Derby | The Oaks | The St Leger | The 2,000 Guineas
+3 | Which county cricket club plays at Old Trafford? | Lancashire | Yorkshire | Nottinghamshire | Durham
+3 | Which country won the first Rugby World Cup in 1987? | New Zealand | Australia | South Africa | France
+3 | What does a red flag mean in Formula One? | The session is stopped | Last lap | Slippery track | Pit lane closed
+3 | What is the run portion of a full Ironman triathlon? | A full marathon | A half marathon | 20 miles | 30 km
+3 | Who in 1875 became the first person to swim the English Channel without aids? | Matthew Webb | Lord Byron | Mercedes Gleitze | Captain Cook
+
+## lit | Books & Words
+1 | Who wrote 'Romeo and Juliet'? | William Shakespeare | Christopher Marlowe | Ben Jonson | John Milton
+1 | Who wrote the Harry Potter books? | J K Rowling | Philip Pullman | Roald Dahl | Terry Pratchett
+1 | Which author created Peter Rabbit? | Beatrix Potter | A A Milne | Enid Blyton | Kenneth Grahame
+1 | Who wrote 'Charlie and the Chocolate Factory'? | Roald Dahl | David Walliams | Enid Blyton | C S Lewis
+1 | Which bear lives in the Hundred Acre Wood? | Winnie-the-Pooh | Paddington | Rupert | Baloo
+1 | What is the name of the lion in 'The Lion, the Witch and the Wardrobe'? | Aslan | Simba | Mufasa | Leo
+1 | Who wrote 'Pride and Prejudice'? | Jane Austen | Charlotte Brontë | George Eliot | Mary Shelley
+1 | What is a word that means the opposite of another word called? | Antonym | Synonym | Homonym | Acronym
+1 | What is a word with the same meaning as another called? | Synonym | Antonym | Homophone | Pronoun
+1 | Who wrote 'Oliver Twist'? | Charles Dickens | Thomas Hardy | Wilkie Collins | William Thackeray
+1 | Which detective was created by Agatha Christie and has a famous moustache? | Hercule Poirot | Sherlock Holmes | Inspector Morse | Father Brown
+1 | Who wrote 'The Hobbit'? | J R R Tolkien | C S Lewis | Terry Pratchett | Philip Pullman
+1 | Which children's author wrote the 'Famous Five' books? | Enid Blyton | Roald Dahl | Malorie Blackman | Jacqueline Wilson
+1 | In which book would you find the characters Toad, Ratty and Mole? | The Wind in the Willows | Watership Down | Winnie-the-Pooh | The Animals of Farthing Wood
+1 | Which Shakespeare play features a Danish prince? | Hamlet | Macbeth | King Lear | Othello
+1 | Who wrote 'A Christmas Carol'? | Charles Dickens | Thomas Hardy | Lewis Carroll | Washington Irving
+1 | What is the name of Sherlock Holmes's friend and chronicler? | Dr Watson | Inspector Lestrade | Mycroft | Moriarty
+1 | Who wrote 'Alice's Adventures in Wonderland'? | Lewis Carroll | Edward Lear | J M Barrie | Kenneth Grahame
+1 | Who wrote 'Peter Pan'? | J M Barrie | Lewis Carroll | Robert Louis Stevenson | Rudyard Kipling
+1 | What type of word describes an action, like 'run' or 'swim'? | Verb | Noun | Adjective | Adverb
+2 | Which Brontë sister wrote 'Wuthering Heights'? | Emily | Charlotte | Anne | Branwell
+2 | Which Brontë sister wrote 'Jane Eyre'? | Charlotte | Emily | Anne | Maria
+2 | Who wrote 'Nineteen Eighty-Four'? | George Orwell | Aldous Huxley | H G Wells | Ray Bradbury
+2 | Who wrote 'Brave New World'? | Aldous Huxley | George Orwell | H G Wells | Anthony Burgess
+2 | Who wrote 'Frankenstein'? | Mary Shelley | Bram Stoker | Percy Shelley | Ann Radcliffe
+2 | Who wrote 'Dracula'? | Bram Stoker | Mary Shelley | Robert Louis Stevenson | Oscar Wilde
+2 | Who wrote 'The Picture of Dorian Gray'? | Oscar Wilde | Bram Stoker | Henry James | Arthur Conan Doyle
+2 | Who wrote 'Treasure Island'? | Robert Louis Stevenson | Walter Scott | Daniel Defoe | Jules Verne
+2 | Who wrote 'Robinson Crusoe'? | Daniel Defoe | Jonathan Swift | Henry Fielding | Samuel Richardson
+2 | Who wrote 'Gulliver's Travels'? | Jonathan Swift | Daniel Defoe | Laurence Sterne | Henry Fielding
+2 | Who wrote 'The Canterbury Tales'? | Geoffrey Chaucer | William Langland | John Gower | Thomas Malory
+2 | Which poet wrote 'I Wandered Lonely as a Cloud'? | William Wordsworth | John Keats | Samuel Taylor Coleridge | Percy Shelley
+2 | Who wrote the poem 'Ode to a Nightingale'? | John Keats | Lord Byron | Percy Shelley | William Wordsworth
+2 | Which Welsh poet wrote 'Under Milk Wood'? | Dylan Thomas | R S Thomas | Gerard Manley Hopkins | Wilfred Owen
+2 | Which Scottish poet wrote 'Auld Lang Syne'? | Robert Burns | Walter Scott | James Hogg | Robert Louis Stevenson
+2 | Which First World War poet wrote 'Dulce et Decorum Est'? | Wilfred Owen | Siegfried Sassoon | Rupert Brooke | Edward Thomas
+2 | Which novel begins 'It is a truth universally acknowledged'? | Pride and Prejudice | Emma | Sense and Sensibility | Persuasion
+2 | Which novel begins 'It was the best of times, it was the worst of times'? | A Tale of Two Cities | Great Expectations | Bleak House | Hard Times
+2 | Which Dickens novel features Pip and Miss Havisham? | Great Expectations | David Copperfield | Bleak House | Little Dorrit
+2 | Which Dickens character says 'Please, sir, I want some more'? | Oliver Twist | David Copperfield | Pip | Nicholas Nickleby
+2 | In 'Macbeth', how many witches meet Macbeth on the heath? | Three | Two | Four | Seven
+2 | Which Shakespeare play features the line 'To be, or not to be'? | Hamlet | Macbeth | Othello | King Lear
+2 | Which Shakespeare play features the characters Oberon, Titania and Puck? | A Midsummer Night's Dream | The Tempest | Twelfth Night | As You Like It
+2 | Which Shakespeare play is set mainly on an island with Prospero and Ariel? | The Tempest | Twelfth Night | Pericles | The Winter's Tale
+2 | Who wrote 'Animal Farm'? | George Orwell | Aldous Huxley | William Golding | Evelyn Waugh
+2 | Who wrote 'Lord of the Flies'? | William Golding | George Orwell | Anthony Burgess | Graham Greene
+2 | Who wrote 'The Lion, the Witch and the Wardrobe'? | C S Lewis | J R R Tolkien | Philip Pullman | Kenneth Grahame
+2 | Who wrote the 'His Dark Materials' trilogy? | Philip Pullman | Terry Pratchett | Neil Gaiman | C S Lewis
+2 | Which author created the Discworld series? | Terry Pratchett | Douglas Adams | Neil Gaiman | Jasper Fforde
+2 | Who wrote 'The Hitchhiker's Guide to the Galaxy'? | Douglas Adams | Terry Pratchett | Arthur C Clarke | Iain M Banks
+2 | In 'The Hitchhiker's Guide to the Galaxy', what is the answer to life, the universe and everything? | 42 | 7 | 101 | 1,000
+2 | Which author created the spy George Smiley? | John le Carré | Ian Fleming | Len Deighton | Graham Greene
+2 | Who created James Bond? | Ian Fleming | John le Carré | Len Deighton | Kingsley Amis
+2 | What is a 'haiku'? | A three-line Japanese poem | A fourteen-line poem | A Scottish ballad | A Persian love song
+2 | What is the term for a play on words? | Pun | Simile | Metaphor | Alliteration
+2 | 'As brave as a lion' is an example of which figure of speech? | Simile | Metaphor | Hyperbole | Onomatopoeia
+2 | What is a 'bildungsroman'? | A coming-of-age novel | A detective story | A book of poems | A historical romance
+2 | What is the name of the hobbit who finds the One Ring in 'The Hobbit'? | Bilbo Baggins | Frodo Baggins | Samwise Gamgee | Peregrin Took
+2 | In 'Jane Eyre', what is the name of Mr Rochester's house? | Thornfield Hall | Pemberley | Manderley | Wuthering Heights
+2 | Which novel opens with 'Last night I dreamt I went to Manderley again'? | Rebecca | Jamaica Inn | Jane Eyre | Frenchman's Creek
+2 | Who wrote 'Rebecca'? | Daphne du Maurier | Agatha Christie | Virginia Woolf | Dorothy L Sayers
+2 | Who wrote 'Far from the Madding Crowd'? | Thomas Hardy | George Eliot | Anthony Trollope | Elizabeth Gaskell
+2 | Which fictional county is the setting for many Thomas Hardy novels? | Wessex | Barsetshire | Loamshire | Midsomer
+3 | Who wrote 'Middlemarch'? | George Eliot | Elizabeth Gaskell | Charlotte Brontë | Fanny Burney
+3 | What was George Eliot's real name? | Mary Ann Evans | Mary Shelley | Elizabeth Barrett | Charlotte Smith
+3 | Which author wrote 'Mrs Dalloway'? | Virginia Woolf | E M Forster | Katherine Mansfield | Vita Sackville-West
+3 | Who wrote 'A Passage to India'? | E M Forster | Rudyard Kipling | Paul Scott | Evelyn Waugh
+3 | Who wrote 'The Jungle Book'? | Rudyard Kipling | Edgar Rice Burroughs | Joseph Conrad | H Rider Haggard
+3 | Who wrote 'Heart of Darkness'? | Joseph Conrad | Rudyard Kipling | E M Forster | Graham Greene
+3 | Who compiled 'A Dictionary of the English Language' in 1755? | Samuel Johnson | James Boswell | Noah Webster | John Locke
+3 | Which poet wrote 'The Rime of the Ancient Mariner'? | Samuel Taylor Coleridge | William Wordsworth | John Keats | Robert Southey
+3 | Who became Poet Laureate in 1850 and wrote 'The Charge of the Light Brigade'? | Alfred, Lord Tennyson | Robert Browning | Matthew Arnold | William Wordsworth
+3 | Which novel features the character Captain Ahab? | Moby-Dick | Treasure Island | Twenty Thousand Leagues Under the Sea | The Old Man and the Sea
+3 | In which Austen novel does Anne Elliot appear? | Persuasion | Emma | Mansfield Park | Northanger Abbey
+3 | What is the name of the Bennet family's home in 'Pride and Prejudice'? | Longbourn | Pemberley | Netherfield | Rosings
+3 | Which Shakespeare play features the character Malvolio? | Twelfth Night | Much Ado About Nothing | As You Like It | The Merchant of Venice
+3 | In 'The Merchant of Venice', who demands a pound of flesh? | Shylock | Antonio | Bassanio | Portia
+3 | What is the name for a word formed from the initial letters of other words and pronounced as a word, like 'NATO'? | Acronym | Initialism | Abbreviation | Portmanteau
+3 | What is a 'portmanteau' word? | A blend of two words, like 'brunch' | A word borrowed from French | A word with two meanings | A very long word
+3 | Which poet wrote 'Do not go gentle into that good night'? | Dylan Thomas | W H Auden | Philip Larkin | Ted Hughes
+3 | Which poet wrote 'This Be The Verse'? | Philip Larkin | Ted Hughes | John Betjeman | Seamus Heaney
+3 | Who wrote 'The Waste Land'? | T S Eliot | W B Yeats | Ezra Pound | W H Auden
+3 | Which Irish author wrote 'Ulysses'? | James Joyce | Samuel Beckett | Oscar Wilde | Flann O'Brien
+3 | Who wrote the play 'Waiting for Godot'? | Samuel Beckett | Harold Pinter | Tom Stoppard | Eugène Ionesco
+3 | Who wrote 'The Importance of Being Earnest'? | Oscar Wilde | George Bernard Shaw | Noël Coward | J M Barrie
+3 | Who wrote 'Pygmalion', the basis of 'My Fair Lady'? | George Bernard Shaw | Oscar Wilde | Noël Coward | Terence Rattigan
+
+## food | Food & Drink
+1 | What is the main ingredient of hummus? | Chickpeas | Lentils | Broad beans | Kidney beans
+1 | Which country does the dish paella come from? | Spain | Italy | Portugal | Mexico
+1 | What type of pastry is used to make profiteroles? | Choux | Puff | Filo | Shortcrust
+1 | Which fruit is traditionally served with cream at Wimbledon? | Strawberries | Raspberries | Cherries | Peaches
+1 | What is the main ingredient in a traditional Yorkshire pudding batter, alongside eggs and milk? | Flour | Oats | Breadcrumbs | Suet
+1 | What type of food is Stilton? | Cheese | Sausage | Bread | Pie
+1 | Which nut is used to make marzipan? | Almond | Hazelnut | Walnut | Cashew
+1 | What is sushi traditionally wrapped in? | Seaweed (nori) | Rice paper | Lettuce | Cabbage
+1 | Which spirit is the base of a mojito? | Rum | Vodka | Gin | Tequila
+1 | Which drink is made from fermented apples? | Cider | Perry | Mead | Kombucha
+1 | Which drink is made from fermented pears? | Perry | Cider | Mead | Calvados
+1 | What is the main ingredient of a traditional omelette? | Eggs | Potatoes | Cheese | Flour
+1 | Which Italian dish is made from layers of pasta sheets, sauce and cheese? | Lasagne | Risotto | Gnocchi | Ravioli
+1 | What colour is the flesh of an avocado? | Green | Orange | White | Red
+1 | What is a 'Bramley'? | A cooking apple | A pear | A plum | A potato
+1 | Which vegetable is used to make sauerkraut? | Cabbage | Cucumber | Carrot | Onion
+1 | Which country is famous for the dish 'haggis'? | Scotland | Ireland | Wales | Iceland
+1 | What is the name of the Christmas cake made in Germany with dried fruit and marzipan? | Stollen | Panettone | Lebkuchen | Strudel
+1 | Which Italian cheese is traditionally used on a Margherita pizza? | Mozzarella | Parmesan | Ricotta | Gorgonzola
+1 | What is tofu made from? | Soya beans | Rice | Chickpeas | Wheat
+2 | Which spice comes from the crocus flower and is the world's most expensive by weight? | Saffron | Vanilla | Cardamom | Turmeric
+2 | Which spice gives curry its yellow colour? | Turmeric | Saffron | Cumin | Paprika
+2 | What is the name of the Welsh dish of cheese sauce on toast? | Welsh rarebit | Cawl | Bara brith | Glamorgan sausage
+2 | What is 'bara brith'? | A Welsh fruit loaf | A Welsh lamb stew | A Welsh cheese | A Welsh beer
+2 | Which county is famous for its pasty with a crimped edge? | Cornwall | Devon | Somerset | Dorset
+2 | Which town in Derbyshire gives its name to a famous almond and jam tart? | Bakewell | Matlock | Buxton | Ashbourne
+2 | Which town gives its name to a fruit-filled puff pastry cake? | Eccles | Chorley | Bury | Bolton
+2 | What is the main ingredient of a traditional Scottish 'cullen skink'? | Smoked haddock | Salmon | Lamb | Leeks
+2 | What is the name of the Scottish dish of mashed swede and potato? | Clapshot | Stovies | Rumbledethumps | Skirlie
+2 | What is 'black pudding' mainly made from? | Pork blood and oatmeal | Liver and onion | Beef and suet | Black beans
+2 | Which county is Wensleydale cheese originally from? | Yorkshire | Lancashire | Derbyshire | Cumbria
+2 | In which county is Cheddar Gorge, home of Cheddar cheese? | Somerset | Devon | Dorset | Wiltshire
+2 | Which French region gives its name to a sparkling wine? | Champagne | Bordeaux | Burgundy | Alsace
+2 | What is the main grape of a traditional Chablis? | Chardonnay | Sauvignon Blanc | Riesling | Pinot Grigio
+2 | Which country does the wine Rioja come from? | Spain | Portugal | Italy | Argentina
+2 | Which spirit is flavoured with juniper berries? | Gin | Vodka | Rum | Brandy
+2 | What are the two main ingredients of a traditional Pimm's cup besides Pimm's? | Lemonade and fruit | Tonic and lime | Soda and mint | Ginger ale and orange
+2 | What is a 'Bellini' made from? | Prosecco and peach | Champagne and orange | Vodka and cranberry | Gin and elderflower
+2 | What is the main ingredient of the Greek dip tzatziki? | Yoghurt | Aubergine | Chickpeas | Fish roe
+2 | Which Italian dessert's name means 'pick me up'? | Tiramisu | Panna cotta | Zabaglione | Cannoli
+2 | What is the Japanese word for raw sliced fish served without rice? | Sashimi | Sushi | Tempura | Teriyaki
+2 | What is 'mirepoix'? | Diced onion, carrot and celery | A fish stew | A type of mushroom | A French pastry
+2 | What does 'al dente' mean when cooking pasta? | Firm to the bite | Very soft | With garlic | With butter
+2 | Which pasta's name means 'little tongues'? | Linguine | Tagliatelle | Fusilli | Penne
+2 | What is the main ingredient of a traditional pesto, besides oil and pine nuts? | Basil | Spinach | Parsley | Rocket
+2 | Which fruit is used to make the liqueur Kirsch? | Cherry | Plum | Pear | Apricot
+2 | What is a 'tarte Tatin'? | An upside-down caramelised apple tart | A lemon tart | A cheese tart | A custard tart
+2 | What is the name of the pancakes traditionally eaten in Brittany? | Crêpes | Blinis | Pikelets | Drop scones
+2 | What is the national dish of Hungary? | Goulash | Pierogi | Moussaka | Borscht
+2 | What is the main ingredient of borscht? | Beetroot | Cabbage | Potato | Tomato
+2 | What is Pecorino cheese made from? | Sheep's milk | Goat's milk | Cow's milk | Buffalo milk
+2 | Which cheese is traditionally used in a Greek salad? | Feta | Halloumi | Mozzarella | Manchego
+2 | What is 'Lancashire hotpot' topped with? | Sliced potatoes | Pastry | Mashed potato | Dumplings
+2 | What do you call a Sunday roast's traditional batter accompaniment? | Yorkshire pudding | Toad-in-the-hole | Dumplings | Popover
+2 | Which drink is traditionally used in a 'Black Velvet' with champagne? | Stout | Port | Cassis | Brandy
+2 | Which county is famous for its clotted cream and a 'jam first' cream tea? | Cornwall | Devon | Dorset | Somerset
+2 | In a Devon cream tea, what goes on the scone first? | Cream | Jam | Butter | Honey
+2 | Which herb is the key flavour of a traditional mint sauce served with lamb? | Mint | Rosemary | Thyme | Sage
+3 | What is the main ingredient in the Indian dish 'saag'? | Leafy greens such as spinach | Lentils | Paneer | Chickpeas
+3 | What is 'umami'? | The savoury fifth taste | A Japanese sauce | A type of seaweed | A fermented fish
+3 | Which mushroom is known in France as 'cèpe'? | Porcini (penny bun) | Chanterelle | Morel | Shiitake
+3 | What is 'Kedgeree' made with? | Rice, smoked fish and eggs | Lentils and lamb | Potatoes and cabbage | Noodles and prawns
+3 | Which Scottish town gives its name to a smoked fish, the 'smokie'? | Arbroath | Oban | Stornoway | Fraserburgh
+3 | What is the name of the Italian cured ham from near Parma? | Prosciutto di Parma | Bresaola | Mortadella | Pancetta
+3 | What is a 'digestif'? | A drink served after a meal | A starter | A palate cleanser served mid-meal | A breakfast pastry
+3 | What gives the Italian liqueur limoncello its flavour? | Lemon zest | Almonds | Oranges | Herbs
+3 | Which grape is used to make Barolo? | Nebbiolo | Sangiovese | Barbera | Montepulciano
+3 | Which Portuguese fortified wine comes from the Douro Valley? | Port | Madeira | Sherry | Marsala
+3 | Which Spanish fortified wine comes from around Jerez? | Sherry | Port | Madeira | Marsala
+3 | What is the main ingredient of the Middle Eastern dish 'baba ganoush'? | Aubergine | Chickpeas | Lentils | Courgette
+3 | What does a pizzaiolo make? | Pizza | Pasta | Ice cream | Coffee
+3 | What is 'nduja'? | A spicy spreadable pork sausage | A Sicilian cheese | A type of pasta | A tomato sauce
+3 | At roughly what temperature does a wood-fired Neapolitan pizza oven typically bake? | Around 450 to 500°C | Around 220°C | Around 300°C | Around 150°C
+3 | What type of flour is traditionally used for Neapolitan pizza dough? | Tipo 00 | Wholemeal | Spelt | Rye
+3 | Which classic cocktail is made with gin, Campari and sweet vermouth? | Negroni | Martini | Manhattan | Old Fashioned
+3 | Which spirit is used in a classic Margarita? | Tequila | Rum | Vodka | Gin
+3 | What is the main spirit in a 'Moscow Mule'? | Vodka | Gin | Rum | Whisky
+3 | What is 'mead' made from? | Honey | Apples | Barley | Grapes
+3 | What is a 'Scotch egg' coated in before frying? | Sausage meat and breadcrumbs | Pastry | Batter | Bacon
+
+## uk | Around Britain
+1 | What is the patron saint of Wales? | St David | St Patrick | St Andrew | St George
+1 | What is the patron saint of Scotland? | St Andrew | St David | St Columba | St George
+1 | On what date is St George's Day? | 23 April | 1 March | 30 November | 17 March
+1 | On what date is St David's Day? | 1 March | 23 April | 17 March | 30 November
+1 | On what date is St Andrew's Day? | 30 November | 1 March | 23 April | 25 January
+1 | What is celebrated on 5 November in Britain? | Bonfire Night | Remembrance Sunday | Halloween | Burns Night
+1 | On which night is Robert Burns traditionally celebrated? | 25 January | 1 January | 30 November | 14 February
+1 | Which London landmark is the official residence of the monarch? | Buckingham Palace | Windsor Castle | Kensington Palace | Clarence House
+1 | What colour are London's famous double-decker buses? | Red | Blue | Green | Yellow
+1 | What is the name of the famous clock tower in Westminster, renamed in 2012? | Elizabeth Tower | Victoria Tower | Jewel Tower | Clock Tower of St Stephen
+1 | Which stone circle stands on Salisbury Plain? | Stonehenge | Avebury | Castlerigg | Callanish
+1 | What is the name of the famous monster said to live in a Scottish loch? | Nessie | Morag | Dobhar-chú | Kelpie
+1 | Which city is home to the Cavern Club and the Liver Building? | Liverpool | Manchester | Leeds | Birmingham
+1 | What is the national emblem of Scotland? | Thistle | Rose | Leek | Shamrock
+1 | Which emblem is traditionally worn on St David's Day? | Leek or daffodil | Thistle | Rose | Shamrock
+1 | What is the name of the official residence of the UK Prime Minister? | 10 Downing Street | 11 Downing Street | Chequers | Lancaster House
+1 | Which cathedral in London was designed by Christopher Wren? | St Paul's Cathedral | Westminster Abbey | Southwark Cathedral | Westminster Cathedral
+1 | Which river flows through London? | Thames | Severn | Trent | Mersey
+1 | What is the name of the tower in Blackpool modelled on the Eiffel Tower? | Blackpool Tower | Spinnaker Tower | BT Tower | Sky Tower
+1 | Which island is home to the TT motorbike races? | Isle of Man | Isle of Wight | Anglesey | Jersey
+2 | What is the name of the Prime Minister's country residence in Buckinghamshire? | Chequers | Dorneywood | Chevening | Sandringham
+2 | Which Royal residence is in Norfolk? | Sandringham | Balmoral | Highgrove | Osborne House
+2 | Which Royal residence is in Aberdeenshire? | Balmoral | Holyrood | Sandringham | Glamis
+2 | What is the monarch's official residence in Edinburgh? | Palace of Holyroodhouse | Edinburgh Castle | Balmoral | Stirling Castle
+2 | What was Queen Victoria's seaside home on the Isle of Wight? | Osborne House | Sandringham | Brighton Pavilion | Carisbrooke Castle
+2 | Which Brighton building was built as a seaside palace for George IV? | Royal Pavilion | Palace Pier | Regency Square | Brighton Dome
+2 | Which city is home to the 'Angel of the North'? | Gateshead | Newcastle | Sunderland | Durham
+2 | Which Cornish attraction is made up of giant biomes? | The Eden Project | The Lost Gardens of Heligan | Tate St Ives | St Michael's Mount
+2 | Which famous tidal island lies off Marazion in Cornwall? | St Michael's Mount | Lindisfarne | Burgh Island | Looe Island
+2 | Which tidal island off Northumberland is also known as Holy Island? | Lindisfarne | Farne Islands | Coquet Island | St Michael's Mount
+2 | Which World Heritage coastline in Dorset and Devon is famous for fossils? | The Jurassic Coast | The Gower | The Causeway Coast | The Heritage Coast
+2 | Which rock formation in Northern Ireland is made of basalt columns? | Giant's Causeway | Fingal's Cave | Marble Arch Caves | Slieve Donard
+2 | Which Scottish island is famous for its whisky distilleries including Laphroaig and Ardbeg? | Islay | Skye | Arran | Jura
+2 | In which city is the Royal Mile? | Edinburgh | Glasgow | Stirling | Perth
+2 | What is London's oldest Underground line, opened in 1863? | Metropolitan | Circle | Bakerloo | District
+2 | How many lions are at the base of Nelson's Column? | Four | Two | Six | Eight
+2 | Which London market is famous for flowers and was once at Covent Garden, now at Nine Elms? | New Covent Garden Market | Borough Market | Billingsgate | Smithfield
+2 | Which London market is famous for meat? | Smithfield | Billingsgate | Spitalfields | Borough
+2 | Which London market was traditionally famous for fish? | Billingsgate | Smithfield | Leadenhall | Columbia Road
+2 | What are the guards at the Tower of London commonly called? | Beefeaters | Chelsea Pensioners | Grenadiers | Bluecoats
+2 | Which birds must, according to legend, never leave the Tower of London? | Ravens | Pigeons | Swans | Magpies
+2 | Which bridge in London opens to let ships through? | Tower Bridge | London Bridge | Westminster Bridge | Millennium Bridge
+2 | Which Welsh city has a castle built on the site of a Roman fort and a Norman motte? | Cardiff | Swansea | Newport | St Davids
+2 | Which is the smallest city in the UK by population? | St Davids | Wells | Ely | Armagh
+2 | Which English city is home to the Roman Baths? | Bath | Chester | York | Colchester
+2 | Which national park includes Snowdon? | Eryri (Snowdonia) | Brecon Beacons | Pembrokeshire Coast | Peak District
+2 | Which national park covers much of the coast around Tenby and St Davids? | Pembrokeshire Coast | Gower | Eryri | Bannau Brycheiniog
+2 | What is the Welsh name for Wales? | Cymru | Kernow | Alba | Éire
+2 | What is the Cornish name for Cornwall? | Kernow | Cymru | Alba | Mannin
+2 | What is the Scottish Gaelic name for Scotland? | Alba | Cymru | Kernow | Caledonia
+2 | Which festival in Wales celebrates poetry and music and crowns a Bard? | The Eisteddfod | Hay Festival | Green Man | Hogmanay
+2 | What is the Scottish name for New Year's Eve celebrations? | Hogmanay | Ceilidh | Beltane | Up Helly Aa
+2 | Which Shetland fire festival ends with the burning of a Viking galley? | Up Helly Aa | Beltane | Hogmanay | Samhain
+2 | What is the name of the annual cheese-rolling event in Gloucestershire? | Cooper's Hill Cheese-Rolling | Stilton Roll | Double Gloucester Dash | Cotswold Cheese Chase
+2 | Which bank holiday is the last Monday in August in England and Wales? | Summer bank holiday | Spring bank holiday | Early May bank holiday | Easter Monday
+3 | Which English county has the longest coastline? | Cornwall | Norfolk | Devon | Kent
+3 | Which is the largest county in England by area? | North Yorkshire | Lincolnshire | Cumbria | Devon
+3 | Which is the smallest historic county in England? | Rutland | Isle of Wight | Bristol | Middlesex
+3 | Which Scottish city is home to the V&A's first design museum outside London? | Dundee | Glasgow | Aberdeen | Edinburgh
+3 | Which canal crosses Scotland through the Great Glen, linking Inverness and Fort William? | Caledonian Canal | Forth and Clyde Canal | Union Canal | Crinan Canal
+3 | Which aqueduct carries the Llangollen Canal high above the River Dee? | Pontcysyllte Aqueduct | Chirk Aqueduct | Barton Aqueduct | Avoncliff Aqueduct
+3 | Which wheel in Scotland is the world's only rotating boat lift? | Falkirk Wheel | Kelpies Wheel | Anderton Wheel | Forth Lift
+3 | What are 'The Kelpies' near Falkirk? | Giant horse-head sculptures | Standing stones | Waterfalls | Rock stacks
+3 | Which bridge across the Firth of Forth is a red cantilever railway bridge from 1890? | Forth Bridge | Forth Road Bridge | Queensferry Crossing | Kincardine Bridge
+3 | What is the name of the stone on which Scottish monarchs were crowned? | Stone of Destiny (Stone of Scone) | Blarney Stone | Coronation Stone of Kingston | Clach na Cudainn
+3 | Which Yorkshire abbey ruins inspired part of Bram Stoker's 'Dracula'? | Whitby Abbey | Fountains Abbey | Rievaulx Abbey | Bolton Abbey
+3 | How many steps lead up from Whitby's old town to the abbey, by tradition? | 199 | 99 | 365 | 299
+3 | Which English city's cathedral has the tallest spire in Britain? | Salisbury | Lincoln | Norwich | Chichester
+3 | Which lighthouse-studded cape is the most south-westerly point of mainland England? | Land's End | Lizard Point | Start Point | Hartland Point
+3 | Which is the most southerly point of mainland Britain? | Lizard Point | Land's End | Portland Bill | Beachy Head
+3 | Which village is said to have the longest place name in Europe, on Anglesey? | Llanfairpwllgwyngyll | Betws-y-Coed | Beddgelert | Portmeirion
+3 | Which Italianate village in North Wales was built by Clough Williams-Ellis? | Portmeirion | Beddgelert | Betws-y-Coed | Llandudno
+3 | Which Scottish island is linked to the mainland by the Skye Bridge? | Skye | Mull | Arran | Raasay
+3 | Which English pier is the longest pleasure pier in the world? | Southend Pier | Brighton Palace Pier | Blackpool North Pier | Llandudno Pier
+3 | Which white chalk stacks stand off the western tip of the Isle of Wight? | The Needles | Old Harry Rocks | The Seven Sisters | Durdle Door
+3 | Which natural limestone arch on the Jurassic Coast is near Lulworth? | Durdle Door | Old Harry Rocks | The Needles | Green Bridge of Wales
+3 | Which town on the River Wye is famous for its book shops and literary festival? | Hay-on-Wye | Ross-on-Wye | Monmouth | Chepstow
+3 | Which Sussex cliffs are the highest chalk sea cliffs in Britain? | Beachy Head | Seven Sisters | White Cliffs of Dover | Old Harry Rocks
+3 | In which county is Hadrian's Wall's famous Sycamore Gap? | Northumberland | Cumbria | Durham | Tyne and Wear

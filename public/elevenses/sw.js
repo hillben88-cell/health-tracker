@@ -1,5 +1,5 @@
 // Elevenses service worker: offline app shell + cached puzzle data.
-const VERSION = 'elevenses-v4';
+const VERSION = 'elevenses-v5';
 const SHELL = [
   './',
   'index.html',
@@ -15,11 +15,13 @@ const SHELL = [
   'js/games/spokes.js',
   'js/games/quartets.js',
   'js/games/ramble.js',
+  'js/games/quiz.js',
   'icons/icon.svg',
   'icons/icon-180.png',
   'icons/icon-192.png',
   'data/clues.json',
   'data/clues-mini.json',
+  'data/quiz/bank.json',
   'data/words5.txt',
 ];
 
@@ -30,7 +32,7 @@ self.addEventListener('install', (e) => {
       await cache.addAll(SHELL);
       // Warm this year's puzzles so the app works offline straight away.
       const y = new Date().getFullYear();
-      const extra = ['mini', 'midi', 'inkling', 'spokes', 'quartets', 'ramble'].map((g) => `data/${g}/${y}.json`).concat('data/words.txt');
+      const extra = ['mini', 'midi', 'inkling', 'spokes', 'quartets', 'ramble', 'quiz'].map((g) => `data/${g}/${y}.json`).concat('data/words.txt');
       await Promise.all(extra.map((u) => cache.add(u).catch(() => {})));
       self.skipWaiting();
     })(),
