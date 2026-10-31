@@ -8,8 +8,8 @@ Screen and runs full-screen and offline). It has six games:
 | **Mini Crossword** | 5×5 quick crossword, fully checked, with a timer. |
 | **Midi Crossword** | 9×9 British-style quick crossword (unchecked squares, answer lengths in brackets). |
 | **Inkling** | Guess the five-letter word in six goes (British word list, optional hard mode). |
-| **Spokes** | A seven-letter word wheel: make words of four or more letters that use the hub letter. Letters can be reused. Every wheel has at least one *Full Circle* word using all seven letters (+10 points). Ranks run from *Stabilisers* to *Yellow Jersey* and *Hors Catégorie*. |
-| **Quartets** | Sixteen words, four hidden groups of four, four lives. Categories are British-flavoured. |
+| **Spokes** | A seven-letter word wheel: make words of four or more letters that use the hub letter. Letters can be reused. Every wheel has at least one *Full Circle* word using all seven letters (+10 points). Ranks run from *Stabilisers* to *Yellow Jersey* and *Hors Catégorie*. **Hints** show words left by first letter and length, two-letter starts, and can reveal the start of a word. |
+| **Quartets** | Sixteen words, four hidden groups of four, four lives. Categories are British-flavoured. **Hints** reveal a group's theme (easiest first), then mark its words. |
 | **Ramble** | A themed word trail: every letter of the 6×7 grid belongs to one theme word. Find bonus words to earn hints. |
 
 Every game has a new puzzle each day at local midnight. Puzzle No. 1 was on

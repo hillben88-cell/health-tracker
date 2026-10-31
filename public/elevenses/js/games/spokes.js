@@ -88,6 +88,7 @@ export default {
       h('p', null, 'Every wheel has at least one ', h('b', null, 'Full Circle'), ': a word that uses all seven letters. It scores 10 bonus points.'),
       h('p', null, 'Climb the ranks from Stabilisers to Yellow Jersey. Find every word for ', h('i', null, 'Hors Catégorie'), '.'),
       h('p', null, 'Type on a keyboard or tap the wheel. Tap ', h('b', null, 'Shuffle'), ' for a fresh look at the letters.'),
+      h('p', null, 'Stuck? Tap ', h('b', null, 'Hints'), ' to see how many words are left by first letter and length, or to reveal the start of a word.'),
     ];
   },
 
@@ -108,6 +109,7 @@ export default {
     const foundCount = h('span');
     const foundPreview = h('span', { class: 'sp-preview' });
     const foundBtn = h('button', { class: 'sp-found', onclick: showWords }, foundCount, foundPreview, h('span', { class: 'sp-chev', html: ICON.chevR }));
+    const hintsBtn = h('button', { class: 'btn ghost sp-hints-btn', onclick: showHints, html: ICON.bulb + '<span>Hints</span>' });
     const input = h('div', { class: 'sp-input', 'aria-live': 'polite' });
     const wheel = S('svg', { viewBox: '-110 -110 220 220', class: 'sp-wheel', role: 'group', 'aria-label': 'Letter wheel' });
     const segs = [];
@@ -142,7 +144,7 @@ export default {
       h('button', { class: 'btn ghost', onclick: () => submit() }, 'Enter'),
     );
     const pastTools = ctx.date < today() ? h('button', { class: 'linkish', onclick: showAnswers }, 'Reveal the answers') : null;
-    ctx.root.append(h('div', { class: 'sp-wrap' }, rankBar, foundBtn, input, wheel, btns, pastTools));
+    ctx.root.append(h('div', { class: 'sp-wrap' }, rankBar, h('div', { class: 'sp-row' }, foundBtn, hintsBtn), input, wheel, btns, pastTools));
 
     // ----- rendering
     function render() {
@@ -232,6 +234,66 @@ export default {
         h('div', { class: 'sp-list' }, sorted.length ? h('ul', { class: 'cols' }, sorted.map((w) => h('li', { class: isFull(w, set) ? 'full' : '' }, cap(w)))) : h('p', null, 'No words yet. Have a spin!'), h('p', { class: 'fine' }, `${r.found.length} of ${p.w.length} words · ${r.score} of ${max} points`)),
         { title: 'Your words' },
       );
+    }
+    // ----- hints
+    const unfound = () => p.w.filter((w) => !r.found.includes(w));
+    function hintsBody() {
+      const left = unfound();
+      const all = p.w;
+      const maxLen = Math.max(...all.map((w) => w.length));
+      const cols = [];
+      for (let L = 4; L <= Math.min(maxLen, 9); L++) cols.push(L);
+      const hasLong = maxLen >= 10;
+      const colOf = (w) => (w.length >= 10 ? '10+' : w.length);
+      const firsts = [...new Set(all.map((w) => w[0]))].sort();
+      const count = (list, ch, col) => list.filter((w) => w[0] === ch && (col == null || colOf(w) === col)).length;
+      const colKeys = [...cols, ...(hasLong ? ['10+'] : [])];
+      const cell = (n, total) => h('td', { class: !total ? 'none' : n ? '' : 'done' }, !total ? '·' : n || '✓');
+      const table = h(
+        'table',
+        { class: 'sp-hint-grid' },
+        h('thead', null, h('tr', null, h('th', null, ''), colKeys.map((c) => h('th', null, c)), h('th', null, 'Σ'))),
+        h(
+          'tbody',
+          null,
+          firsts.map((ch) => h('tr', null, h('th', null, ch.toUpperCase()), colKeys.map((c) => cell(count(left, ch, c), count(all, ch, c))), cell(count(left, ch), count(all, ch)))),
+          h('tr', { class: 'sum' }, h('th', null, 'Σ'), colKeys.map((c) => cell(left.filter((w) => colOf(w) === c).length, all.filter((w) => colOf(w) === c).length)), cell(left.length, all.length)),
+        ),
+      );
+      const twos = {};
+      for (const w of left) twos[w.slice(0, 2)] = (twos[w.slice(0, 2)] || 0) + 1;
+      const fullLeft = p.n.filter((w) => !r.found.includes(w)).length;
+      const nudges = r.nudges || [];
+      return h(
+        'div',
+        { class: 'sp-hints' },
+        h('p', { class: 'sp-hint-sum' }, `${left.length} of ${all.length} words still to find · ${max - r.score} points left · ${fullLeft ? `${fullLeft} Full Circle${fullLeft > 1 ? 's' : ''} to go` : 'Full Circle found'}`),
+        h('h3', { class: 'sub-head' }, 'Words left, by first letter and length'),
+        h('div', { class: 'sp-hint-scroll' }, table),
+        h('h3', { class: 'sub-head' }, 'Words left, by first two letters'),
+        h('p', { class: 'sp-twos' }, Object.keys(twos).length ? Object.entries(twos).sort().map(([k, n]) => h('span', null, k.toUpperCase(), h('b', null, ` ×${n}`))) : 'None. You’ve found them all!'),
+        h('h3', { class: 'sub-head' }, 'Still stuck?'),
+        nudges.length
+          ? h('ul', { class: 'sp-nudges' }, nudges.map((w) => h('li', { class: r.found.includes(w) ? 'got' : '' }, r.found.includes(w) ? cap(w) : `${[...w.slice(0, w.length >= 7 ? 3 : 2).toUpperCase(), ...'_'.repeat(w.length - (w.length >= 7 ? 3 : 2))].join(' ')}   (${w.length})`)))
+          : null,
+        left.filter((w) => !nudges.includes(w)).length
+          ? h('button', { class: 'btn ghost sm', onclick: nudge }, 'Show me the start of a word')
+          : null,
+      );
+    }
+    function nudge() {
+      const options = unfound().filter((w) => !(r.nudges || []).includes(w));
+      if (!options.length) return;
+      // Prefer a word you can realistically spot: avoid the very longest unless that's all that's left.
+      options.sort((a, b) => a.length - b.length);
+      const pick = options[Math.floor(Math.random() * Math.max(1, Math.ceil(options.length * 0.7)))];
+      r.nudges = [...(r.nudges || []), pick];
+      r.hints = (r.hints || 0) + 1;
+      ctx.save(r);
+      showHints();
+    }
+    function showHints() {
+      modal(hintsBody(), { title: 'Hints', cls: 'tall' });
     }
     function showRanks() {
       const rk = rankOf(r.score, max);

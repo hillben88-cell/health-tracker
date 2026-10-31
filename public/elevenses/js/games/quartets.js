@@ -1,5 +1,5 @@
 // Quartets — find four groups of four.
-import { h, dayData, toast, statRow, distribution, streaks, puzzleNo, confetti } from '../core.js';
+import { h, dayData, toast, statRow, distribution, streaks, puzzleNo, confetti, ICON } from '../core.js';
 
 const LIVES = 4;
 const EMOJI = ['🟩', '🟧', '🟦', '🟪'];
@@ -18,14 +18,15 @@ export default {
   tagline: 'Sixteen words, four groups of four. Spot what links them — but watch the red herrings.',
   color: 'var(--quartets)',
   tint: 'var(--quartets-tint)',
-  perfectLabel: 'No mistakes',
-  perfect: (r) => r.win && r.mistakes === 0,
+  perfectLabel: 'No mistakes, no hints',
+  perfect: (r) => r.win && r.mistakes === 0 && !r.hints,
 
   load: (date) => dayData('quartets', date),
 
   summary(r) {
     if (!r) return 'Sixteen words await';
-    if (r.done) return r.win ? (r.mistakes ? `Solved with ${r.mistakes} mistake${r.mistakes > 1 ? 's' : ''}` : 'Solved — no mistakes!') : 'Out of lives this time';
+    const hints = r.hints ? ` · ${r.hints} hint${r.hints > 1 ? 's' : ''}` : '';
+    if (r.done) return r.win ? (r.mistakes ? `Solved with ${r.mistakes} mistake${r.mistakes > 1 ? 's' : ''}${hints}` : `Solved, no mistakes${hints}`) : 'Out of lives this time';
     return `${r.solved.length} of 4 groups found`;
   },
   statsSummary(records) {
@@ -42,7 +43,7 @@ export default {
       'div',
       null,
       statRow([[all.length, 'Completed'], [all.length ? Math.round((wins.length / all.length) * 100) : 0, 'Win %'], [s.current, 'Current streak'], [s.max, 'Max streak']]),
-      statRow([[wins.filter((r) => r.mistakes === 0).length, 'Perfect puzzles']]),
+      statRow([[wins.filter((r) => r.mistakes === 0 && !r.hints).length, 'Perfect puzzles'], [wins.filter((r) => !r.hints).length, 'Solved without hints']]),
       h('h3', { class: 'sub-head' }, 'Mistakes'),
       distribution([0, 1, 2, 3].map((n) => [n, wins.filter((r) => r.mistakes === n).length, today?.win && today.mistakes === n]).concat([['✗', all.length - wins.length, today && !today.win]])),
     );
@@ -53,6 +54,7 @@ export default {
       h('ul', null, h('li', null, 'Tap four words and press ', h('b', null, 'Submit'), ' to check your guess.'), h('li', null, 'Find the groups without making four mistakes.'), h('li', null, 'Each puzzle has exactly one solution. Watch out for words that seem to fit more than one group!')),
       h('p', null, 'Groups get trickier by colour:'),
       h('div', { class: 'q-legend' }, ['Straightforward', 'Getting there', 'Tricky', 'Devious — often wordplay'].map((t, i) => h('div', { class: `q-legend-row q${i}` }, h('i'), t))),
+      h('p', null, 'Stuck? Tap ', h('b', null, 'Hint'), '. The first hint tells you what one group is, starting with the easiest. Later hints mark words that belong to it. A perfect game is one with no mistakes and no hints.'),
       h('p', null, 'Examples: ', h('b', null, 'British puddings'), ' — TRIFLE, CRUMBLE, ETON MESS, SYLLABUB.  ', h('b', null, '___ PIE'), ' — PORK, COTTAGE, HUMBLE, MAG.'),
       h('p', null, 'A fresh puzzle lands every midnight.'),
     ];
@@ -64,6 +66,7 @@ export default {
     p.g.forEach((g, i) => g.m.forEach((m) => groupOf.set(m, i)));
     const r = ctx.rec || { solved: [], guesses: [], mistakes: 0, order: p.o.slice() };
     r.order ||= p.o.slice();
+    r.hinted ||= {}; // group index -> hint level (1 = theme shown, 2-4 = that many minus one words marked)
     let selected = new Set();
     let busy = false;
 
@@ -74,7 +77,34 @@ export default {
     const deselBtn = h('button', { class: 'btn ghost', onclick: () => { selected.clear(); render(); } }, 'Deselect all');
     const shuffleBtn = h('button', { class: 'btn ghost', onclick: shuffle }, 'Shuffle');
     const controls = h('div', { class: 'q-controls' }, shuffleBtn, deselBtn, submitBtn);
-    ctx.root.append(h('div', { class: 'q-wrap' }, h('p', { class: 'q-intro' }, 'Create four groups of four!'), h('div', { class: 'q-board' }, solvedHost, grid), lives, controls));
+    const hintBtn = h('button', { class: 'btn ghost sm q-hint-btn', onclick: useHint });
+    const hintHost = h('div', { class: 'q-hints' });
+    ctx.root.append(h('div', { class: 'q-wrap' }, h('div', { class: 'q-top' }, h('p', { class: 'q-intro' }, 'Create four groups of four!'), hintBtn), hintHost, h('div', { class: 'q-board' }, solvedHost, grid), lives, controls));
+
+    // Words a hint has marked, and the group they belong to.
+    function markedWords() {
+      const out = new Map();
+      for (const [gi, lvl] of Object.entries(r.hinted)) if (!r.solved.includes(+gi)) p.g[gi].m.slice(0, Math.max(0, lvl - 1)).forEach((w) => out.set(w, +gi));
+      return out;
+    }
+    function nextHint() {
+      const open = [0, 1, 2, 3].filter((gi) => !r.solved.includes(gi));
+      const untitled = open.find((gi) => !r.hinted[gi]);
+      if (untitled !== undefined) return [untitled, 1];
+      const more = open.find((gi) => r.hinted[gi] < 4);
+      return more !== undefined ? [more, r.hinted[more] + 1] : null;
+    }
+    function useHint() {
+      if (r.done || busy) return;
+      const next = nextHint();
+      if (!next) return toast('No more hints. You can do this!');
+      const [gi, lvl] = next;
+      r.hinted[gi] = lvl;
+      r.hints = (r.hints || 0) + 1;
+      ctx.save(r);
+      toast(lvl === 1 ? 'Hint: one group revealed' : 'Hint: a word is marked');
+      render();
+    }
 
     const bar = (gi, animate) =>
       h('div', { class: `q-bar q${gi} ${animate ? 'pop' : ''}` }, h('strong', null, p.g[gi].t), h('span', null, p.g[gi].m.join(', ')));
@@ -84,11 +114,23 @@ export default {
     }
     function render(newGroup) {
       solvedHost.replaceChildren(...r.solved.map((gi) => bar(gi, gi === newGroup)));
+      const marked = markedWords();
       grid.replaceChildren(
         ...remaining().map((w) =>
-          h('button', { class: `q-tile ${fitClass(w)} ${selected.has(w) ? 'sel' : ''}`, 'data-w': w, 'aria-pressed': selected.has(w) ? 'true' : 'false', disabled: r.done || null, onclick: () => toggle(w) }, w),
+          h('button', { class: `q-tile ${fitClass(w)} ${selected.has(w) ? 'sel' : ''} ${marked.has(w) ? `marked q${marked.get(w)}` : ''}`, 'data-w': w, 'aria-pressed': selected.has(w) ? 'true' : 'false', disabled: r.done || null, onclick: () => toggle(w) }, w),
         ),
       );
+      const open = Object.keys(r.hinted).map(Number).filter((gi) => !r.solved.includes(gi)).sort();
+      hintHost.replaceChildren(
+        ...open.map((gi) =>
+          h('div', { class: `q-hint q${gi}` }, h('i'), h('span', null, 'One group is ', h('strong', null, p.g[gi].t), r.hinted[gi] > 1 ? ` (${r.hinted[gi] - 1} word${r.hinted[gi] > 2 ? 's' : ''} marked)` : '')),
+        ),
+      );
+      hintHost.hidden = r.done || !open.length;
+      const n = nextHint();
+      hintBtn.innerHTML = `${ICON.bulb}<span>${r.hints ? `Hint (${r.hints} used)` : 'Hint'}</span>`;
+      hintBtn.disabled = r.done || !n;
+      hintBtn.hidden = r.done;
       lives.replaceChildren(h('span', null, 'Mistakes remaining:'), ...Array.from({ length: LIVES }, (_, i) => h('i', { class: i < LIVES - r.mistakes ? 'on' : '' })));
       submitBtn.disabled = selected.size !== 4 || r.done || busy;
       deselBtn.disabled = !selected.size || r.done;
@@ -136,7 +178,7 @@ export default {
           if (r.solved.length === 4) {
             r.win = true;
             confetti(['#7FCFAE', '#F4B27A', '#8DB8EE', '#B79BE8']);
-            ctx.finish(r, { headline: r.mistakes === 0 ? 'Perfect!' : ['', 'Great stuff!', 'Got there!', 'Phew — just made it!'][r.mistakes], sub: `Solved with ${r.mistakes} mistake${r.mistakes === 1 ? '' : 's'}.`, shareText: shareText(), delay: 1200 });
+            ctx.finish(r, { headline: r.mistakes === 0 && !r.hints ? 'Perfect!' : ['Nicely done!', 'Great stuff!', 'Got there!', 'Phew, just made it!'][r.mistakes], sub: `Solved with ${r.mistakes} mistake${r.mistakes === 1 ? '' : 's'}${r.hints ? ` and ${r.hints} hint${r.hints === 1 ? '' : 's'}` : ''}.`, shareText: shareText(), delay: 1200 });
           } else ctx.save(r);
         } else {
           r.mistakes++;
@@ -173,7 +215,7 @@ export default {
     }
     function shareText() {
       const rows = r.guesses.map((g) => g.map((w) => EMOJI[groupOf.get(w)]).join('')).join('\n');
-      return `Quartets No. ${puzzleNo(ctx.date)}\n${rows}`;
+      return `Quartets No. ${puzzleNo(ctx.date)}${r.hints ? ` · 💡${r.hints}` : ''}\n${rows}`;
     }
     return () => {};
   },

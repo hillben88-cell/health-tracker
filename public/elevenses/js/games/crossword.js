@@ -113,9 +113,9 @@ function mountCrossword(ctx, { id, name, size, style }) {
 
   // ---- DOM
   const clock = h('button', { class: 'xw-clock', onclick: pause, 'aria-label': 'Pause' });
-  const menu = (label, items) => {
-    const pop = h('div', { class: 'xw-pop', hidden: true }, items.map(([t, fn]) => h('button', { onclick: () => { pop.hidden = true; fn(); } }, t)));
-    const btn = h('button', { class: 'xw-tool', onclick: (e) => { e.stopPropagation(); document.querySelectorAll('.xw-pop').forEach((p) => p !== pop && (p.hidden = true)); pop.hidden = !pop.hidden; } }, label);
+  const menu = (label, icon, items, note) => {
+    const pop = h('div', { class: 'xw-pop', hidden: true, role: 'menu' }, items.map(([t, fn]) => h('button', { role: 'menuitem', onclick: () => { pop.hidden = true; fn(); } }, t)), note ? h('p', { class: 'xw-pop-note' }, note) : null);
+    const btn = h('button', { class: 'xw-tool pill', 'aria-haspopup': 'menu', onclick: (e) => { e.stopPropagation(); document.querySelectorAll('.xw-pop').forEach((p) => p !== pop && (p.hidden = true)); pop.hidden = !pop.hidden; }, html: `${ICON[icon]}<span>${label}</span>${ICON.caret}` });
     return h('div', { class: 'xw-menu' }, btn, pop);
   };
   const toolbar = h(
@@ -123,9 +123,9 @@ function mountCrossword(ctx, { id, name, size, style }) {
     { class: 'xw-toolbar' },
     clock,
     h('div', { class: 'xw-tools' },
-      h('button', { class: 'xw-tool', onclick: showClues, html: ICON.list + '<span>Clues</span>' }),
-      menu('Check', [['Square', () => check('cell')], ['Word', () => check('word')], ['Puzzle', () => check('all')]]),
-      menu('Reveal', [['Square', () => reveal('cell')], ['Word', () => reveal('word')], ['Puzzle', () => reveal('all')]])),
+      h('button', { class: 'xw-tool pill', onclick: showClues, html: ICON.list + '<span>Clues</span>' }),
+      menu('Check', 'check', [['Check this square', () => check('cell')], ['Check this word', () => check('word')], ['Check the whole puzzle', () => check('all')]], 'Wrong letters get a red line through them.'),
+      menu('Reveal', 'eye', [['Reveal this square', () => reveal('cell')], ['Reveal this word', () => reveal('word')], ['Reveal the whole puzzle', () => reveal('all')]], 'Reveals don’t count towards your streak.')),
   );
   document.addEventListener('click', closePops);
   function closePops() { document.querySelectorAll('.xw-pop').forEach((p) => (p.hidden = true)); }
@@ -158,12 +158,14 @@ function mountCrossword(ctx, { id, name, size, style }) {
   );
   const kb = keyboard(onKey, { enter: false });
   const done = h('div', { class: 'xw-done', hidden: true });
-  ctx.root.append(h('div', { class: `xw-wrap ${style}` }, toolbar, gridWrap, done, clueBar), kb.el);
+  // Shown when every square is filled but something's wrong.
+  const nudgeBar = h('div', { class: 'xw-nudge', hidden: true }, h('span', null, 'Not quite right yet.'), h('button', { class: 'btn primary sm', onclick: () => check('all') }, 'Check my answers'));
+  ctx.root.append(h('div', { class: `xw-wrap ${style}` }, toolbar, gridWrap, done, nudgeBar, clueBar), kb.el);
   if (!ctx.settings.showTimer) clock.classList.add('hide-time');
   // Size the grid to whatever space is left between the toolbar, clue bar and keyboard.
   const wrapEl = ctx.root.querySelector('.xw-wrap');
   const fit = () => {
-    const free = wrapEl.clientHeight - toolbar.offsetHeight - clueBar.offsetHeight - (done.hidden ? 0 : done.offsetHeight + 8) - 36;
+    const free = wrapEl.clientHeight - toolbar.offsetHeight - clueBar.offsetHeight - (done.hidden ? 0 : done.offsetHeight + 8) - (nudgeBar.hidden ? 0 : nudgeBar.offsetHeight + 8) - 36;
     const side = Math.max(220, Math.min(wrapEl.clientWidth - 20, 460, free));
     gridWrap.style.setProperty('--gs', side + 'px');
   };
@@ -284,12 +286,16 @@ function mountCrossword(ctx, { id, name, size, style }) {
     return [...Array(N).keys()].filter((i) => grid[i] !== '#');
   }
   function check(scope) {
-    let bad = 0;
-    for (const c of cellsFor(scope)) if (r.fill[c] && r.fill[c] !== grid[c]) { wrong.add(c); bad++; }
+    let bad = 0, empty = 0;
+    for (const c of cellsFor(scope)) {
+      if (!r.fill[c]) empty++;
+      else if (r.fill[c] !== grid[c]) { wrong.add(c); bad++; }
+    }
     r.checked = true;
     ctx.save(r);
     render();
-    toast(bad ? `${bad} square${bad > 1 ? 's' : ''} not right` : 'All good so far!');
+    const what = scope === 'cell' ? 'That square' : scope === 'word' ? 'That word' : 'Everything you’ve filled in';
+    toast(bad ? `${bad} square${bad > 1 ? 's' : ''} not right, marked in red` : empty ? `${what} is right so far` : `${what} is right`);
   }
   function reveal(scope) {
     for (const c of cellsFor(scope)) {
@@ -304,11 +310,17 @@ function mountCrossword(ctx, { id, name, size, style }) {
     render();
     checkComplete();
   }
+  function showNudge(on) {
+    if (nudgeBar.hidden === !on) return;
+    nudgeBar.hidden = !on;
+    requestAnimationFrame(fit);
+  }
   function checkComplete() {
-    if (r.done) return;
+    if (r.done) return showNudge(false);
     const cellsAll = cellsFor('all');
-    if (cellsAll.some((c) => !r.fill[c])) return;
+    if (cellsAll.some((c) => !r.fill[c])) return showNudge(false);
     if (cellsAll.every((c) => r.fill[c] === grid[c])) {
+      showNudge(false);
       r.win = true;
       stopTimer();
       render();
@@ -325,8 +337,9 @@ function mountCrossword(ctx, { id, name, size, style }) {
       const key = r.fill.join('');
       if (key !== warnedFull) {
         warnedFull = key;
-        toast('Not quite — something’s amiss. Keep going!', { ms: 2200 });
+        toast('Every square is filled, but something’s not right', { ms: 2200 });
       }
+      showNudge(true);
     }
   }
   function showDone() {
@@ -385,6 +398,7 @@ function mountCrossword(ctx, { id, name, size, style }) {
 
   fixDir();
   if (r.done) showDone();
+  else if (cellsFor('all').every((c) => r.fill[c])) showNudge(true);
   render();
   startTimer();
   if (!r.done && ctx.rec && ctx.rec.elapsed > 0) {
