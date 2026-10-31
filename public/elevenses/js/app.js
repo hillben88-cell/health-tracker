@@ -17,10 +17,17 @@ const app = document.getElementById('app');
 let cleanup = null;
 
 /* ---------------- Theme ---------------- */
+let themeSetByApp = false;
 function applyTheme() {
   const t = store.settings().theme;
-  if (t === 'auto') delete document.documentElement.dataset.theme;
-  else document.documentElement.dataset.theme = t;
+  // Only clear a theme attribute this app set itself (a host page may set its own).
+  if (t === 'auto') {
+    if (themeSetByApp) delete document.documentElement.dataset.theme;
+    themeSetByApp = false;
+  } else {
+    document.documentElement.dataset.theme = t;
+    themeSetByApp = true;
+  }
   const dark = t === 'dark' || (t === 'auto' && matchMedia('(prefers-color-scheme: dark)').matches);
   document.querySelector('meta[name="theme-color"]')?.setAttribute('content', dark ? '#15171d' : '#fbf7f0');
 }
@@ -28,12 +35,15 @@ applyTheme();
 matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change', applyTheme);
 
 /* ---------------- Router ---------------- */
+// Routes use plain hashes: #play-inkling-2026-10-31, #archive-mini-2026-10, #stats.
+// (Older #/play/inkling/2026-10-31 links still work.)
+const hashFor = (path) => '#' + path.replace(/^\//, '').replace(/\//g, '-');
 function parse() {
-  const parts = location.hash.replace(/^#\/?/, '').split('/').filter(Boolean);
-  return parts;
+  const [view, game, ...rest] = location.hash.replace(/^#\/?/, '').replace(/\//g, '-').split('-');
+  return [view || '', game, rest.join('-') || undefined];
 }
 export function go(path, replace = false) {
-  const url = '#/' + path.replace(/^\//, '');
+  const url = hashFor(path);
   if (replace || location.hash === url) {
     history.replaceState(null, '', url);
     route();
@@ -57,7 +67,7 @@ function route() {
 /* ---------------- Shared bits ---------------- */
 function tabBar(active) {
   const tab = (id, label, icon, path) =>
-    h('a', { class: `tab ${active === id ? 'on' : ''}`, href: '#/' + path, 'aria-current': active === id ? 'page' : null, html: ICON[icon] + `<span>${label}</span>` });
+    h('a', { class: `tab ${active === id ? 'on' : ''}`, href: hashFor(path) || '#', 'aria-current': active === id ? 'page' : null, html: ICON[icon] + `<span>${label}</span>` });
   return h('nav', { class: 'tabbar' }, tab('home', 'Today', 'home', ''), tab('archive', 'Archive', 'calendar', 'archive'), tab('stats', 'Stats', 'stats', 'stats'));
 }
 function greeting() {
@@ -82,7 +92,7 @@ function homeScreen() {
     const finished = r?.done;
     return h(
       'a',
-      { class: `card game-${g.id}`, href: `#/play/${g.id}/${d}`, style: { '--accent': g.color, '--tint': g.tint } },
+      { class: `card game-${g.id}`, href: hashFor(`play/${g.id}/${d}`), style: { '--accent': g.color, '--tint': g.tint } },
       h('div', { class: 'card-icon', html: GAME_ICONS[g.id] }),
       h('div', { class: 'card-body' }, h('div', { class: 'card-name' }, g.name), h('div', { class: 'card-blurb' }, g.blurb), h('div', { class: `card-status ${finished ? 'done' : ''}` }, finished ? h('span', { class: 'tick', html: ICON.check }) : null, status)),
       h('div', { class: `card-cta ${finished ? 'ghost' : ''}` }, finished ? 'View' : r ? 'Resume' : 'Play'),
@@ -156,7 +166,7 @@ function resultModal(g, date, { headline, sub, shareText, extra }) {
       'div',
       { class: 'result-actions' },
       shareText ? h('button', { class: 'btn primary', onclick: () => share(shareText), html: ICON.share + '<span>Share</span>' }) : null,
-      h('a', { class: 'btn ghost', href: `#/archive/${g.id}` }, 'Play the archive'),
+      h('a', { class: 'btn ghost', href: hashFor(`archive/${g.id}`) }, 'Play the archive'),
     ),
     isToday ? h('p', { class: 'result-next' }, 'Next puzzle in ', countdownEl()) : null,
   );
@@ -252,7 +262,7 @@ function archiveScreen(gameId, month) {
   const chips = h(
     'div',
     { class: 'chips', role: 'tablist' },
-    GAMES.map((x) => h('a', { class: `chip-btn ${x.id === g.id ? 'on' : ''}`, href: `#/archive/${x.id}/${m}`, style: { '--accent': x.color }, role: 'tab', 'aria-selected': x.id === g.id ? 'true' : 'false' }, h('span', { class: 'chip-ico', html: GAME_ICONS[x.id] }), x.short || x.name)),
+    GAMES.map((x) => h('a', { class: `chip-btn ${x.id === g.id ? 'on' : ''}`, href: hashFor(`archive/${x.id}/${m}`), style: { '--accent': x.color }, role: 'tab', 'aria-selected': x.id === g.id ? 'true' : 'false' }, h('span', { class: 'chip-ico', html: GAME_ICONS[x.id] }), x.short || x.name)),
   );
   const cal = h('div', { class: 'cal' });
   const title = h('h2', { class: 'cal-title' });
@@ -264,7 +274,7 @@ function archiveScreen(gameId, month) {
     const d = new Date(Date.UTC(y, mo - 1 + delta, 1)).toISOString().slice(0, 7);
     if (d < firstMonth || d > lastMonth) return;
     m = d;
-    history.replaceState(null, '', `#/archive/${g.id}/${m}`);
+    history.replaceState(null, '', hashFor(`archive/${g.id}/${m}`));
     draw();
   }
   function draw() {
@@ -285,7 +295,7 @@ function archiveScreen(gameId, month) {
         playable
           ? h(
               'a',
-              { class: `cal-day ${state} ${day === t ? 'today' : ''}`, href: `#/play/${g.id}/${day}`, 'aria-label': `${longDate(day)}${state ? ', ' + state : ''}` },
+              { class: `cal-day ${state} ${day === t ? 'today' : ''}`, href: hashFor(`play/${g.id}/${day}`), 'aria-label': `${longDate(day)}${state ? ', ' + state : ''}` },
               h('span', { class: 'cal-num' }, Number(day.slice(8))),
               star ? h('span', { class: 'cal-star' }, '★') : null,
             )
@@ -383,7 +393,23 @@ function settingsModal() {
       ),
       h('details', { class: 'setting about' }, h('summary', null, h('strong', null, 'Add Elevenses to your Home Screen')), h('ol', null, h('li', null, 'Open this page in Safari.'), h('li', null, 'Tap the Share button.'), h('li', null, 'Choose “Add to Home Screen”, then “Add”.'), h('li', null, 'Open Elevenses from its icon — it runs full-screen and works offline.'))),
       h('details', { class: 'setting about' }, h('summary', null, h('strong', null, 'About')), h('p', null, 'Elevenses is a small daily puzzle collection made in Britain: two crosswords, a word-guessing game, a word wheel, a grouping puzzle and a themed word search. Puzzles are generated from original British clue and category banks. Word lists derive from SCOWL (© Kevin Atkinson) and are used under its permissive licence.')),
-      h('button', { class: 'btn danger sm', onclick: () => { if (confirm('Delete all your Elevenses progress and stats on this device?')) { store.reset(); toast('Progress reset'); closeModal(); route(); } } }, 'Reset all progress'),
+      h('button', {
+        class: 'btn danger sm',
+        onclick: (e) => {
+          // Two taps to confirm (no pop-up dialogs, which some hosts block).
+          const b = e.currentTarget;
+          if (b.dataset.armed) {
+            store.reset();
+            toast('Progress reset');
+            closeModal();
+            route();
+            return;
+          }
+          b.dataset.armed = '1';
+          b.textContent = 'Tap again to delete all progress';
+          setTimeout(() => { if (b.isConnected) { delete b.dataset.armed; b.textContent = 'Reset all progress'; } }, 4000);
+        },
+      }, 'Reset all progress'),
     ),
     { title: 'Settings' },
   );
