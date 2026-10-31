@@ -13,6 +13,8 @@
   --shadow: 0 1px 2px rgba(28, 31, 42, 0.06), 0 6px 18px rgba(28, 31, 42, 0.06);
   --key: #e3ddd2;
   --key-ink: #1c1f2a;
+  --key-absent: #3f4450;
+  --key-absent-ink: #c9ccd3;
   --xw-block: #1c1f2a;
   --xw-line: #1c1f2a;
 
@@ -62,8 +64,10 @@
     --brand: #e8dcc6;
     --brand-2: #e2775f;
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 6px 18px rgba(0, 0, 0, 0.25);
-    --key: #3a3f4a;
-    --key-ink: #f1eee8;
+    --key: #646a78;
+    --key-ink: #f6f3ee;
+    --key-absent: #22252c;
+    --key-absent-ink: #7d818b;
     --xw-block: #07080b;
     --xw-line: #555b68;
     --mini-tint: #253552;
@@ -90,8 +94,10 @@
   --brand: #e8dcc6;
   --brand-2: #e2775f;
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 6px 18px rgba(0, 0, 0, 0.25);
-  --key: #3a3f4a;
-  --key-ink: #f1eee8;
+  --key: #646a78;
+  --key-ink: #f6f3ee;
+  --key-absent: #22252c;
+  --key-absent-ink: #7d818b;
   --xw-block: #07080b;
   --xw-line: #555b68;
   --mini-tint: #253552;
@@ -241,7 +247,7 @@ a { color: inherit; }
 .kb-key.down { transform: scale(0.94); filter: brightness(0.92); }
 .kb-key.correct { background: var(--ink-correct); color: #fff; }
 .kb-key.present { background: var(--ink-present); color: #fff; }
-.kb-key.absent { background: var(--ink-absent); color: #fff; }
+.kb-key.absent { background: var(--key-absent); color: var(--key-absent-ink); }
 
 /* ---------- Toasts ---------- */
 .toasts { position: fixed; top: calc(var(--safe-t) + 64px); left: 0; right: 0; z-index: 60; display: flex; flex-direction: column; align-items: center; gap: 6px; pointer-events: none; }
