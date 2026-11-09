@@ -4,6 +4,14 @@ A single-page React app for tracking water, food, exercise, and weight, with
 live Strava sync and file-based import for Garmin and Apple Health data.
 Data is stored in the browser's `localStorage` — there is no database.
 
+## Elevenses (daily puzzles)
+
+This repo also ships **Elevenses**, a separate daily-puzzle web app for iPhone: Mini and
+Midi crosswords, Inkling, Spokes, Quartets, Ramble, Pub Quiz and Conundrum. It's static files in
+`public/elevenses/`, so any deployment of this repo serves it at `/elevenses/`. Open
+that in Safari and use *Share → Add to Home Screen*. See
+[`elevenses-src/README.md`](elevenses-src/README.md) for how the puzzles are generated.
+
 ## Running locally
 
 ```bash
