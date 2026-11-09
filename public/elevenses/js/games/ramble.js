@@ -1,5 +1,5 @@
 // Ramble — trace themed words through a grid where every letter is used once.
-import { h, dayData, wordSet, toast, statRow, streaks, puzzleNo, ICON, confetti } from '../core.js';
+import { h, dayData, wordSet, toast, statRow, streaks, puzzleNo, ICON, confetti, EASE, reduceMotion } from '../core.js';
 
 const COLS = 6, ROWS = 7;
 const PER_HINT = 3;
@@ -71,6 +71,11 @@ export default {
     const themeCard = h('div', { class: 'rb-theme' }, h('span', { class: 'rb-label' }, 'Today’s ramble'), h('div', { class: 'rb-clue' }, p.c), counter);
     const current = h('div', { class: 'rb-current', 'aria-live': 'polite' });
     const svgEl = S('svg', { class: 'rb-lines', viewBox: `0 0 ${COLS * 10} ${ROWS * 10}`, preserveAspectRatio: 'none' });
+    const foundLines = S('g');
+    svgEl.append(foundLines);
+    let selLine = null;
+    let shownFound = -1;
+    let fresh = -1; // the word just found, whose line fades in
     const cells = [];
     const gridEl = h('div', { class: 'rb-grid', role: 'grid', 'aria-label': 'Letter grid' },
       svgEl,
@@ -101,7 +106,15 @@ export default {
         cells[cl[0]].classList.add('hint-start');
         if (level >= 2) cl.forEach((c) => cells[c].classList.add('hint-path'));
       }
-      svgEl.replaceChildren(...r.found.map((wi) => polyline(p.p[wi], 'found')), path.length > 1 ? polyline(path, 'sel') : '');
+      // Found lines are only redrawn when a word is found, so the newest can fade in.
+      if (shownFound !== r.found.length) {
+        shownFound = r.found.length;
+        foundLines.replaceChildren(...r.found.map((wi) => polyline(p.p[wi], wi === fresh ? 'found new' : 'found')));
+        fresh = -1;
+      }
+      selLine?.remove();
+      selLine = path.length > 1 ? polyline(path, 'sel') : null;
+      if (selLine) svgEl.append(selLine);
       current.textContent = path.map((i) => p.g[i]).join('') || ' ';
       current.classList.toggle('empty', !path.length);
       counter.textContent = `${r.found.length} of ${p.w.length} theme words found`;
@@ -184,6 +197,16 @@ export default {
       void current.offsetWidth;
       if (cls === 'nope') current.classList.add('shake');
     }
+    // Letters of a found word turn colour one after another along its path, each with a little lift.
+    function ripple(list) {
+      const step = reduceMotion() ? 0 : 45;
+      list.forEach((i, k) => {
+        const sp = cells[i].firstChild;
+        sp.style.transitionDelay = `${k * step}ms`;
+        if (step && sp.animate) sp.animate([{ transform: 'none' }, { transform: 'scale(1.16)' }, { transform: 'none' }], { duration: 340, delay: k * step, easing: EASE });
+      });
+      setTimeout(() => list.forEach((i) => (cells[i].firstChild.style.transitionDelay = '')), list.length * step + 400);
+    }
     function submit() {
       const word = path.map((i) => p.g[i]).join('');
       if (word.length < 3) { path = []; return render(); }
@@ -194,7 +217,8 @@ export default {
         const idx = wi >= 0 ? wi : wordIdx;
         if (r.found.includes(idx)) { toast('Already found'); path = []; return render(); }
         r.found.push(idx);
-        flash('pop');
+        fresh = idx;
+        ripple(p.p[idx]);
         toast(['Lovely!', 'Spot on!', 'Nice find!', 'Cracking!', 'Splendid!'][r.found.length % 5]);
         path = [];
         if (r.found.length === p.w.length) {

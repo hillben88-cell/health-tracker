@@ -232,6 +232,38 @@ export function wordSet(file) {
 }
 
 /* ---------------- UI primitives ---------------- */
+/* ---------------- Motion ---------------- */
+export const EASE = 'cubic-bezier(0.2, 0.8, 0.2, 1)';
+export const reduceMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+export const wait = (ms) => new Promise((res) => setTimeout(res, ms));
+/**
+ * Animate elements gliding from where they were to where `mutate` puts them (FLIP).
+ * Elements are matched before and after by `key`, so `mutate` may rebuild them.
+ */
+export function flip(root, selector, mutate, { key = (el) => el.dataset.key, duration = 380, easing = EASE } = {}) {
+  const before = new Map();
+  root.querySelectorAll(selector).forEach((el) => before.set(key(el), el.getBoundingClientRect()));
+  mutate();
+  if (reduceMotion() || !Element.prototype.animate) return Promise.resolve();
+  const runs = [];
+  root.querySelectorAll(selector).forEach((el) => {
+    const a = before.get(key(el));
+    if (!a) return;
+    const b = el.getBoundingClientRect();
+    const dx = a.left - b.left;
+    const dy = a.top - b.top;
+    if (Math.abs(dx) < 0.5 && Math.abs(dy) < 0.5) return;
+    runs.push(el.animate([{ transform: `translate(${dx}px, ${dy}px)` }, { transform: 'none' }], { duration, easing }).finished.catch(() => {}));
+  });
+  return Promise.all(runs);
+}
+/** A short fade (and optional nudge) for content that has just been replaced. */
+export function fadeIn(el, { dx = 0, dy = 6, duration = 260, delay = 0 } = {}) {
+  if (!el?.animate) return;
+  const move = reduceMotion() ? 'none' : `translate(${dx}px, ${dy}px)`;
+  el.animate([{ opacity: 0, transform: move }, { opacity: 1, transform: 'none' }], { duration, delay, easing: EASE, fill: 'backwards' });
+}
+
 let toastHost;
 export function toast(msg, { ms = 1600, tone = '' } = {}) {
   toastHost ??= document.body.appendChild(h('div', { class: 'toasts', 'aria-live': 'polite' }));
@@ -242,7 +274,8 @@ export function toast(msg, { ms = 1600, tone = '' } = {}) {
     setTimeout(() => old.remove(), 200);
   }
   toastHost.append(t);
-  requestAnimationFrame(() => t.classList.add('in'));
+  void t.offsetWidth; // commit the starting style so it eases in rather than appearing
+  t.classList.add('in');
   setTimeout(() => {
     t.classList.remove('in');
     setTimeout(() => t.remove(), 250);
@@ -267,7 +300,8 @@ export function modal(content, { title, cls = '', onClose } = {}) {
   );
   const backdrop = h('div', { class: 'backdrop', onclick: (e) => e.target === backdrop && close() }, sheet);
   document.body.append(backdrop);
-  requestAnimationFrame(() => backdrop.classList.add('in'));
+  void backdrop.offsetWidth; // commit the starting style so the sheet slides up rather than snapping
+  backdrop.classList.add('in');
   openModal = { backdrop, onClose };
   return { close };
 }
@@ -276,7 +310,7 @@ export function closeModal() {
   const { backdrop, onClose } = openModal;
   openModal = null;
   backdrop.classList.remove('in');
-  setTimeout(() => backdrop.remove(), 220);
+  setTimeout(() => backdrop.remove(), 320);
   onClose?.();
 }
 addEventListener('keydown', (e) => e.key === 'Escape' && closeModal());

@@ -1,5 +1,5 @@
 // Quartets — find four groups of four.
-import { h, dayData, toast, statRow, distribution, streaks, puzzleNo, confetti, ICON } from '../core.js';
+import { h, dayData, toast, statRow, distribution, streaks, puzzleNo, confetti, ICON, flip, wait, reduceMotion } from '../core.js';
 
 const LIVES = 4;
 const EMOJI = ['🟩', '🟧', '🟦', '🟪'];
@@ -74,7 +74,7 @@ export default {
     const grid = h('div', { class: 'q-grid' });
     const lives = h('div', { class: 'q-lives' });
     const submitBtn = h('button', { class: 'btn primary', onclick: submit }, 'Submit');
-    const deselBtn = h('button', { class: 'btn ghost', onclick: () => { selected.clear(); render(); } }, 'Deselect all');
+    const deselBtn = h('button', { class: 'btn ghost', onclick: () => { if (busy) return; selected.clear(); render(); } }, 'Deselect all');
     const shuffleBtn = h('button', { class: 'btn ghost', onclick: shuffle }, 'Shuffle');
     const controls = h('div', { class: 'q-controls' }, shuffleBtn, deselBtn, submitBtn);
     const hintBtn = h('button', { class: 'btn ghost sm q-hint-btn', onclick: useHint });
@@ -106,14 +106,22 @@ export default {
       render();
     }
 
+    const barHeight = {}; // height of the tile row each bar replaced, so the board doesn't jump
     const bar = (gi, animate) =>
-      h('div', { class: `q-bar q${gi} ${animate ? 'pop' : ''}` }, h('strong', null, p.g[gi].t), h('span', null, p.g[gi].m.join(', ')));
+      h('div', { class: `q-bar q${gi} ${animate ? 'pop' : ''}`, style: barHeight[gi] ? { minHeight: `${barHeight[gi]}px` } : null }, h('strong', null, p.g[gi].t), h('span', null, p.g[gi].m.join(', ')));
 
+    const pending = new Set(); // groups solved but still animating into place
     function remaining() {
-      return r.order.filter((w) => !r.solved.includes(groupOf.get(w)));
+      return r.order.filter((w) => !r.solved.includes(groupOf.get(w)) || pending.has(groupOf.get(w)));
     }
+    let shownSolved = null;
     function render(newGroup) {
-      solvedHost.replaceChildren(...r.solved.map((gi) => bar(gi, gi === newGroup)));
+      // Only rebuild the bars when the solved set changes, so a new bar's entrance isn't cut short.
+      const bars = r.solved.filter((gi) => !pending.has(gi));
+      if (shownSolved !== bars.join()) {
+        shownSolved = bars.join();
+        solvedHost.replaceChildren(...bars.map((gi) => bar(gi, gi === newGroup)));
+      }
       const marked = markedWords();
       grid.replaceChildren(
         ...remaining().map((w) =>
@@ -133,7 +141,7 @@ export default {
       hintBtn.hidden = r.done;
       lives.replaceChildren(h('span', null, 'Mistakes remaining:'), ...Array.from({ length: LIVES }, (_, i) => h('i', { class: i < LIVES - r.mistakes ? 'on' : '' })));
       submitBtn.disabled = selected.size !== 4 || r.done || busy;
-      deselBtn.disabled = !selected.size || r.done;
+      deselBtn.disabled = !selected.size || r.done || busy;
       shuffleBtn.disabled = r.done;
       controls.hidden = r.done;
       lives.hidden = r.done;
@@ -147,13 +155,29 @@ export default {
       render();
     }
     function shuffle() {
+      if (busy || r.done) return;
       const rest = remaining();
       for (let i = rest.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [rest[i], rest[j]] = [rest[j], rest[i]];
       }
       r.order = [...p.g.flatMap((g, gi) => (r.solved.includes(gi) ? g.m : [])), ...rest];
-      render();
+      flip(grid, '.q-tile', render, { key: byWord, duration: 420 });
+    }
+    const byWord = (el) => el.dataset.w;
+    /**
+     * The solve animation: the group's tiles glide into the top row (the others make room),
+     * take on the group's colour, then merge into its bar.
+     */
+    async function settle(gi) {
+      const words = p.g[gi].m;
+      const left = remaining();
+      r.order = [...r.order.filter((w) => !left.includes(w)), ...left.filter((w) => words.includes(w)), ...left.filter((w) => !words.includes(w))];
+      await flip(grid, '.q-tile', render, { key: byWord, duration: 480, easing: 'cubic-bezier(0.45, 0, 0.2, 1)' });
+      if (!ctx.alive()) return;
+      grid.querySelectorAll('.q-tile').forEach((t) => words.includes(t.dataset.w) && (t.dataset.solve = gi));
+      barHeight[gi] = grid.querySelector('.q-tile')?.getBoundingClientRect().height;
+      await wait(reduceMotion() ? 150 : 300);
     }
     const tileEls = () => [...grid.querySelectorAll('.q-tile')].filter((t) => selected.has(t.dataset.w));
     function submit() {
@@ -171,15 +195,22 @@ export default {
         const best = Math.max(...Object.values(counts));
         if (best === 4) {
           const gi = groupOf.get(guess[0]);
+          const last = r.solved.length === 3;
           r.solved.push(gi);
-          selected.clear();
-          busy = false;
-          render(gi);
-          if (r.solved.length === 4) {
-            r.win = true;
-            confetti(['#7FCFAE', '#F4B27A', '#8DB8EE', '#B79BE8']);
-            ctx.finish(r, { headline: r.mistakes === 0 && !r.hints ? 'Perfect!' : ['Nicely done!', 'Great stuff!', 'Got there!', 'Phew, just made it!'][r.mistakes], sub: `Solved with ${r.mistakes} mistake${r.mistakes === 1 ? '' : 's'}${r.hints ? ` and ${r.hints} hint${r.hints === 1 ? '' : 's'}` : ''}.`, shareText: shareText(), delay: 1200 });
-          } else ctx.save(r);
+          pending.add(gi); // still shown as tiles while they animate
+          if (!last) ctx.save(r); // saved straight away, so leaving mid-animation keeps the solve
+          settle(gi).then(() => {
+            if (!ctx.alive()) return;
+            pending.delete(gi);
+            selected.clear();
+            busy = false;
+            render(gi);
+            if (last) {
+              r.win = true;
+              confetti(['#7FCFAE', '#F4B27A', '#8DB8EE', '#B79BE8']);
+              ctx.finish(r, { headline: r.mistakes === 0 && !r.hints ? 'Perfect!' : ['Nicely done!', 'Great stuff!', 'Got there!', 'Phew, just made it!'][r.mistakes], sub: `Solved with ${r.mistakes} mistake${r.mistakes === 1 ? '' : 's'}${r.hints ? ` and ${r.hints} hint${r.hints === 1 ? '' : 's'}` : ''}.`, shareText: shareText(), delay: 1000 });
+            }
+          });
         } else {
           r.mistakes++;
           tileEls().forEach((t) => { t.classList.remove('hop'); t.classList.add('shake'); });
@@ -193,20 +224,22 @@ export default {
         }
       }, 520);
     }
-    function lose() {
+    async function lose() {
       r.win = false;
       selected.clear();
       const missing = [0, 1, 2, 3].filter((gi) => !r.solved.includes(gi));
-      ctx.finish(r, { headline: 'Next time!', sub: 'Out of lives — here’s how it fitted together.', shareText: shareText(), delay: 900 + missing.length * 700 });
+      ctx.finish(r, { headline: 'Next time!', sub: 'Out of lives — here’s how it fitted together.', shareText: shareText(), delay: 900 + missing.length * 1100 });
       render();
-      missing.forEach((gi, k) =>
-        setTimeout(() => {
-          if (!ctx.alive()) return;
-          r.solved.push(gi);
-          ctx.save(r);
-          render(gi);
-        }, 500 + k * 700),
-      );
+      await wait(500);
+      for (const gi of missing) {
+        if (!ctx.alive()) return;
+        await settle(gi);
+        if (!ctx.alive()) return;
+        r.solved.push(gi);
+        ctx.save(r);
+        render(gi);
+        await wait(250);
+      }
     }
     // A lost puzzle reopened later shows the full solution.
     if (r.done && r.solved.length < 4) {

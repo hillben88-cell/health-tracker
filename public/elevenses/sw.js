@@ -1,5 +1,5 @@
 // Elevenses service worker: offline app shell + cached puzzle data.
-const VERSION = 'elevenses-v5';
+const VERSION = 'elevenses-v6';
 const SHELL = [
   './',
   'index.html',

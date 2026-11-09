@@ -1,5 +1,5 @@
 // Pub Quiz: twenty multiple-choice questions a day across ten categories, easiest first.
-import { h, dayData, fetchJSON, hash, seeded, toast, clearToasts, statRow, distribution, streaks, puzzleNo, confetti, ICON } from '../core.js';
+import { h, dayData, fetchJSON, hash, seeded, toast, clearToasts, statRow, distribution, streaks, puzzleNo, confetti, ICON, fadeIn } from '../core.js';
 
 const COUNT = 20;
 // Score bands and their titles, lowest first: [minimum score, title].
@@ -162,6 +162,9 @@ export default {
         cur++;
         renderQuestion();
         play.scrollIntoView?.({ block: 'start' });
+        // The next question slides in, its answers following one after another.
+        fadeIn(card, { dx: 22, dy: 0, duration: 320 });
+        [...opts.children].forEach((o, k) => fadeIn(o, { dx: 22, dy: 0, duration: 320, delay: 50 + k * 40 }));
         return;
       }
       finish();
@@ -176,8 +179,9 @@ export default {
       r.win = true;
       cur = COUNT;
       if (r.score >= 18) confetti();
-      ctx.finish(r, { headline: rankOf(r.score), sub: `You scored ${r.score} out of 20.`, shareText: shareText(), delay: 500 });
+      ctx.finish(r, { headline: rankOf(r.score), sub: `You scored ${r.score} out of 20.`, shareText: shareText(), delay: 700 });
       renderSummary();
+      fadeIn(summaryEl, { dy: 12, duration: 380 });
     }
     function renderSummary() {
       play.hidden = true;

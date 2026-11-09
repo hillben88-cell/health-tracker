@@ -237,7 +237,8 @@ a { color: inherit; }
 .gh-title span { font-size: 12px; color: var(--ink-3); }
 .gh-extra:empty { display: none; }
 .game-body { flex: 1 1 0; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; display: flex; flex-direction: column; width: 100%; max-width: var(--max); margin: 0 auto; padding-bottom: var(--safe-b); }
-.loading { margin: auto; padding: 40px 20px; color: var(--ink-2); display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
+.loading { margin: auto; padding: 40px 20px; color: var(--ink-2); display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; animation: fadein 0.3s 0.3s both; }
+.loading.err { animation: none; }
 .spinner { width: 28px; height: 28px; border-radius: 50%; border: 3px solid var(--line); border-top-color: var(--accent); animation: spin 0.8s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
@@ -261,24 +262,27 @@ a { color: inherit; }
 .toasts { position: fixed; top: calc(var(--safe-t) + 64px); left: 0; right: 0; z-index: 60; display: flex; flex-direction: column; align-items: center; gap: 6px; pointer-events: none; }
 .toast {
   background: var(--ink); color: var(--bg); font-weight: 700; font-size: 14.5px; padding: 11px 16px; border-radius: 8px;
-  opacity: 0; transform: translateY(-6px); transition: opacity 0.2s, transform 0.2s; max-width: 86vw; text-align: center;
+  opacity: 0; transform: translateY(-8px) scale(0.98); transition: opacity 0.25s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); max-width: 86vw; text-align: center;
 }
 .toast.in { opacity: 1; transform: none; }
 .toast.big { font-size: 18px; background: var(--hub); color: #fff; }
 
 /* ---------- Modal sheet ---------- */
-.backdrop { position: fixed; inset: 0; z-index: 50; background: rgba(15, 17, 22, 0.45); display: flex; align-items: flex-end; justify-content: center; opacity: 0; transition: opacity 0.2s; }
-.backdrop.in { opacity: 1; }
+/* Only the dimming fades; the sheet itself stays solid as it slides. */
+.backdrop { position: fixed; inset: 0; z-index: 50; background: rgba(15, 17, 22, 0); display: flex; align-items: flex-end; justify-content: center; transition: background-color 0.26s ease; pointer-events: none; }
+.backdrop.in { background: rgba(15, 17, 22, 0.45); transition-duration: 0.32s; pointer-events: auto; }
 .sheet {
   position: relative; width: 100%; max-width: 540px; max-height: 88dvh; overflow: auto; background: var(--surface);
-  border-radius: 20px 20px 0 0; padding: 22px 20px calc(26px + var(--safe-b)); transform: translateY(30px); transition: transform 0.22s ease-out;
+  border-radius: 20px 20px 0 0; padding: 22px 20px calc(26px + var(--safe-b));
+  /* Slides all the way up like an iOS sheet, and eases away when closed. */
+  transform: translateY(100%); transition: transform 0.26s cubic-bezier(0.4, 0, 1, 1);
   -webkit-overflow-scrolling: touch;
 }
-.backdrop.in .sheet { transform: none; }
+.backdrop.in .sheet { transform: none; transition: transform 0.44s cubic-bezier(0.32, 0.72, 0, 1); }
 .sheet.tall { min-height: 60dvh; }
 @media (min-width: 700px) {
   .backdrop { align-items: center; }
-  .sheet { border-radius: 20px; padding-bottom: 26px; }
+  .sheet { border-radius: 20px; padding-bottom: 26px; transform: translateY(24px) scale(0.98); }
 }
 .sheet-close { position: absolute; top: 10px; right: 10px; }
 .sheet-title { margin: 0 40px 14px 0; font: 700 22px/1.2 var(--serif); }
@@ -453,26 +457,35 @@ input[role='switch']:checked::after { transform: translateX(20px); }
 /* ======================= QUARTETS ======================= */
 .q-wrap { flex: 1; display: flex; flex-direction: column; padding: 8px 12px 18px; gap: 12px; }
 .q-intro { text-align: center; margin: 4px 0 0; font-size: 15.5px; color: var(--ink-2); }
-.q-board { display: flex; flex-direction: column; gap: 8px; }
+.q-board { display: flex; flex-direction: column; gap: 8px; container-type: inline-size; }
 .q-solved { display: contents; }
 .q-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
 .q-tile {
   aspect-ratio: 1.08; border: 0; border-radius: 8px; background: var(--surface-2); color: var(--ink); font-weight: 800; font-size: 15px;
   text-transform: uppercase; padding: 4px; line-height: 1.12; overflow-wrap: break-word; hyphens: manual; display: grid; place-items: center; text-align: center;
-  transition: background 0.12s, transform 0.08s;
+  transition: background 0.16s ease, color 0.16s ease, transform 0.12s ease;
 }
 .q-tile.sm { font-size: 12.5px; }
 .q-tile.xs { font-size: 10.5px; }
 .q-tile:active { transform: scale(0.96); }
 .q-tile.sel { background: var(--ink-2); color: var(--bg); }
-.q-tile.hop { animation: hop 0.35s; }
+.q-tile.hop { animation: hop 0.42s cubic-bezier(0.3, 0.7, 0.4, 1); }
 .q-tile:disabled { opacity: 0.85; }
 @keyframes hop { 50% { transform: translateY(-8px); } }
-.q-bar { border-radius: 8px; padding: 12px 10px; text-align: center; color: #1c1f2a; display: flex; flex-direction: column; gap: 3px; min-height: 76px; justify-content: center; }
+.q-bar { border-radius: 8px; padding: 8px 10px; text-align: center; color: #1c1f2a; display: flex; flex-direction: column; gap: 3px; min-height: 76px; justify-content: center; }
+/* A bar is exactly one row of tiles tall, so it takes their place without the board jumping. */
+@supports (width: 1cqw) { .q-bar { min-height: calc((100cqw - 24px) / 4 / 1.08); } }
 .q-bar strong { font-size: 15px; text-transform: uppercase; letter-spacing: 0.02em; }
 .q-bar span { font-size: 14px; text-transform: uppercase; }
-.q-bar.pop { animation: barin 0.4s ease-out; }
-@keyframes barin { from { transform: scale(0.9); opacity: 0; } }
+.q-bar.pop { animation: barin 0.45s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.q-bar.pop > * { animation: bartext 0.4s 0.1s ease both; }
+@keyframes barin { from { transform: scale(0.97, 0.94); } }
+@keyframes bartext { from { opacity: 0; transform: translateY(5px); } }
+/* Tiles taking on their group's colour just before they merge into the bar. */
+.q-wrap .q-board .q-tile[data-solve] { color: #1c1f2a; transition: background 0.3s ease, color 0.3s ease; }
+.q-wrap .q-board .q-tile[data-solve='0'] { background: var(--q1); } .q-wrap .q-board .q-tile[data-solve='1'] { background: var(--q2); }
+.q-wrap .q-board .q-tile[data-solve='2'] { background: var(--q3); } .q-wrap .q-board .q-tile[data-solve='3'] { background: var(--q4); }
+.q-tile[data-solve]::after { opacity: 0; }
 .q0 { background: var(--q1); } .q1 { background: var(--q2); } .q2 { background: var(--q3); } .q3 { background: var(--q4); }
 .q-lives { display: flex; align-items: center; justify-content: center; gap: 7px; font-size: 14px; color: var(--ink-2); }
 .q-lives i { width: 13px; height: 13px; border-radius: 50%; background: var(--line); display: block; transition: background 0.3s; }
@@ -486,16 +499,17 @@ input[role='switch']:checked::after { transform: translateX(20px); }
 .q-legend-row.q0, .q-legend-row.q1, .q-legend-row.q2, .q-legend-row.q3 { background: none; }
 
 /* ======================= RAMBLE ======================= */
-.rb-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 10px 14px 18px; gap: 10px; }
-.rb-theme { width: 100%; background: var(--ramble-tint); border-radius: 12px; padding: 10px 14px 11px; text-align: center; }
+.rb-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 8px 14px 16px; gap: 8px; }
+.rb-theme { width: 100%; background: var(--ramble-tint); border-radius: 12px; padding: 8px 14px 9px; text-align: center; }
 .rb-label { font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; color: var(--ramble); }
-.rb-clue { font: italic 600 21px/1.25 var(--serif); margin: 2px 0 4px; }
+.rb-clue { font: italic 600 21px/1.2 var(--serif); margin: 1px 0 2px; }
 .rb-count { font-size: 13px; color: var(--ink-2); }
 .rb-reveal { margin-top: 4px; font-size: 14px; }
-.rb-current { min-height: 34px; font-weight: 800; font-size: 26px; letter-spacing: 0.06em; }
+.rb-current { min-height: 32px; line-height: 32px; font-weight: 800; font-size: 27px; letter-spacing: 0.06em; transition: opacity 0.2s; }
 .rb-current.empty { opacity: 0; }
 .rb-grid {
-  --size: min(52px, calc((100vw - 44px) / 6), calc((100dvh - 380px) / 7.3));
+  /* As big as the screen allows: full width on phones, while keeping the Hint button in view. */
+  --size: min(66px, calc((100vw - 38px) / 6), calc((100dvh - 262px) / 7));
   position: relative; display: grid; grid-template-columns: repeat(6, var(--size)); grid-auto-rows: var(--size); gap: 2px;
   touch-action: none; -webkit-user-select: none; user-select: none;
 }
@@ -503,8 +517,10 @@ input[role='switch']:checked::after { transform: translateX(20px); }
 .rb-lines polyline { fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: calc(var(--size) * 0.42); }
 .rb-lines polyline.found { stroke: var(--ramble-found); }
 .rb-lines polyline.sel { stroke: var(--ramble-path); opacity: 0.6; }
-.rb-cell { position: relative; z-index: 1; display: grid; place-items: center; font-weight: 800; font-size: calc(var(--size) * 0.44); }
-.rb-cell span { width: 86%; height: 86%; border-radius: 50%; display: grid; place-items: center; transition: background 0.12s, color 0.12s; }
+.rb-cell { position: relative; z-index: 1; display: grid; place-items: center; font-weight: 800; font-size: calc(var(--size) * 0.47); }
+.rb-cell span { width: 86%; height: 86%; border-radius: 50%; display: grid; place-items: center; transition: background 0.14s ease, color 0.14s ease; }
+.rb-cell.found span { transition-duration: 0.28s; }
+.rb-lines polyline.found.new { animation: fadein 0.5s 0.1s ease both; }
 .rb-cell.found span { background: var(--ramble-found); color: var(--ramble-found-ink); }
 .rb-cell.sel span { background: var(--ramble-path); color: #1c1f2a; }
 .rb-cell.hint-start span { box-shadow: 0 0 0 3px var(--ramble-path); animation: glow 1.4s ease-in-out infinite; }
@@ -579,8 +595,37 @@ input[role='switch']:checked::after { transform: translateX(20px); }
   .splash-icon { width: 70px; height: 70px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  /* Reduce Motion: no bouncing, shaking or sliding, but keep gentle fades and colour changes (as iOS does). */
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; animation-delay: 0s !important; }
+  .sheet, .backdrop.in .sheet, .toast { transform: none !important; }
+  .sheet { opacity: 0; transition: opacity 0.25s ease !important; }
+  .backdrop.in .sheet { opacity: 1; }
 }
+
+/* ---------- Screen transitions (View Transitions API, where supported) ---------- */
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.22s, 0.34s; animation-timing-function: ease, cubic-bezier(0.2, 0.8, 0.2, 1); animation-fill-mode: both; }
+::view-transition-old(root) { animation-name: vt-out, none; }
+::view-transition-new(root) { animation-name: vt-in, none; animation-duration: 0.3s, 0.36s; }
+html[data-nav='forward']::view-transition-old(root) { animation-name: vt-out, vt-to-left; }
+html[data-nav='forward']::view-transition-new(root) { animation-name: vt-in, vt-from-right; }
+html[data-nav='back']::view-transition-old(root) { animation-name: vt-out, vt-to-right; }
+html[data-nav='back']::view-transition-new(root) { animation-name: vt-in, vt-from-left; }
+html[data-nav='up']::view-transition-new(root) { animation-name: vt-in, vt-from-below; }
+.tabbar { view-transition-name: tabbar; }
+@keyframes vt-in { from { opacity: 0; } }
+@keyframes vt-out { to { opacity: 0; } }
+@keyframes vt-from-right { from { transform: translateX(40px); } }
+@keyframes vt-to-left { to { transform: translateX(-40px); } }
+@keyframes vt-from-left { from { transform: translateX(-40px); } }
+@keyframes vt-to-right { to { transform: translateX(40px); } }
+@keyframes vt-from-below { from { transform: translateY(24px) scale(0.985); } }
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root), ::view-transition-new(root) { animation-name: vt-out !important; animation-duration: 0.22s !important; }
+  ::view-transition-new(root) { animation-name: vt-in !important; }
+}
+/* Fallback where View Transitions aren't available: new screens fade in. */
+.enter { animation: fadein 0.3s ease both; }
+@keyframes fadein { from { opacity: 0; } }
 
 /* ---------- Install tip & share ---------- */
 .install-tip {
@@ -661,7 +706,7 @@ input[role='switch']:checked::after { transform: translateX(20px); }
 .qz-opt {
   display: flex; align-items: center; gap: 12px; width: 100%; min-height: 54px; padding: 10px 14px; text-align: left;
   border: 1.5px solid var(--line-2); border-radius: 12px; background: var(--surface); font-size: 16px; font-weight: 600; line-height: 1.25;
-  transition: background 0.15s, border-color 0.15s, opacity 0.15s;
+  transition: background 0.22s ease, border-color 0.22s ease, color 0.22s ease, opacity 0.25s ease;
 }
 .qz-opt b { flex: none; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-size: 13px; background: var(--surface-2); color: var(--ink-2); }
 .qz-opt:active:not(:disabled) { transform: scale(0.985); }

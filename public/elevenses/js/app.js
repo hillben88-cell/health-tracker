@@ -2,6 +2,7 @@
 import {
   h, svg, store, today, addDays, longDate, dayMonth, monthName, shortDate, puzzleNo, isPlayable, EPOCH, LAST,
   modal, closeModal, modalOpen, toast, share, countdownEl, ICON, iconBtn, flush, appUrl, persistStorage, isStandalone,
+  reduceMotion, wait, fadeIn,
 } from './core.js';
 import { GAME_ICONS, LOGO } from './icons.js';
 import mini from './games/mini.js';
@@ -52,17 +53,54 @@ export function go(path, replace = false) {
 }
 addEventListener('hashchange', route);
 
+/**
+ * Replace the screen with a transition: games slide in from the right and back out,
+ * tabs cross-fade. Uses View Transitions where the browser has them, else a fade.
+ */
+function swap(update, dir) {
+  const root = document.documentElement;
+  if (!dir || !document.startViewTransition) {
+    const done = update();
+    if (dir) app.firstElementChild?.classList.add('enter');
+    return done;
+  }
+  root.dataset.nav = dir;
+  // Wait for the new screen to draw (briefly), so it arrives complete.
+  const vt = document.startViewTransition(() => Promise.race([update(), wait(80)]));
+  vt.finished.catch(() => {}).finally(() => root.dataset.nav === dir && delete root.dataset.nav);
+  return vt.updateCallbackDone.catch(() => {});
+}
+
+let lastView = null;
+let navSeq = 0;
 function route() {
-  closeModal();
-  cleanup?.();
-  cleanup = null;
+  const seq = ++navSeq;
   const [view, a, b] = parse();
-  window.scrollTo(0, 0);
-  document.body.dataset.view = view || 'home';
-  if (view === 'play' && byId[a]) return playScreen(byId[a], b && isPlayable(b) ? b : today());
-  if (view === 'archive') return archiveScreen(byId[a] ? a : GAMES[0].id, b);
-  if (view === 'stats') return statsScreen();
-  return homeScreen();
+  const v = view === 'play' && byId[a] ? 'play' : view === 'archive' || view === 'stats' ? view : 'home';
+  const dir = lastView == null ? null : reduceMotion() ? 'fade' : v === 'play' && lastView !== 'play' ? 'forward' : lastView === 'play' && v !== 'play' ? 'back' : 'fade';
+  lastView = v;
+  closeModal();
+  const show = (render) =>
+    swap(() => {
+      cleanup?.();
+      cleanup = null;
+      window.scrollTo(0, 0);
+      document.body.dataset.view = view || 'home';
+      return render();
+    }, dir);
+  if (v === 'play') {
+    const g = byId[a];
+    const date = b && isPlayable(b) ? b : today();
+    const data = g.load(date);
+    data.catch(() => {});
+    // Give the puzzle a moment to load, so the game slides in ready rather than as a spinner.
+    return Promise.race([data, wait(300)])
+      .catch(() => {})
+      .then(() => seq === navSeq && show(() => playScreen(g, date, data)));
+  }
+  if (v === 'archive') return show(() => archiveScreen(byId[a] ? a : GAMES[0].id, b));
+  if (v === 'stats') return show(statsScreen);
+  return show(homeScreen);
 }
 
 /* ---------------- Shared bits ---------------- */
@@ -235,7 +273,7 @@ function resultModal(g, date, { headline, sub, shareText, extra }) {
   modal(body, { cls: 'result-sheet' });
 }
 
-async function playScreen(g, date) {
+function playScreen(g, date, pending) {
   const body = h('main', { class: 'game-body' }, h('div', { class: 'loading' }, h('span', { class: 'spinner' }), 'Brewing your puzzle…'));
   const title = h('div', { class: 'gh-title' }, h('strong', null, g.name), h('span', null, date === today() ? shortDate(date) : `${shortDate(date)} · No. ${puzzleNo(date)}`));
   const extraSlot = h('div', { class: 'gh-extra' });
@@ -258,12 +296,13 @@ async function playScreen(g, date) {
     flush();
   };
 
-  const start = async () => {
+  const start = async (loading) => {
+    const t0 = performance.now();
     let data;
     try {
-      data = await g.load(date);
+      data = await (loading || g.load(date));
     } catch (e) {
-      body.replaceChildren(h('div', { class: 'loading err' }, 'Couldn’t load this puzzle. ', h('br'), String(e.message || e), h('br'), h('button', { class: 'btn ghost', onclick: start }, 'Try again')));
+      body.replaceChildren(h('div', { class: 'loading err' }, 'Couldn’t load this puzzle. ', h('br'), String(e.message || e), h('br'), h('button', { class: 'btn ghost', onclick: () => start() }, 'Try again')));
       return;
     }
     if (!alive) return;
@@ -291,25 +330,27 @@ async function playScreen(g, date) {
       settings: store.settings(),
     };
     unmount = g.mount(ctx);
+    // If the puzzle took a while (the spinner showed), ease the game in.
+    if (performance.now() - t0 > 60) fadeIn(body, { dy: 8 });
     let seen = true;
     try {
       seen = !!localStorage.getItem('elevenses.seen.' + g.id);
       if (!seen) localStorage.setItem('elevenses.seen.' + g.id, '1');
     } catch {}
-    if (!seen) helpModal(g);
+    if (!seen) setTimeout(() => alive && helpModal(g), 350); // after the screen has settled
   };
 
   if (!rec(g, date)) {
-    app.replaceChildren(
-      splash(g, date, () => {
+    const play = () =>
+      swap(() => {
         app.replaceChildren(screen);
-        start();
-      }),
-    );
-  } else {
-    app.replaceChildren(screen);
-    start();
+        return start(pending);
+      }, reduceMotion() ? 'fade' : 'up');
+    app.replaceChildren(splash(g, date, play));
+    return;
   }
+  app.replaceChildren(screen);
+  return start(pending);
 }
 
 /* ---------------- Archive ---------------- */
@@ -338,6 +379,7 @@ function archiveScreen(gameId, month) {
     m = d;
     history.replaceState(null, '', hashFor(`archive/${g.id}/${m}`));
     draw();
+    fadeIn(cal, { dx: delta * 28, dy: 0, duration: 300 });
   }
   function draw() {
     title.textContent = monthName(m + '-01');
