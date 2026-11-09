@@ -82,7 +82,27 @@ export default {
       p.g.split('').map((ch, i) => (cells[i] = h('div', { class: 'rb-cell', 'data-i': i, role: 'gridcell' }, h('span', null, ch)))));
     const hintBtn = h('button', { class: 'btn ghost rb-hint', onclick: useHint });
     const slots = h('div', { class: 'rb-slots' });
-    ctx.root.append(h('div', { class: 'rb-wrap' }, themeCard, current, gridEl, h('div', { class: 'rb-tools' }, hintBtn), slots));
+    const tools = h('div', { class: 'rb-tools' }, hintBtn);
+    const wrap = h('div', { class: 'rb-wrap' }, themeCard, current, gridEl, tools, slots);
+    ctx.root.append(wrap);
+
+    // Size the letters from the space actually available (works the same in Safari, the Home
+    // Screen app and embedded previews): as wide as the screen allows, keeping the Hint button in
+    // view when there's room, and never smaller than 85% of full width just to fit it.
+    function fit() {
+      const body = ctx.root;
+      if (!body.clientWidth) return;
+      const wide = (wrap.clientWidth - 28 - 10) / 6;
+      const top = gridEl.getBoundingClientRect().top - body.getBoundingClientRect().top + body.scrollTop;
+      const room = body.clientHeight - top - 12;
+      const withHint = (room - tools.offsetHeight - 8 - 12) / 7;
+      const gridOnly = (room - 8) / 7;
+      const size = Math.max(30, Math.min(70, wide, Math.max(withHint, Math.min(wide * 0.85, gridOnly))));
+      gridEl.style.setProperty('--size', `${Math.floor(size * 10) / 10}px`);
+    }
+    const ro = new ResizeObserver(() => fit());
+    ro.observe(ctx.root);
+    requestAnimationFrame(fit);
 
     const center = (i) => [(i % COLS) * 10 + 5, Math.floor(i / COLS) * 10 + 5];
     function polyline(cellsList, cls) {
@@ -262,6 +282,7 @@ export default {
       return `Ramble No. ${puzzleNo(ctx.date)}\n“${p.c}”\n${r.found.map(() => '🟢').join('')}${r.hintsUsed ? ' ' + '💡'.repeat(r.hintsUsed) : ''}`;
     }
     if (r.done) themeCard.append(h('div', { class: 'rb-reveal' }, 'Theme: ', h('strong', null, p.n)));
-    return () => {};
+    fit();
+    return () => ro.disconnect();
   },
 };

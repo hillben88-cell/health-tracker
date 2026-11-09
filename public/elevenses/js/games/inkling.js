@@ -1,5 +1,9 @@
 // Inkling — crack the five-letter word in six goes.
-import { h, dayData, wordSet, keyboard, onPhysicalKeys, toast, statRow, distribution, streaks, puzzleNo, confetti } from '../core.js';
+import { h, dayData, wordSet, keyboard, onPhysicalKeys, toast, statRow, distribution, streaks, puzzleNo, confetti, reduceMotion } from '../core.js';
+
+// Tile reveal timing: each tile turns away for HALF ms, changes colour edge-on, then turns back.
+const HALF = 270;
+const STAGGER = 330;
 
 const ROWS = 6, LEN = 5;
 const PRAISE = ['Unbelievable!', 'Brilliant!', 'Smashing!', 'Lovely stuff', 'Phew!', 'By a whisker!'];
@@ -123,17 +127,26 @@ export default {
       }
       for (const [ch, el] of Object.entries(kb.keys)) el.className = `kb-key ${best[ch] || ''}`;
     }
+    // A smooth 3D flip: ease away to edge-on, swap the colour exactly then, ease back.
+    function flipTile(t, mark, delay) {
+      if (reduceMotion() || !t.animate) return setTimeout(() => t.classList.add(mark), delay + HALF);
+      const away = t.animate([{ transform: 'perspective(600px) rotateX(0deg)' }, { transform: 'perspective(600px) rotateX(-90deg)' }], { duration: HALF, delay, easing: 'cubic-bezier(0.5, 0, 0.9, 0.6)', fill: 'forwards' });
+      away.finished.then(() => {
+        t.classList.add(mark);
+        t.animate([{ transform: 'perspective(600px) rotateX(90deg)' }, { transform: 'perspective(600px) rotateX(0deg)' }], { duration: HALF, easing: 'cubic-bezier(0.1, 0.4, 0.5, 1)' });
+        away.cancel();
+      }, () => t.classList.add(mark));
+    }
     function paintRow(ri, word, marks, animate) {
       tiles[ri].forEach((t, i) => {
         t.textContent = word[i] || '';
         t.classList.toggle('filled', !!word[i]);
         if (!marks) return;
-        if (animate) {
-          setTimeout(() => t.classList.add('flip'), i * 280);
-          setTimeout(() => t.classList.add(marks[i]), i * 280 + 160);
-        } else t.classList.add(marks[i]);
+        if (animate) flipTile(t, marks[i], i * STAGGER);
+        else t.classList.add(marks[i]);
       });
     }
+    const REVEAL = (LEN - 1) * STAGGER + 2 * HALF; // time for a whole row to turn over
     r.guesses.forEach((g, i) => paintRow(i, g, evaluate(g, answer), false));
     paintKeys();
     if (r.done && !r.win) toast(answer.toUpperCase(), { ms: 2600 });
@@ -149,13 +162,13 @@ export default {
         headline: win ? PRAISE[r.guesses.length - 1] : 'So close',
         sub: win ? `You found it in ${r.guesses.length}.` : `The word was ${answer.toUpperCase()}.`,
         shareText: shareText(),
-        delay: 1900,
+        delay: REVEAL + 1300,
       });
       if (win) {
         setTimeout(() => {
-          tiles[r.guesses.length - 1].forEach((t, i) => setTimeout(() => t.classList.add('bounce'), i * 90));
+          tiles[r.guesses.length - 1].forEach((t, i) => setTimeout(() => t.classList.add('bounce'), i * 100));
           confetti();
-        }, 1500);
+        }, REVEAL + 250);
       }
     }
     function shareText() {
@@ -189,12 +202,12 @@ export default {
       setTimeout(() => {
         busy = false;
         paintKeys();
-      }, LEN * 280 + 200);
+      }, REVEAL + 60);
       const win = word === answer;
       if (win || r.guesses.length === ROWS) {
         r.win = win;
-        if (!win) setTimeout(() => toast(answer.toUpperCase(), { ms: 3000 }), LEN * 280 + 200);
-        else setTimeout(() => toast(PRAISE[r.guesses.length - 1]), LEN * 280 + 300);
+        if (!win) setTimeout(() => toast(answer.toUpperCase(), { ms: 3000 }), REVEAL + 150);
+        else setTimeout(() => toast(PRAISE[r.guesses.length - 1]), REVEAL + 250);
         finishUp(win);
       } else ctx.save(r);
     }

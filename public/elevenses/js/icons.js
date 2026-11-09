@@ -25,6 +25,10 @@ export const GAME_ICONS = {
     <circle cx="20" cy="20" r="12.5" fill="#fff"/><circle cx="20" cy="20" r="10" fill="none" stroke="var(--icon-bg)" stroke-width="1.2" stroke-dasharray="2 2"/>
     <path d="M16.6 16.4a3.5 3.5 0 0 1 6.8 1.1c0 2.4-3.4 2.6-3.4 5" fill="none" stroke="var(--icon-bg)" stroke-width="2.6" stroke-linecap="round"/>
     <circle cx="20" cy="26.2" r="1.6" fill="var(--icon-bg)"/></svg>`,
+  conundrum: `<svg viewBox="0 0 40 40" aria-hidden="true"><rect x="3" y="3" width="34" height="34" rx="5" fill="var(--icon-bg)"/>
+    <g fill="#fff"><rect x="7.5" y="8" width="7" height="7" rx="1.6" transform="rotate(-10 11 11.5)"/><rect x="16.5" y="9" width="7" height="7" rx="1.6" transform="rotate(8 20 12.5)"/><rect x="25.5" y="7.5" width="7" height="7" rx="1.6" transform="rotate(-6 29 11)"/>
+    <rect x="7.5" y="25" width="7" height="7" rx="1.6"/><rect x="16.5" y="25" width="7" height="7" rx="1.6"/><rect x="25.5" y="25" width="7" height="7" rx="1.6"/></g>
+    <path d="M20 17.5v5.2m-2.4-2.4 2.4 2.4 2.4-2.4" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
   ramble: `<svg viewBox="0 0 40 40" aria-hidden="true"><rect x="3" y="3" width="34" height="34" rx="5" fill="var(--icon-bg)"/>
     <path d="M10.5 10.5 L20 10.5 L29.5 20 L20 29.5 L10.5 29.5" fill="none" stroke="var(--ramble-path)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
     <g fill="#fff">${[0, 1, 2].flatMap((r) => [0, 1, 2].map((c) => `<circle cx="${10.5 + c * 9.5}" cy="${10.5 + r * 9.5}" r="2.9"/>`)).join('')}</g></svg>`,

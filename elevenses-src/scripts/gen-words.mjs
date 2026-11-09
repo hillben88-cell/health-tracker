@@ -44,6 +44,26 @@ function spokesVocab() {
   return vocab;
 }
 
+/**
+ * The words each puzzle counts (towards ranks, hints and Hors Catégorie): broader than the
+ * vocabulary used to choose the letters, so everyday words and their inflections count.
+ */
+function spokesCounted(level, zipf) {
+  return (level <= 35 && zipf >= 1.5) || (level <= 50 && zipf >= 2.0) || (level <= 60 && zipf >= 2.8);
+}
+/** Everything else in the dictionary that fits is still accepted, as a bonus word. */
+function spokesLists() {
+  const lex = lexicon();
+  const block = blocklist();
+  const counted = [];
+  const bonus = [];
+  for (const [w, { level, zipf }] of lex) {
+    if (w.length < 4 || w.includes('s') || level > 60 || block.has(w)) continue;
+    (spokesCounted(level, zipf) ? counted : bonus).push({ w, m: letterMask(w) });
+  }
+  return { counted, bonus };
+}
+
 const letterMask = (w) => {
   let m = 0;
   for (const ch of w) m |= 1 << (ch.charCodeAt(0) - 97);
@@ -65,6 +85,7 @@ export function genSpokes(N) {
   // Seeds for the letter sets: well-known words with exactly seven distinct letters.
   const seeds = vocab.filter(({ w, m }) => bits(m) === 7 && lex.get(w).zipf >= 3.0 && lex.get(w).level <= 35);
   const order = shuffle(seeds, rng(hash('spokes7')));
+  const lists = spokesLists();
   const out = [];
   const usedSets = new Set();
   let k = 0;
@@ -88,6 +109,13 @@ export function genSpokes(N) {
       const outer = letters.filter((ch) => ch !== opt.ch);
       const full = opt.words.filter((w) => letterMask(w) === seed.m);
       puzzle = { c: opt.ch, o: shuffle(outer, rand).join(''), w: opt.words.sort(), n: full.sort() };
+      // The letters are chosen exactly as before (so existing puzzles don't change); the word
+      // lists then come from the broader vocabulary: w counts, x is accepted as a bonus.
+      const hubBit = 1 << (opt.ch.charCodeAt(0) - 97);
+      const fits = (v) => (v.m & ~seed.m) === 0 && (v.m & hubBit) !== 0;
+      puzzle.w = lists.counted.filter(fits).map((v) => v.w).sort();
+      puzzle.x = lists.bonus.filter(fits).map((v) => v.w).sort();
+      puzzle.n = puzzle.w.filter((w) => letterMask(w) === seed.m);
     }
     if (!puzzle) throw new Error('Spokes: ran out of letter sets at day ' + day);
     out.push(puzzle);

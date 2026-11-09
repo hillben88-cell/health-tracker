@@ -1,5 +1,5 @@
 // Shared crossword engine for the Mini (5x5) and the Midi (9x9 British-style).
-import { h, dayData, fetchJSON, hash, keyboard, onPhysicalKeys, toast, statRow, streaks, puzzleNo, fmtClock, ICON, modal, closeModal, confetti } from '../core.js';
+import { h, dayData, fetchJSON, hash, keyboard, onPhysicalKeys, toast, statRow, streaks, puzzleNo, fmtClock, ICON, modal, closeModal, confetti, fadeIn } from '../core.js';
 
 /** Derive numbered entries from a flat grid string. */
 export function buildEntries(grid, size) {
@@ -313,6 +313,7 @@ function mountCrossword(ctx, { id, name, size, style }) {
   function showNudge(on) {
     if (nudgeBar.hidden === !on) return;
     nudgeBar.hidden = !on;
+    if (on) fadeIn(nudgeBar, { dy: 8 });
     requestAnimationFrame(fit);
   }
   function checkComplete() {

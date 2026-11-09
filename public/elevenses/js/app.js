@@ -12,8 +12,9 @@ import spokes from './games/spokes.js';
 import quartets from './games/quartets.js';
 import ramble from './games/ramble.js';
 import quiz from './games/quiz.js';
+import conundrum from './games/conundrum.js';
 
-export const GAMES = [mini, midi, inkling, spokes, quartets, ramble, quiz];
+export const GAMES = [mini, midi, inkling, spokes, quartets, ramble, quiz, conundrum];
 const byId = Object.fromEntries(GAMES.map((g) => [g.id, g]));
 const app = document.getElementById('app');
 let cleanup = null;
@@ -73,10 +74,12 @@ function swap(update, dir) {
 
 let lastView = null;
 let navSeq = 0;
+let updateReady = false; // a new version of the app is waiting to be loaded
 function route() {
   const seq = ++navSeq;
   const [view, a, b] = parse();
   const v = view === 'play' && byId[a] ? 'play' : view === 'archive' || view === 'stats' ? view : 'home';
+  if (updateReady && v !== 'play') return location.reload();
   const dir = lastView == null ? null : reduceMotion() ? 'fade' : v === 'play' && lastView !== 'play' ? 'forward' : lastView === 'play' && v !== 'play' ? 'back' : 'fade';
   lastView = v;
   closeModal();
@@ -484,7 +487,7 @@ function settingsModal() {
             'div',
             { class: 'setting share-app' },
             h('div', null, h('strong', null, 'Share Elevenses with friends'), h('small', null, 'Send them the link. Everyone gets their own stats, saved on their own phone. Nothing is uploaded or shared.')),
-            h('button', { class: 'btn primary sm', onclick: () => share('Fancy a puzzle? Elevenses has seven daily British puzzles: two crosswords, Inkling, Spokes, Quartets, Ramble and a Pub Quiz.'), html: ICON.share + '<span>Share the link</span>' }),
+            h('button', { class: 'btn primary sm', onclick: () => share('Fancy a puzzle? Elevenses has eight daily British puzzles: two crosswords, Inkling, Spokes, Quartets, Ramble, a Pub Quiz and Conundrum.'), html: ICON.share + '<span>Share the link</span>' }),
           )
         : null,
       h('div', { class: 'setting' }, h('strong', null, 'Appearance'), seg('theme', [['auto', 'Auto'], ['light', 'Light'], ['dark', 'Dark']])),
@@ -553,6 +556,16 @@ document.addEventListener('visibilitychange', () => {
   }
 });
 if ('serviceWorker' in navigator && location.protocol !== 'file:') {
-  navigator.serviceWorker.register('sw.js').catch(() => {});
+  const hadController = !!navigator.serviceWorker.controller;
+  navigator.serviceWorker
+    .register('sw.js')
+    .then((reg) => document.addEventListener('visibilitychange', () => !document.hidden && reg.update().catch(() => {})))
+    .catch(() => {});
+  // A new version has taken over: reload into it now, or as soon as the current game is left.
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (!hadController || updateReady) return;
+    updateReady = true;
+    if (document.body.dataset.view !== 'play') location.reload();
+  });
 }
 export { go as navigate };

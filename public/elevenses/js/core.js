@@ -200,7 +200,7 @@ export async function fetchJSON(path) {
   if (!jsonCache.has(path)) {
     jsonCache.set(
       path,
-      fetch(path).then((r) => {
+      fetch(path, { cache: 'no-cache' }).then((r) => {
         if (!r.ok) throw new Error(`Couldn’t load ${path} (${r.status})`);
         return r.json();
       }),
@@ -219,7 +219,7 @@ export async function dayData(game, date) {
 const wordSets = new Map();
 export function wordSet(file) {
   if (!wordSets.has(file)) {
-    const p = fetch(`data/${file}`)
+    const p = fetch(`data/${file}`, { cache: 'no-cache' })
       .then((r) => {
         if (!r.ok) throw new Error('Couldn’t load the dictionary');
         return r.text();

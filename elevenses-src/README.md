@@ -1,17 +1,18 @@
 # Elevenses — daily British puzzles
 
 Elevenses is a small daily-puzzle web app built for iPhone (it installs to the Home
-Screen and runs full-screen and offline). It has seven games:
+Screen and runs full-screen and offline). It has eight games:
 
 | Game | What it is |
 | --- | --- |
 | **Mini Crossword** | 5×5 quick crossword, fully checked, with a timer. |
 | **Midi Crossword** | 9×9 British-style quick crossword (unchecked squares, answer lengths in brackets). |
 | **Inkling** | Guess the five-letter word in six goes (British word list, optional hard mode). |
-| **Spokes** | A seven-letter word wheel: make words of four or more letters that use the hub letter. Letters can be reused. Every wheel has at least one *Full Circle* word using all seven letters (+10 points). Ranks run from *Stabilisers* to *Yellow Jersey* and *Hors Catégorie*. **Hints** show words left by first letter and length, two-letter starts, and can reveal the start of a word. |
+| **Spokes** | A seven-letter word wheel: make words of four or more letters that use the hub letter. Letters can be reused. Every wheel has at least one *Full Circle* word using all seven letters (+10 points). Ranks run from *Stabilisers* to *Yellow Jersey* and *Hors Catégorie* (every counted word). Less common words are accepted as bonus words. **Hints** show words left by first letter and length, two-letter starts, and can reveal the start of a word. |
 | **Quartets** | Sixteen words, four hidden groups of four, four lives. Categories are British-flavoured. **Hints** reveal a group's theme (easiest first), then mark its words. |
 | **Ramble** | A themed word trail: every letter of the 6×7 grid belongs to one theme word. Find bonus words to earn hints. |
 | **Pub Quiz** | Twenty classic multiple-choice pub quiz questions a day, two from each of ten rounds (general knowledge, history, geography, science, music, TV & film, sport, books, food & drink, Britain). Easiest first, one 50:50 per quiz. Scores earn a title, from *Wooden Spoon* (0–4) to *Perfect Pint* (20). |
+| **Conundrum** | Five nine-letter anagrams a day, easiest first. Tap the scrambled tiles (or type) to spell each word; every one has a single answer. Hints lock in the next letter; Reveal gives up on a word. Timed, with a perfect day for five without hints. |
 
 Every game has a new puzzle each day at local midnight. Puzzle No. 1 was on
 1 September 2026, and puzzles are pre-generated to 31 December 2030. The
@@ -103,6 +104,12 @@ The generators:
 - **Ramble** — chooses theme words totalling 42 letters, then tiles the grid with
   non-crossing paths. A partition check keeps the remaining space fillable.
 - **Inkling** — a seeded shuffle of the answer list.
+- **Conundrum** — familiar nine-letter words (SCOWL level 50 or below, not plurals) whose
+  letters make no other nine-letter word, split into five bands by how common they are; each
+  day takes one from each band, at most one -ING and one -ED word. Scrambles never keep three
+  letters of the answer together or start with its first letter.
+- **Spokes word lists** — the letters are chosen from a tight vocabulary; the counted list then
+  adds everyday words and inflections, and anything else in the dictionary is a bonus word.
 - **Pub Quiz** — takes two questions from each round, working through a shuffled
   cycle per round, so no question comes back until its whole round has been used
   (about every five to six weeks). Questions are ordered easiest first, never two from
@@ -113,7 +120,7 @@ The generators:
 ```bash
 pip install wordfreq            # only needed to regenerate the lexicon
 node elevenses-src/scripts/build.mjs            # everything (~10 minutes, crosswords are the slow bit)
-node elevenses-src/scripts/build.mjs quartets   # just one game: inkling|spokes|quartets|ramble|quiz|crossword|dict
+node elevenses-src/scripts/build.mjs quartets   # just one game: inkling|spokes|quartets|ramble|quiz|conundrum|crossword|dict
 node elevenses-src/scripts/build.mjs clues      # re-export edited clue text without changing any grids
 ```
 

@@ -1,6 +1,6 @@
 // Spokes — seven letters on a wheel. Every word uses the hub; letters can be used again;
 // every puzzle has at least one "Full Circle" word that uses all seven letters.
-import { h, dayData, toast, statRow, streaks, puzzleNo, onPhysicalKeys, ICON, today, confetti, modal, closeModal, store } from '../core.js';
+import { h, dayData, toast, statRow, streaks, puzzleNo, onPhysicalKeys, ICON, today, confetti, modal, closeModal, store, reduceMotion, EASE, fadeIn } from '../core.js';
 
 const VERSION = 2; // v1 was the nine-letter, use-each-tile-once wheel
 const RANKS = [
@@ -26,8 +26,9 @@ const S = (tag, attrs = {}, ...kids) => {
 };
 const cap = (w) => w[0].toUpperCase() + w.slice(1);
 
-function rankOf(score, max) {
-  if (max && score >= max) return { name: TOP, index: RANKS.length };
+// Hors Catégorie means finding every counted word; bonus words add points but aren't needed.
+function rankOf(score, max, complete) {
+  if (complete) return { name: TOP, index: RANKS.length };
   let idx = 0;
   RANKS.forEach(([, f], i) => score >= Math.ceil(f * max) && (idx = i));
   return { name: RANKS[idx][0], index: idx };
@@ -83,6 +84,7 @@ export default {
         h('li', null, 'Every word must include the red ', h('b', null, 'hub'), ' letter.'),
         h('li', null, 'Letters can be used more than once in a word.'),
         h('li', null, 'No proper nouns or hyphenated words.'),
+        h('li', null, 'Less common words are accepted as ', h('b', null, 'bonus words'), '. They score points but you don’t need them for Hors Catégorie.'),
       ),
       h('p', null, h('b', null, 'Scoring: '), 'four-letter words score 1 point, five letters 2, six letters 3 and so on.'),
       h('p', null, 'Every wheel has at least one ', h('b', null, 'Full Circle'), ': a word that uses all seven letters. It scores 10 bonus points.'),
@@ -96,8 +98,10 @@ export default {
     const p = ctx.data; // {c: hub, o: six outer letters, w: words, n: Full Circle words}
     const set = new Set(p.c + p.o);
     const valid = new Set(p.w);
+    const bonus = new Set(p.x || []); // less common words: accepted and scored, but not needed
     const max = p.w.reduce((s, w) => s + points(w, set), 0);
     const r = ctx.rec?.v === VERSION ? ctx.rec : { v: VERSION, found: [], score: 0, full: 0 };
+    const complete = () => p.w.every((w) => r.found.includes(w));
     let outer = p.o.split('');
     let typed = '';
 
@@ -151,7 +155,7 @@ export default {
       outer.forEach((ch, k) => (segs[k].text.textContent = ch.toUpperCase()));
       input.replaceChildren(...typed.split('').map((ch) => h('span', { class: ch === p.c ? 'hub' : '' }, ch.toUpperCase())), h('span', { class: 'caret' }));
       input.classList.toggle('long', typed.length > 10);
-      const rk = rankOf(r.score, max);
+      const rk = rankOf(r.score, max, complete());
       rankName.textContent = rk.name;
       scoreEl.textContent = `${r.score} pts`;
       const frac = Math.min(1, r.score / Math.max(1, Math.ceil(RANKS.at(-1)[1] * max)));
@@ -186,6 +190,16 @@ export default {
       wheel.classList.add('spin');
       render();
     }
+    // An accepted word lifts and fades from the input while the input clears for the next one.
+    function floatAway() {
+      if (reduceMotion() || !input.animate) return;
+      const b = input.getBoundingClientRect();
+      const ghost = input.cloneNode(true);
+      ghost.querySelector('.caret')?.remove();
+      Object.assign(ghost.style, { position: 'fixed', left: `${b.left}px`, top: `${b.top}px`, width: `${b.width}px`, height: `${b.height}px`, margin: '0', pointerEvents: 'none', zIndex: '5' });
+      document.body.append(ghost);
+      ghost.animate([{ transform: 'none', opacity: 1 }, { transform: 'translateY(-22px) scale(0.92)', opacity: 0 }], { duration: 380, easing: EASE }).finished.finally(() => ghost.remove());
+    }
     function reject(msg) {
       toast(msg);
       shake();
@@ -198,8 +212,8 @@ export default {
       if (word.length < 4) return reject('Too short');
       if (!word.includes(p.c)) return reject(`Must use the hub letter, ${p.c.toUpperCase()}`);
       if (r.found.includes(word)) return reject('Already found');
-      if (!valid.has(word)) return reject('Not in our word list');
-      const before = rankOf(r.score, max).name;
+      if (!valid.has(word) && !bonus.has(word)) return reject('Not in our word list');
+      const before = rankOf(r.score, max, complete()).name;
       const pts = points(word, set);
       r.found.push(word);
       r.score += pts;
@@ -207,12 +221,14 @@ export default {
         r.full = (r.full || 0) + 1;
         toast(`Full Circle! +${pts}`, { tone: 'big' });
         confetti(['#D9483B', '#F3C14B', '#2F7A8C', '#FFFFFF']);
-      } else toast(`${PRAISE[Math.min(5, word.length - 3)]} +${pts}`);
-      const rk = rankOf(r.score, max);
+      } else toast(bonus.has(word) ? `Bonus word! +${pts}` : `${PRAISE[Math.min(5, word.length - 3)]} +${pts}`);
+      const rk = rankOf(r.score, max, complete());
       r.rankName = rk.name;
       r.progress = r.score;
+      floatAway();
       typed = '';
       render();
+      fadeIn(foundPreview, { dx: -8, dy: 0, duration: 300 });
       if (rk.index === RANKS.length && !r.top) {
         r.top = true;
         ctx.save(r);
@@ -226,12 +242,12 @@ export default {
       if (rk.name !== before && rk.index < RANKS.length - 1) setTimeout(() => toast(`New rank: ${rk.name}`), 900);
     }
     function shareText() {
-      return `Spokes No. ${puzzleNo(ctx.date)} — ${rankOf(r.score, max).name}\n${r.found.length} words · ${r.score} pts${r.full ? ' · Full Circle 🔴' : ''}`;
+      return `Spokes No. ${puzzleNo(ctx.date)} — ${rankOf(r.score, max, complete()).name}\n${r.found.length} words · ${r.score} pts${r.full ? ' · Full Circle 🔴' : ''}`;
     }
     function showWords() {
       const sorted = [...r.found].sort();
       modal(
-        h('div', { class: 'sp-list' }, sorted.length ? h('ul', { class: 'cols' }, sorted.map((w) => h('li', { class: isFull(w, set) ? 'full' : '' }, cap(w)))) : h('p', null, 'No words yet. Have a spin!'), h('p', { class: 'fine' }, `${r.found.length} of ${p.w.length} words · ${r.score} of ${max} points`)),
+        h('div', { class: 'sp-list' }, sorted.length ? h('ul', { class: 'cols' }, sorted.map((w) => h('li', { class: `${isFull(w, set) ? 'full' : ''} ${bonus.has(w) ? 'bonus' : ''}` }, cap(w)))) : h('p', null, 'No words yet. Have a spin!'), h('p', { class: 'fine' }, `${r.found.filter((w) => valid.has(w)).length} of ${p.w.length} words · ${r.score} points${r.found.some((w) => bonus.has(w)) ? ' · words marked + are bonus words' : ''}`)),
         { title: 'Your words' },
       );
     }
@@ -296,11 +312,11 @@ export default {
       modal(hintsBody(), { title: 'Hints', cls: 'tall' });
     }
     function showRanks() {
-      const rk = rankOf(r.score, max);
+      const rk = rankOf(r.score, max, complete());
       modal(
         h('div', { class: 'sp-ranks' },
           h('p', null, 'Ranks are based on a percentage of the possible points in today’s wheel.'),
-          h('ul', null, [...RANKS, [TOP, 1]].reverse().map(([name, f]) => h('li', { class: name === rk.name ? 'on' : '' }, h('span', null, name), h('b', null, Math.ceil(f * max))))),
+          h('ul', null, [...RANKS, [TOP, 1]].reverse().map(([name, f]) => h('li', { class: name === rk.name ? 'on' : '' }, h('span', null, name), h('b', null, name === TOP ? 'Every word' : Math.ceil(f * max))))),
           h('p', { class: 'fine' }, `Full Circle words today: ${p.n.length}.`)),
         { title: 'Rankings' },
       );

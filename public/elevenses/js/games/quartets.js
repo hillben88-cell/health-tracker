@@ -173,7 +173,11 @@ export default {
       const words = p.g[gi].m;
       const left = remaining();
       r.order = [...r.order.filter((w) => !left.includes(w)), ...left.filter((w) => words.includes(w)), ...left.filter((w) => !words.includes(w))];
-      await flip(grid, '.q-tile', render, { key: byWord, duration: 480, easing: 'cubic-bezier(0.45, 0, 0.2, 1)' });
+      const lift = () => {
+        render();
+        grid.querySelectorAll('.q-tile').forEach((t) => words.includes(t.dataset.w) && t.classList.add('lift'));
+      };
+      await flip(grid, '.q-tile', lift, { key: byWord, duration: 600, easing: 'cubic-bezier(0.45, 0, 0.2, 1)' });
       if (!ctx.alive()) return;
       grid.querySelectorAll('.q-tile').forEach((t) => words.includes(t.dataset.w) && (t.dataset.solve = gi));
       barHeight[gi] = grid.querySelector('.q-tile')?.getBoundingClientRect().height;

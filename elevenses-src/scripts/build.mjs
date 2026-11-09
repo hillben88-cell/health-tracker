@@ -1,6 +1,6 @@
 // Build every Elevenses puzzle from EPOCH to END into public/elevenses/data.
 //   node elevenses-src/scripts/build.mjs            (everything)
-//   node elevenses-src/scripts/build.mjs quartets   (just one game: inkling|spokes|quartets|ramble|quiz|crossword|dict)
+//   node elevenses-src/scripts/build.mjs quartets   (just one game: inkling|spokes|quartets|ramble|quiz|conundrum|crossword|dict)
 import fs from 'node:fs';
 import path from 'node:path';
 import { EPOCH, END, OUT, dayCount, dateOf, writeJSON } from './lib/util.mjs';
@@ -9,6 +9,7 @@ import { genQuartets } from './gen-quartets.mjs';
 import { genRamble } from './gen-ramble.mjs';
 import { genCrosswords } from './gen-crossword.mjs';
 import { genQuiz } from './gen-quiz.mjs';
+import { genConundrum } from './gen-conundrum.mjs';
 
 const N = dayCount();
 const only = process.argv[2];
@@ -52,6 +53,11 @@ if (want('quiz')) {
   const { bank, days } = genQuiz(N);
   writeByYear('quiz', days); // clears data/quiz first, so the bank is written after
   console.log(`  quiz bank: ${bank.q.length} questions, ${(writeJSON('quiz/bank.json', bank) / 1024).toFixed(0)} KB`);
+}
+if (want('conundrum')) {
+  const { days, pool } = genConundrum(N);
+  writeByYear('conundrum', days);
+  console.log(`  conundrum words: ${pool}`);
 }
 if (want('crossword')) {
   const { mini, midi, clues, cluesMini } = genCrosswords(N, { log: console.log });
